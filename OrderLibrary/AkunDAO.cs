@@ -33,7 +33,7 @@ namespace OrderLibrary
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    cmd.CommandText = @"select * from akun order by kode";
+                    cmd.CommandText = @"select * from akun order by username";
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -102,4 +102,4 @@ namespace OrderLibrary
         }
     }
 }
-}
+
