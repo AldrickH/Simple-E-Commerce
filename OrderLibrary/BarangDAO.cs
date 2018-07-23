@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderLibrary
 {
-    class BarangDAO : IDisposable
+    public class BarangDAO : IDisposable
     {
 
         SqlConnection _conn = null;

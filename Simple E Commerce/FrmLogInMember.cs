@@ -23,27 +23,34 @@ namespace Simple_E_Commerce
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            daoAkun = new AkunDAO(connString);
-            List<Akun> listData = daoAkun.GetAllDataAccount();
-
-            foreach (Akun temp in listData)
+            try
             {
-                if (temp.Username.Equals(txtUsername.Text) && temp.Password.Equals(txtPassword.Text))
+                daoAkun = new AkunDAO(connString);
+                Akun temp = daoAkun.GetDataCustomerByKode(txtUsername.Text);
+
+                if(temp.Password.Equals(txtPassword.Text))
                 {
                     if (temp.Username.Equals("admin"))
                     {
-                        FrmAdminInterface frm = new FrmAdminInterface();
-                        frm.Show();
+                        FrmAdminInterface frm = new FrmAdminInterface(temp);
+                        this.Hide();
+                        frm.ShowDialog();
+                        this.Close();
                     }
                     else
                     {
                         FrmUserInterface frm = new FrmUserInterface();
                         frm.Show();
                     }
-                } else
-                {
-                    MessageBox.Show("Please Sign up !");
                 }
+                else
+                {
+                    throw new Exception("Password yang anda masukkan salah");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
