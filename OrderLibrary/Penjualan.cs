@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simple_E_Commerce
+namespace OrderLibrary
 {
      public class Penjualan
     {
