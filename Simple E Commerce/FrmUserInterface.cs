@@ -14,7 +14,6 @@ namespace Simple_E_Commerce
     public partial class FrmUserInterface : Form
     {
         Akun user = null;
-        string connectionString = @"Data Source = (localdb)\mssqllocaldb; Initial Catalog = SimpleECommerce; Integrated Security = True;";
 
         public FrmUserInterface(Akun temp)
         {
@@ -26,7 +25,7 @@ namespace Simple_E_Commerce
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            using (var dao = new BarangDAO(connectionString))
+            using (var dao = new BarangDAO(Setting.GetConnectionString()))
             {
                 Barang brg = dao.GetDataBarangByKode("0001");
                 listData.Add(new Penjualan
@@ -43,7 +42,7 @@ namespace Simple_E_Commerce
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            using (var dao = new BarangDAO(connectionString))
+            using (var dao = new BarangDAO(Setting.GetConnectionString()))
             {
                 Barang brg = dao.GetDataBarangByKode("0002");
                 listData.Add(new Penjualan
