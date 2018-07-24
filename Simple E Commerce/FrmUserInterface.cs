@@ -16,20 +16,5 @@ namespace Simple_E_Commerce
         {
             InitializeComponent();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmUserInterface_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

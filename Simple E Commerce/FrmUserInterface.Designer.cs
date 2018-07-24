@@ -72,7 +72,6 @@
             this.pbUser.Size = new System.Drawing.Size(148, 151);
             this.pbUser.TabIndex = 0;
             this.pbUser.TabStop = false;
-            this.pbUser.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -202,7 +201,6 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(45, 31);
             this.numericUpDown1.TabIndex = 15;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // numericUpDown6
             // 
@@ -299,7 +297,6 @@
             this.Controls.Add(this.pbUser);
             this.Name = "FrmUserInterface";
             this.Text = "Form User Interface";
-            this.Load += new System.EventHandler(this.FrmUserInterface_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

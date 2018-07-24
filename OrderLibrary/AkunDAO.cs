@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderLibrary
 {
-    public class AkunDAO
+    public class AkunDAO : IDisposable
     {
 
         SqlConnection _conn = null;

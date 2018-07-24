@@ -57,18 +57,19 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cmbFilterMember = new System.Windows.Forms.ComboBox();
             this.lblFilterMember = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvDataMember = new System.Windows.Forms.DataGridView();
             this.clmUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotalPembelian = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmJumlahBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHargaBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNamaBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmKodeBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTglOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNoOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDataOrder = new System.Windows.Forms.DataGridView();
+            this.clmNoOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmTglOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmKodeBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNamaBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNamaPembeli = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmHargaBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmJumlahBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabData.SuspendLayout();
@@ -76,7 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBarang)).BeginInit();
             this.tabDataOrder.SuspendLayout();
             this.tabDataMember.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataMember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,7 +149,7 @@
             this.tabData.Margin = new System.Windows.Forms.Padding(2);
             this.tabData.Name = "tabData";
             this.tabData.SelectedIndex = 0;
-            this.tabData.Size = new System.Drawing.Size(988, 653);
+            this.tabData.Size = new System.Drawing.Size(825, 533);
             this.tabData.TabIndex = 2;
             // 
             // tabDataBarang
@@ -167,7 +168,7 @@
             this.tabDataBarang.Margin = new System.Windows.Forms.Padding(2);
             this.tabDataBarang.Name = "tabDataBarang";
             this.tabDataBarang.Padding = new System.Windows.Forms.Padding(2);
-            this.tabDataBarang.Size = new System.Drawing.Size(980, 624);
+            this.tabDataBarang.Size = new System.Drawing.Size(817, 504);
             this.tabDataBarang.TabIndex = 0;
             this.tabDataBarang.Text = "Data Barang";
             this.tabDataBarang.UseVisualStyleBackColor = true;
@@ -175,7 +176,7 @@
             // btnSimpan
             // 
             this.btnSimpan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSimpan.Location = new System.Drawing.Point(822, 74);
+            this.btnSimpan.Location = new System.Drawing.Point(659, 74);
             this.btnSimpan.Margin = new System.Windows.Forms.Padding(2);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(111, 33);
@@ -190,7 +191,7 @@
             this.textBox4.Location = new System.Drawing.Point(198, 128);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(599, 22);
+            this.textBox4.Size = new System.Drawing.Size(436, 22);
             this.textBox4.TabIndex = 8;
             // 
             // textBox3
@@ -200,7 +201,7 @@
             this.textBox3.Location = new System.Drawing.Point(198, 97);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(599, 22);
+            this.textBox3.Size = new System.Drawing.Size(436, 22);
             this.textBox3.TabIndex = 7;
             // 
             // textBox2
@@ -210,7 +211,7 @@
             this.textBox2.Location = new System.Drawing.Point(198, 63);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(599, 22);
+            this.textBox2.Size = new System.Drawing.Size(436, 22);
             this.textBox2.TabIndex = 6;
             // 
             // textBox1
@@ -220,7 +221,7 @@
             this.textBox1.Location = new System.Drawing.Point(198, 31);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(599, 22);
+            this.textBox1.Size = new System.Drawing.Size(436, 22);
             this.textBox1.TabIndex = 5;
             // 
             // lblHarga
@@ -275,7 +276,7 @@
             this.dgvDataBarang.RowHeadersVisible = false;
             this.dgvDataBarang.RowTemplate.Height = 33;
             this.dgvDataBarang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataBarang.Size = new System.Drawing.Size(968, 436);
+            this.dgvDataBarang.Size = new System.Drawing.Size(805, 316);
             this.dgvDataBarang.TabIndex = 1;
             this.dgvDataBarang.Resize += new System.EventHandler(this.dgvDataBarang_Resize);
             // 
@@ -330,7 +331,7 @@
             // 
             // btnCari
             // 
-            this.btnCari.Location = new System.Drawing.Point(405, 29);
+            this.btnCari.Location = new System.Drawing.Point(417, 29);
             this.btnCari.Margin = new System.Windows.Forms.Padding(2);
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(97, 26);
@@ -341,7 +342,7 @@
             // cmbFilter
             // 
             this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Location = new System.Drawing.Point(171, 33);
+            this.cmbFilter.Location = new System.Drawing.Point(183, 33);
             this.cmbFilter.Margin = new System.Windows.Forms.Padding(2);
             this.cmbFilter.Name = "cmbFilter";
             this.cmbFilter.Size = new System.Drawing.Size(197, 24);
@@ -350,7 +351,7 @@
             // lblFilter
             // 
             this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(25, 35);
+            this.lblFilter.Location = new System.Drawing.Point(37, 35);
             this.lblFilter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(118, 17);
@@ -362,7 +363,7 @@
             this.tabDataMember.Controls.Add(this.button1);
             this.tabDataMember.Controls.Add(this.cmbFilterMember);
             this.tabDataMember.Controls.Add(this.lblFilterMember);
-            this.tabDataMember.Controls.Add(this.dataGridView1);
+            this.tabDataMember.Controls.Add(this.dgvDataMember);
             this.tabDataMember.Location = new System.Drawing.Point(4, 25);
             this.tabDataMember.Margin = new System.Windows.Forms.Padding(2);
             this.tabDataMember.Name = "tabDataMember";
@@ -401,25 +402,30 @@
             this.lblFilterMember.TabIndex = 1;
             this.lblFilterMember.Text = "Cari Berdasarkan";
             // 
-            // dataGridView1
+            // dgvDataMember
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvDataMember.AllowUserToAddRows = false;
+            this.dgvDataMember.AllowUserToDeleteRows = false;
+            this.dgvDataMember.AllowUserToResizeColumns = false;
+            this.dgvDataMember.AllowUserToResizeRows = false;
+            this.dgvDataMember.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDataMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDataMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmUsername,
             this.clmNama,
             this.clmTotalPembelian});
-            this.dataGridView1.Location = new System.Drawing.Point(41, 83);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(899, 505);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvDataMember.Location = new System.Drawing.Point(4, 101);
+            this.dgvDataMember.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvDataMember.Name = "dgvDataMember";
+            this.dgvDataMember.ReadOnly = true;
+            this.dgvDataMember.RowHeadersVisible = false;
+            this.dgvDataMember.RowTemplate.Height = 33;
+            this.dgvDataMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDataMember.Size = new System.Drawing.Size(972, 519);
+            this.dgvDataMember.TabIndex = 0;
+            this.dgvDataMember.Resize += new System.EventHandler(this.dgvDataMember_Resize);
             // 
             // clmUsername
             // 
@@ -439,41 +445,6 @@
             this.clmTotalPembelian.Name = "clmTotalPembelian";
             this.clmTotalPembelian.ReadOnly = true;
             // 
-            // clmTotal
-            // 
-            this.clmTotal.HeaderText = "Total";
-            this.clmTotal.Name = "clmTotal";
-            // 
-            // clmJumlahBrg
-            // 
-            this.clmJumlahBrg.HeaderText = "Jumlah";
-            this.clmJumlahBrg.Name = "clmJumlahBrg";
-            // 
-            // clmHargaBrg
-            // 
-            this.clmHargaBrg.HeaderText = "Harga";
-            this.clmHargaBrg.Name = "clmHargaBrg";
-            // 
-            // clmNamaBrg
-            // 
-            this.clmNamaBrg.HeaderText = "Nama_Barang";
-            this.clmNamaBrg.Name = "clmNamaBrg";
-            // 
-            // clmKodeBrg
-            // 
-            this.clmKodeBrg.HeaderText = "Kode_Barang";
-            this.clmKodeBrg.Name = "clmKodeBrg";
-            // 
-            // clmTglOrder
-            // 
-            this.clmTglOrder.HeaderText = "Tgl_Order";
-            this.clmTglOrder.Name = "clmTglOrder";
-            // 
-            // clmNoOrder
-            // 
-            this.clmNoOrder.HeaderText = "No_Order";
-            this.clmNoOrder.Name = "clmNoOrder";
-            // 
             // dgvDataOrder
             // 
             this.dgvDataOrder.AllowUserToAddRows = false;
@@ -489,24 +460,73 @@
             this.clmTglOrder,
             this.clmKodeBrg,
             this.clmNamaBrg,
+            this.clmNamaPembeli,
             this.clmHargaBrg,
             this.clmJumlahBrg,
             this.clmTotal});
-            this.dgvDataOrder.Location = new System.Drawing.Point(4, 80);
+            this.dgvDataOrder.Location = new System.Drawing.Point(4, 99);
             this.dgvDataOrder.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDataOrder.Name = "dgvDataOrder";
             this.dgvDataOrder.ReadOnly = true;
             this.dgvDataOrder.RowHeadersVisible = false;
             this.dgvDataOrder.RowTemplate.Height = 33;
             this.dgvDataOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataOrder.Size = new System.Drawing.Size(972, 540);
+            this.dgvDataOrder.Size = new System.Drawing.Size(972, 521);
             this.dgvDataOrder.TabIndex = 0;
+            // 
+            // clmNoOrder
+            // 
+            this.clmNoOrder.HeaderText = "No Order";
+            this.clmNoOrder.Name = "clmNoOrder";
+            this.clmNoOrder.ReadOnly = true;
+            // 
+            // clmTglOrder
+            // 
+            this.clmTglOrder.HeaderText = "Tgl Order";
+            this.clmTglOrder.Name = "clmTglOrder";
+            this.clmTglOrder.ReadOnly = true;
+            // 
+            // clmKodeBrg
+            // 
+            this.clmKodeBrg.HeaderText = "Kode Barang";
+            this.clmKodeBrg.Name = "clmKodeBrg";
+            this.clmKodeBrg.ReadOnly = true;
+            // 
+            // clmNamaBrg
+            // 
+            this.clmNamaBrg.HeaderText = "Nama Barang";
+            this.clmNamaBrg.Name = "clmNamaBrg";
+            this.clmNamaBrg.ReadOnly = true;
+            // 
+            // clmNamaPembeli
+            // 
+            this.clmNamaPembeli.HeaderText = "Nama Pembeli";
+            this.clmNamaPembeli.Name = "clmNamaPembeli";
+            this.clmNamaPembeli.ReadOnly = true;
+            // 
+            // clmHargaBrg
+            // 
+            this.clmHargaBrg.HeaderText = "Harga";
+            this.clmHargaBrg.Name = "clmHargaBrg";
+            this.clmHargaBrg.ReadOnly = true;
+            // 
+            // clmJumlahBrg
+            // 
+            this.clmJumlahBrg.HeaderText = "Jumlah";
+            this.clmJumlahBrg.Name = "clmJumlahBrg";
+            this.clmJumlahBrg.ReadOnly = true;
+            // 
+            // clmTotal
+            // 
+            this.clmTotal.HeaderText = "Total";
+            this.clmTotal.Name = "clmTotal";
+            this.clmTotal.ReadOnly = true;
             // 
             // FrmAdminInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 675);
+            this.ClientSize = new System.Drawing.Size(1120, 555);
             this.Controls.Add(this.gbAdmin);
             this.Controls.Add(this.tabData);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -526,7 +546,7 @@
             this.tabDataOrder.PerformLayout();
             this.tabDataMember.ResumeLayout(false);
             this.tabDataMember.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataMember)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).EndInit();
             this.ResumeLayout(false);
 
@@ -563,7 +583,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbFilterMember;
         private System.Windows.Forms.Label lblFilterMember;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDataMember;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmUsername;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmNama;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotalPembelian;
@@ -572,6 +592,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTglOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmKodeBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmNamaBrg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmNamaPembeli;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmHargaBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmJumlahBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotal;

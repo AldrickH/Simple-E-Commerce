@@ -17,7 +17,7 @@ namespace Simple_E_Commerce
         public FrmAdminInterface(Akun temp)
         {
             InitializeComponent();
-            this.dgvDataBarang.AutoGenerateColumns = false;
+            this.dgvDataBarang.AutoGenerateColumns = this.dgvDataMember.AutoGenerateColumns = false;
             this.lblAdmin.Text = temp.Nama;
         }
 
@@ -33,12 +33,24 @@ namespace Simple_E_Commerce
             {
                 using (var dao = new BarangDAO(connString))
                 {
+                    this.dgvDataBarang.DataSource = null;
                     this.dgvDataBarang.DataSource = dao.GetAllDataBarang();
                     this.dgvDataBarang.Columns[0].DataPropertyName = "Kode";
                     this.dgvDataBarang.Columns[1].DataPropertyName = "Nama";
                     this.dgvDataBarang.Columns[2].DataPropertyName = "Jumlah";
                     this.dgvDataBarang.Columns[3].DataPropertyName = "Harga";
                 }
+
+                using (var dao = new AkunDAO(connString))
+                {
+                    this.dgvDataMember.DataSource = null;
+                    this.dgvDataMember.DataSource = dao.GetAllDataAccount();
+                    this.dgvDataMember.Columns[0].DataPropertyName = "Username";
+                    this.dgvDataMember.Columns[1].DataPropertyName = "Nama";
+                    this.dgvDataMember.Columns[2].DataPropertyName = "Total";
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -52,6 +64,13 @@ namespace Simple_E_Commerce
             this.dgvDataBarang.Columns[1].Width = 25 * this.dgvDataBarang.Width / 100;
             this.dgvDataBarang.Columns[2].Width = 25 * this.dgvDataBarang.Width / 100;
             this.dgvDataBarang.Columns[3].Width = 25 * this.dgvDataBarang.Width / 100;
+        }
+
+        private void dgvDataMember_Resize(object sender, EventArgs e)
+        {
+            this.dgvDataMember.Columns[0].Width = 33 * this.dgvDataBarang.Width / 100;
+            this.dgvDataMember.Columns[1].Width = 33 * this.dgvDataBarang.Width / 100;
+            this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
         }
     }
 }
