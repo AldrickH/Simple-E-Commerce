@@ -39,7 +39,7 @@ namespace Simple_E_Commerce
                     }
                     else
                     {
-                        FrmUserInterface frm = new FrmUserInterface();
+                        FrmUserInterface frm = new FrmUserInterface(temp);
                         frm.Show();
                     }
                 }
@@ -52,6 +52,14 @@ namespace Simple_E_Commerce
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void linkLblSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmSignUpMember frm = new FrmSignUpMember();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
         }
     }
 }

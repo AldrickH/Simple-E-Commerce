@@ -34,6 +34,8 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblLogIn = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.linkLblSignUp = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnLogIn
@@ -100,11 +102,35 @@
             this.lblLogIn.TabIndex = 12;
             this.lblLogIn.Text = "LOG IN";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(131, 168);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(156, 24);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Belum ada akun?";
+            // 
+            // linkLblSignUp
+            // 
+            this.linkLblSignUp.AutoSize = true;
+            this.linkLblSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLblSignUp.Location = new System.Drawing.Point(317, 166);
+            this.linkLblSignUp.Name = "linkLblSignUp";
+            this.linkLblSignUp.Size = new System.Drawing.Size(85, 24);
+            this.linkLblSignUp.TabIndex = 19;
+            this.linkLblSignUp.TabStop = true;
+            this.linkLblSignUp.Text = "Sign up !";
+            this.linkLblSignUp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblSignUp_LinkClicked);
+            // 
             // FrmLogInMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(543, 259);
+            this.Controls.Add(this.linkLblSignUp);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
@@ -131,5 +157,7 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblLogIn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLblSignUp;
     }
 }
