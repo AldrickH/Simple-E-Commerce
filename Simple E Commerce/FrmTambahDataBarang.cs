@@ -19,7 +19,6 @@ namespace Simple_E_Commerce
         }
 
         bool _result = false;
-        string connString = @"Data Source = (localdb)\mssqllocaldb; Initial Catalog = SimpleECommerce; Integrated Security = True;";
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
@@ -54,7 +53,7 @@ namespace Simple_E_Commerce
                         Jumlah = Convert.ToInt32(txtJumlah.Text.Trim()),
                         Harga = Convert.ToDecimal(txtHarga.Text.Trim())                       
                     };
-                    _result = new BarangDAO(connString).AddBarang(barang) > 0;
+                    _result = new BarangDAO(Setting.GetConnectionString()).AddBarang(barang) > 0;
                     this.Close();
                 }
                 catch (Exception ex)
