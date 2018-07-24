@@ -51,6 +51,12 @@
     <Compile Include="FrmAdminInterface.Designer.cs">
       <DependentUpon>FrmAdminInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSejarahPembelian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSejarahPembelian.Designer.cs">
+      <DependentUpon>FrmSejarahPembelian.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSignUpMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAdminInterface.resx">
       <DependentUpon>FrmAdminInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSejarahPembelian.resx">
+      <DependentUpon>FrmSejarahPembelian.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSignUpMember.resx">
       <DependentUpon>FrmSignUpMember.cs</DependentUpon>
