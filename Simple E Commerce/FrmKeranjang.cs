@@ -25,7 +25,7 @@ namespace Simple_E_Commerce
         private void FrmKeranjang_Load(object sender, EventArgs e)
         {
             this.dgvDataOrder.DataSource = data;
-            this.dgvDataOrder.Columns[0].DataPropertyName = "Total";
+            this.dgvDataOrder.Columns[0].DataPropertyName = "Kode";
             this.dgvDataOrder.Columns[1].DataPropertyName = "Tanggal";
         }
     }
