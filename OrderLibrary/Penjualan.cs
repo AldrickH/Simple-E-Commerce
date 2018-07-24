@@ -12,7 +12,7 @@ namespace OrderLibrary
         public DateTime Tanggal { get; set; }
         public Akun DataAkun { get; set; }
         public Barang DataBarang { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         public decimal Total { get; set; }
     }
 }
