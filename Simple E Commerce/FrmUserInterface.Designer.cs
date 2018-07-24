@@ -53,6 +53,7 @@
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.btn5 = new System.Windows.Forms.Button();
             this.gbBarang = new System.Windows.Forms.GroupBox();
+            this.btnCheckout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -150,7 +151,7 @@
             // lblBarang1
             // 
             this.lblBarang1.AutoSize = true;
-            this.lblBarang1.Location = new System.Drawing.Point(121, 303);
+            this.lblBarang1.Location = new System.Drawing.Point(117, 303);
             this.lblBarang1.Name = "lblBarang1";
             this.lblBarang1.Size = new System.Drawing.Size(125, 25);
             this.lblBarang1.TabIndex = 9;
@@ -159,7 +160,7 @@
             // lblBarang2
             // 
             this.lblBarang2.AutoSize = true;
-            this.lblBarang2.Location = new System.Drawing.Point(431, 303);
+            this.lblBarang2.Location = new System.Drawing.Point(419, 303);
             this.lblBarang2.Name = "lblBarang2";
             this.lblBarang2.Size = new System.Drawing.Size(125, 25);
             this.lblBarang2.TabIndex = 10;
@@ -168,7 +169,7 @@
             // lblBarang3
             // 
             this.lblBarang3.AutoSize = true;
-            this.lblBarang3.Location = new System.Drawing.Point(748, 303);
+            this.lblBarang3.Location = new System.Drawing.Point(738, 303);
             this.lblBarang3.Name = "lblBarang3";
             this.lblBarang3.Size = new System.Drawing.Size(125, 25);
             this.lblBarang3.TabIndex = 11;
@@ -177,7 +178,7 @@
             // lblBarang4
             // 
             this.lblBarang4.AutoSize = true;
-            this.lblBarang4.Location = new System.Drawing.Point(1072, 303);
+            this.lblBarang4.Location = new System.Drawing.Point(1060, 303);
             this.lblBarang4.Name = "lblBarang4";
             this.lblBarang4.Size = new System.Drawing.Size(125, 25);
             this.lblBarang4.TabIndex = 12;
@@ -186,7 +187,7 @@
             // lblBarang5
             // 
             this.lblBarang5.AutoSize = true;
-            this.lblBarang5.Location = new System.Drawing.Point(1375, 303);
+            this.lblBarang5.Location = new System.Drawing.Point(1361, 303);
             this.lblBarang5.Name = "lblBarang5";
             this.lblBarang5.Size = new System.Drawing.Size(125, 25);
             this.lblBarang5.TabIndex = 13;
@@ -205,19 +206,19 @@
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(228, 370);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(45, 31);
+            this.numericUpDown1.Size = new System.Drawing.Size(58, 31);
             this.numericUpDown1.TabIndex = 15;
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(557, 370);
+            this.numericUpDown6.Location = new System.Drawing.Point(537, 370);
             this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(45, 31);
+            this.numericUpDown6.Size = new System.Drawing.Size(55, 31);
             this.numericUpDown6.TabIndex = 25;
             // 
             // btn2
             // 
-            this.btn2.Location = new System.Drawing.Point(399, 349);
+            this.btn2.Location = new System.Drawing.Point(376, 349);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(136, 70);
             this.btn2.TabIndex = 24;
@@ -226,14 +227,14 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(868, 370);
+            this.numericUpDown2.Location = new System.Drawing.Point(857, 370);
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(45, 31);
+            this.numericUpDown2.Size = new System.Drawing.Size(56, 31);
             this.numericUpDown2.TabIndex = 27;
             // 
             // btn3
             // 
-            this.btn3.Location = new System.Drawing.Point(710, 349);
+            this.btn3.Location = new System.Drawing.Point(691, 349);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(136, 70);
             this.btn3.TabIndex = 26;
@@ -242,14 +243,14 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(1189, 370);
+            this.numericUpDown3.Location = new System.Drawing.Point(1179, 370);
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(45, 31);
+            this.numericUpDown3.Size = new System.Drawing.Size(55, 31);
             this.numericUpDown3.TabIndex = 29;
             // 
             // btn4
             // 
-            this.btn4.Location = new System.Drawing.Point(1031, 349);
+            this.btn4.Location = new System.Drawing.Point(1013, 349);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(136, 70);
             this.btn4.TabIndex = 28;
@@ -258,14 +259,14 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(1495, 370);
+            this.numericUpDown4.Location = new System.Drawing.Point(1485, 370);
             this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(45, 31);
+            this.numericUpDown4.Size = new System.Drawing.Size(55, 31);
             this.numericUpDown4.TabIndex = 31;
             // 
             // btn5
             // 
-            this.btn5.Location = new System.Drawing.Point(1337, 349);
+            this.btn5.Location = new System.Drawing.Point(1313, 349);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(136, 70);
             this.btn5.TabIndex = 30;
@@ -303,11 +304,21 @@
             this.gbBarang.TabIndex = 32;
             this.gbBarang.TabStop = false;
             // 
+            // btnCheckout
+            // 
+            this.btnCheckout.Location = new System.Drawing.Point(1749, 703);
+            this.btnCheckout.Name = "btnCheckout";
+            this.btnCheckout.Size = new System.Drawing.Size(153, 52);
+            this.btnCheckout.TabIndex = 33;
+            this.btnCheckout.Text = "Checkout";
+            this.btnCheckout.UseVisualStyleBackColor = true;
+            // 
             // FrmUserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1995, 1099);
+            this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.gbBarang);
             this.Controls.Add(this.btnSejarahPembelian);
             this.Controls.Add(this.btnLogOut);
@@ -317,6 +328,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form User Interface";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmUserInterface_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -362,5 +374,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Button btn5;
         private System.Windows.Forms.GroupBox gbBarang;
+        private System.Windows.Forms.Button btnCheckout;
     }
 }
