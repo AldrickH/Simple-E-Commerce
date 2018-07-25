@@ -81,7 +81,7 @@ namespace Simple_E_Commerce
             {
                 try
                 {
-                    using (var dao = new BarangDAO(connString ))
+                    using (var dao = new BarangDAO(Setting.GetConnectionString()))
                     {
                         if (dao.Delete(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
                         {
@@ -107,6 +107,26 @@ namespace Simple_E_Commerce
             FrmTambahDataBarang frm = new FrmTambahDataBarang();
             frm.ShowDialog();
             FrmAdminInterface_Load(null, null);
+        }
+
+        private void txtJumlah_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHarga_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNamaBarang_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtKodeBarang_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
