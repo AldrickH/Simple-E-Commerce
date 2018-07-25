@@ -31,9 +31,9 @@
             this.dgvDataOrder = new System.Windows.Forms.DataGridView();
             this.clmNoOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTglOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNamaPembeli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmKodeBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNamaBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNamaPembeli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmHargaBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmJumlahBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,9 +53,9 @@
             this.dgvDataOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmNoOrder,
             this.clmTglOrder,
+            this.clmNamaPembeli,
             this.clmKodeBrg,
             this.clmNamaBrg,
-            this.clmNamaPembeli,
             this.clmHargaBrg,
             this.clmJumlahBrg,
             this.clmTotal});
@@ -81,6 +81,12 @@
             this.clmTglOrder.Name = "clmTglOrder";
             this.clmTglOrder.ReadOnly = true;
             // 
+            // clmNamaPembeli
+            // 
+            this.clmNamaPembeli.HeaderText = "Nama Pembeli";
+            this.clmNamaPembeli.Name = "clmNamaPembeli";
+            this.clmNamaPembeli.ReadOnly = true;
+            // 
             // clmKodeBrg
             // 
             this.clmKodeBrg.HeaderText = "Kode Barang";
@@ -92,12 +98,6 @@
             this.clmNamaBrg.HeaderText = "Nama Barang";
             this.clmNamaBrg.Name = "clmNamaBrg";
             this.clmNamaBrg.ReadOnly = true;
-            // 
-            // clmNamaPembeli
-            // 
-            this.clmNamaPembeli.HeaderText = "Nama Pembeli";
-            this.clmNamaPembeli.Name = "clmNamaPembeli";
-            this.clmNamaPembeli.ReadOnly = true;
             // 
             // clmHargaBrg
             // 
@@ -136,9 +136,9 @@
         private System.Windows.Forms.DataGridView dgvDataOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmNoOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTglOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmNamaPembeli;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmKodeBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmNamaBrg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmNamaPembeli;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmHargaBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmJumlahBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotal;
