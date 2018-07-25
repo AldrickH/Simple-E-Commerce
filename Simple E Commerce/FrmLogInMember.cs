@@ -18,34 +18,35 @@ namespace Simple_E_Commerce
             InitializeComponent();
         }
 
-        string connString = @"Data Source = (localdb)\mssqllocaldb; Initial Catalog = SimpleECommerce; Integrated Security = True;";
-        AkunDAO daoAkun = null;
-
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             try
             {
-                daoAkun = new AkunDAO(connString);
-                Akun temp = daoAkun.GetDataCustomerByKode(txtUsername.Text);
-
-                if(temp.Password.Equals(txtPassword.Text))
+                using (var daoAkun = new AkunDAO(Setting.GetConnectionString()))
                 {
-                    if (temp.Username.Equals("admin"))
+                    Akun temp = daoAkun.GetDataCustomerByUsername(txtUsername.Text);
+
+                    if (temp.Password.Equals(txtPassword.Text))
                     {
-                        FrmAdminInterface frm = new FrmAdminInterface(temp);
-                        this.Hide();
-                        frm.ShowDialog();
-                        this.Close();
+                        if (temp.Username.Equals("admin"))
+                        {
+                            FrmAdminInterface frm = new FrmAdminInterface(temp);
+                            this.Hide();
+                            frm.ShowDialog();
+                            this.Close();
+                        }
+                        else
+                        {
+                            FrmUserInterface frm = new FrmUserInterface(temp);
+                            this.Hide();
+                            frm.ShowDialog();
+                            this.Close();
+                        }
                     }
                     else
                     {
-                        FrmUserInterface frm = new FrmUserInterface(temp);
-                        frm.Show();
+                        throw new Exception("Password yang anda masukkan salah");
                     }
-                }
-                else
-                {
-                    throw new Exception("Password yang anda masukkan salah");
                 }
             }
             catch (Exception ex)

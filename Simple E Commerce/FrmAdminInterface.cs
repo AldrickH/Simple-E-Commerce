@@ -21,18 +21,11 @@ namespace Simple_E_Commerce
             this.lblAdmin.Text = temp.Nama;
         }
 
-        bool _result = false;
-        string connString = @"Data Source = (localdb)\mssqllocaldb; Initial Catalog = SimpleECommerce; Integrated Security = True;";
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-        }
-
         private void FrmAdminInterface_Load(object sender, EventArgs e)
         {
             try
             {
-                using (var dao = new BarangDAO(connString))
+                using (var dao = new BarangDAO(Setting.GetConnectionString()))
                 {
                     this.dgvDataBarang.DataSource = null;
                     this.dgvDataBarang.DataSource = dao.GetAllDataBarang();
@@ -42,7 +35,7 @@ namespace Simple_E_Commerce
                     this.dgvDataBarang.Columns[3].DataPropertyName = "Harga";
                 }
 
-                using (var dao = new AkunDAO(connString))
+                using (var dao = new AkunDAO(Setting.GetConnectionString()))
                 {
                     this.dgvDataMember.DataSource = null;
                     this.dgvDataMember.DataSource = dao.GetAllDataAccount();
@@ -50,8 +43,6 @@ namespace Simple_E_Commerce
                     this.dgvDataMember.Columns[1].DataPropertyName = "Nama";
                     this.dgvDataMember.Columns[2].DataPropertyName = "Total";
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -72,6 +63,32 @@ namespace Simple_E_Commerce
             this.dgvDataMember.Columns[0].Width = 33 * this.dgvDataBarang.Width / 100;
             this.dgvDataMember.Columns[1].Width = 33 * this.dgvDataBarang.Width / 100;
             this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
+
+        }
+
+
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (this.dgvDataBarang.SelectedRows.Count > 0 &&
+                MessageBox.Show("Hapus Item Data Terpilih ?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    using (var dao = new BarangDAO(Setting.GetConnectionString()))
+                    {
+                        if (dao.DeleteBarang(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
+                        {
+                            FrmAdminInterface_Load(null, null);
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
@@ -80,52 +97,5 @@ namespace Simple_E_Commerce
             frm.ShowDialog();
             FrmAdminInterface_Load(null, null);
         }
-
-        //private void btnTambah_Click(object sender, EventArgs e)
-        //{
-        //    if (this.txtKodeBarang.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Sorry, kode barang tidak boleh kosong ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        this.txtKodeBarang.Focus();
-        //    }
-        //    else if (this.txtNamaBarang.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Sorry, nama barang tidak boleh kosong ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        this.txtNamaBarang.Focus();
-        //    }
-        //    else if (this.txtJumlah.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Sorry, jumlah tidak boleh kosong ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        this.txtJumlah.Focus();
-        //    }
-        //    else if (this.txtHarga.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Sorry, harga tidak boleh kosong ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        this.txtHarga.Focus();
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            Barang barang = new Barang
-        //            {
-        //                Kode = this.txtKodeBarang.Text.Trim(),
-        //                Nama = this.txtNamaBarang.Text.Trim(),
-        //                Jumlah = Convert.ToInt32(txtJumlah.Text.Trim()),
-        //                Harga = Convert.ToDecimal(txtHarga.Text.Trim())
-        //            };
-        //            _result = new BarangDAO(connString).AddBarang(barang) > 0;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //        finally
-        //        {
-        //            FrmAdminInterface_Load(null, null);
-        //        }
-        //    }
-        //}
-
     }
 }

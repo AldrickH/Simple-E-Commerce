@@ -60,7 +60,7 @@ namespace OrderLibrary
             return listData;
         }
 
-        public Akun GetDataCustomerByKode(string username)
+        public Akun GetDataCustomerByUsername(string username)
         {
             Akun result = null;
             try
