@@ -38,10 +38,10 @@
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnTambah = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtHarga = new System.Windows.Forms.TextBox();
+            this.txtJumlah = new System.Windows.Forms.TextBox();
+            this.txtNamaBarang = new System.Windows.Forms.TextBox();
+            this.txtKodeBarang = new System.Windows.Forms.TextBox();
             this.lblHarga = new System.Windows.Forms.Label();
             this.lblJumlah = new System.Windows.Forms.Label();
             this.lblNamaBarang = new System.Windows.Forms.Label();
@@ -72,6 +72,7 @@
             this.clmUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotalPembelian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTambah = new System.Windows.Forms.Button();
             this.gbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabData.SuspendLayout();
@@ -159,10 +160,10 @@
             this.tabDataBarang.Controls.Add(this.btnFilter);
             this.tabDataBarang.Controls.Add(this.btnDelete);
             this.tabDataBarang.Controls.Add(this.btnTambah);
-            this.tabDataBarang.Controls.Add(this.textBox4);
-            this.tabDataBarang.Controls.Add(this.textBox3);
-            this.tabDataBarang.Controls.Add(this.textBox2);
-            this.tabDataBarang.Controls.Add(this.textBox1);
+            this.tabDataBarang.Controls.Add(this.txtHarga);
+            this.tabDataBarang.Controls.Add(this.txtJumlah);
+            this.tabDataBarang.Controls.Add(this.txtNamaBarang);
+            this.tabDataBarang.Controls.Add(this.txtKodeBarang);
             this.tabDataBarang.Controls.Add(this.lblHarga);
             this.tabDataBarang.Controls.Add(this.lblJumlah);
             this.tabDataBarang.Controls.Add(this.lblNamaBarang);
@@ -212,45 +213,45 @@
             this.btnTambah.Text = "Tambah";
             this.btnTambah.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // txtHarga
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtHarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(198, 128);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(436, 22);
-            this.textBox4.TabIndex = 8;
+          
+            this.txtHarga.Location = new System.Drawing.Point(297, 200);
+            this.txtHarga.Name = "txtHarga";
+            this.txtHarga.Size = new System.Drawing.Size(652, 31);
+            this.txtHarga.TabIndex = 8;
             // 
-            // textBox3
+            // txtJumlah
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtJumlah.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(198, 97);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(436, 22);
-            this.textBox3.TabIndex = 7;
+          
+            this.txtJumlah.Location = new System.Drawing.Point(297, 152);
+            this.txtJumlah.Name = "txtJumlah";
+            this.txtJumlah.Size = new System.Drawing.Size(652, 31);
+            this.txtJumlah.TabIndex = 7;
             // 
-            // textBox2
+            // txtNamaBarang
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNamaBarang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(198, 63);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(436, 22);
-            this.textBox2.TabIndex = 6;
+
+            this.txtNamaBarang.Location = new System.Drawing.Point(297, 98);
+            this.txtNamaBarang.Name = "txtNamaBarang";
+            this.txtNamaBarang.Size = new System.Drawing.Size(652, 31);
+            this.txtNamaBarang.TabIndex = 6;
             // 
-            // textBox1
+            // txtKodeBarang
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtKodeBarang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(198, 31);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(436, 22);
-            this.textBox1.TabIndex = 5;
+
+            this.txtKodeBarang.Location = new System.Drawing.Point(297, 48);
+            this.txtKodeBarang.Name = "txtKodeBarang";
+            this.txtKodeBarang.Size = new System.Drawing.Size(652, 31);
+            this.txtKodeBarang.TabIndex = 5;
             // 
             // lblHarga
             // 
@@ -297,8 +298,8 @@
             this.clmNamaBarang,
             this.clmJumlah,
             this.clmHarga});
-            this.dgvDataBarang.Location = new System.Drawing.Point(6, 182);
-            this.dgvDataBarang.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDataBarang.Location = new System.Drawing.Point(9, 284);
+            this.dgvDataBarang.Margin = new System.Windows.Forms.Padding(6);
             this.dgvDataBarang.Name = "dgvDataBarang";
             this.dgvDataBarang.ReadOnly = true;
             this.dgvDataBarang.RowHeadersVisible = false;
@@ -351,8 +352,8 @@
             this.tabDataOrder.Location = new System.Drawing.Point(4, 25);
             this.tabDataOrder.Margin = new System.Windows.Forms.Padding(2);
             this.tabDataOrder.Name = "tabDataOrder";
-            this.tabDataOrder.Padding = new System.Windows.Forms.Padding(2);
-            this.tabDataOrder.Size = new System.Drawing.Size(817, 504);
+            this.tabDataOrder.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDataOrder.Size = new System.Drawing.Size(1222, 786);
             this.tabDataOrder.TabIndex = 1;
             this.tabDataOrder.Text = "Data Order";
             this.tabDataOrder.UseVisualStyleBackColor = true;
@@ -558,11 +559,22 @@
             this.clmTotalPembelian.Name = "clmTotalPembelian";
             this.clmTotalPembelian.ReadOnly = true;
             // 
+            // btnTambah
+            // 
+            this.btnTambah.Location = new System.Drawing.Point(129, 615);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(194, 75);
+            this.btnTambah.TabIndex = 4;
+            this.btnTambah.Text = "Tambah Data Barang";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
+            // 
             // FrmAdminInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 555);
+            this.ClientSize = new System.Drawing.Size(1680, 867);
+            this.Controls.Add(this.btnTambah);
             this.Controls.Add(this.gbAdmin);
             this.Controls.Add(this.tabData);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -597,11 +609,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabControl tabData;
         private System.Windows.Forms.TabPage tabDataBarang;
-        private System.Windows.Forms.Button btnTambah;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.TextBox txtHarga;
+        private System.Windows.Forms.TextBox txtJumlah;
+        private System.Windows.Forms.TextBox txtNamaBarang;
+        private System.Windows.Forms.TextBox txtKodeBarang;
         private System.Windows.Forms.Label lblHarga;
         private System.Windows.Forms.Label lblJumlah;
         private System.Windows.Forms.Label lblNamaBarang;
@@ -634,5 +646,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotal;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnTambah;
     }
 }

@@ -123,6 +123,39 @@ namespace OrderLibrary
             return result;
         }
 
+        public int AddBarang (Barang barang)
+        {
+            int result = 0;
+            SqlTransaction trans = null;
+            try
+            {
+                trans = _conn.BeginTransaction();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.Transaction = trans;
+                    cmd.CommandText = @"insert into barang values (@kode, @nama, @jumlah, @harga)";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@kode", barang.Kode);
+                    cmd.Parameters.AddWithValue("@nama", barang.Nama);
+                    cmd.Parameters.AddWithValue("@jumlah", barang.Jumlah);
+                    cmd.Parameters.AddWithValue("@harga", barang.Harga);
+                    result = cmd.ExecuteNonQuery();
+                }
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (trans != null) trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (trans != null) trans.Dispose();
+            }
+            return result;
+        }
+
         public void Dispose()
         {
             if (_conn != null) _conn.Close();
