@@ -96,6 +96,39 @@ namespace OrderLibrary
             return result;
         }
 
+        public int AddAkun (Akun akun)
+        {
+            int result = 0;
+            SqlTransaction trans = null;
+            try
+            {
+                trans = _conn.BeginTransaction();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.Transaction = trans;
+                    cmd.CommandText = @"insert into akun values (@username, @nama, @password, @total)";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@username", akun.Username);
+                    cmd.Parameters.AddWithValue("@nama", akun.Nama);
+                    cmd.Parameters.AddWithValue("@password", akun.Password);
+                    cmd.Parameters.AddWithValue("@total", akun.Total);
+                    result = cmd.ExecuteNonQuery();
+                }
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (trans != null) trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (trans != null) trans.Dispose();
+            }
+            return result;
+        }
+
         public void Dispose()
         {
             if (_conn != null) _conn.Close();
