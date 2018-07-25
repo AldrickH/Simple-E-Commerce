@@ -69,6 +69,37 @@ namespace Simple_E_Commerce
             this.dgvDataMember.Columns[0].Width = 33 * this.dgvDataBarang.Width / 100;
             this.dgvDataMember.Columns[1].Width = 33 * this.dgvDataBarang.Width / 100;
             this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
+
+        }
+
+
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (this.dgvDataBarang.SelectedRows.Count > 0 &&
+                MessageBox.Show("Hapus Item Data Terpilih ?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    using (var dao = new BarangDAO(connString ))
+                    {
+                        if (dao.Delete(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
+                        {
+                            this.btnFilter_Click(null, null);
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
