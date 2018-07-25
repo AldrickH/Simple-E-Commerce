@@ -24,13 +24,12 @@ namespace OrderLibrary
                 throw ex;
             }
         }
-        public int Delete(string kode)
+        public int DeleteBarang(string kode)
         {
             int result = 0;
             try
             {
-                string sqlString =
-                    @"delete jurusan where kode = @kode";
+                string sqlString = @"delete barang where kode = @kode";
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;

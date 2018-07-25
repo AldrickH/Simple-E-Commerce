@@ -21,12 +21,6 @@ namespace Simple_E_Commerce
             this.lblAdmin.Text = temp.Nama;
         }
 
-        bool _result = false;
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-        }
-
         private void FrmAdminInterface_Load(object sender, EventArgs e)
         {
             try
@@ -81,11 +75,11 @@ namespace Simple_E_Commerce
             {
                 try
                 {
-                    using (var dao = new BarangDAO(connString ))
+                    using (var dao = new BarangDAO(Setting.GetConnectionString()))
                     {
-                        if (dao.Delete(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
+                        if (dao.DeleteBarang(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
                         {
-                            this.btnFilter_Click(null, null);
+                            FrmAdminInterface_Load(null, null);
 
                         }
                     }
@@ -95,11 +89,6 @@ namespace Simple_E_Commerce
                     MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
-
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
