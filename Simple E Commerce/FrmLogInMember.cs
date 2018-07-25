@@ -24,7 +24,7 @@ namespace Simple_E_Commerce
             {
                 using (var daoAkun = new AkunDAO(Setting.GetConnectionString()))
                 {
-                    Akun temp = daoAkun.GetDataCustomerByKode(txtUsername.Text);
+                    Akun temp = daoAkun.GetDataCustomerByUsername(txtUsername.Text);
 
                     if (temp.Password.Equals(txtPassword.Text))
                     {
@@ -38,7 +38,9 @@ namespace Simple_E_Commerce
                         else
                         {
                             FrmUserInterface frm = new FrmUserInterface(temp);
-                            frm.Show();
+                            this.Hide();
+                            frm.ShowDialog();
+                            this.Close();
                         }
                     }
                     else

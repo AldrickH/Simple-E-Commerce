@@ -21,12 +21,6 @@ namespace Simple_E_Commerce
             this.lblAdmin.Text = temp.Nama;
         }
 
-        bool _result = false;
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-        }
-
         private void FrmAdminInterface_Load(object sender, EventArgs e)
         {
             try

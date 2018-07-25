@@ -13,6 +13,7 @@ namespace Simple_E_Commerce
 {
     public partial class FrmUserInterface : Form
     {
+        List<Penjualan> listPenjualan = null;
         Akun user = null;
 
         public FrmUserInterface(Akun temp)
@@ -21,70 +22,51 @@ namespace Simple_E_Commerce
             user = temp;
         }
 
-        List<Penjualan> listData = new List<Penjualan>();
-
-        private void btn1_Click(object sender, EventArgs e)
-        {
-            using (var dao = new BarangDAO(Setting.GetConnectionString()))
-            {
-                Barang brg = dao.GetDataBarangByKode("0001");
-                listData.Add(new Penjualan
-                {
-                    NoOrder = "0001",
-                    Quantity = Convert.ToInt32(textBox1.Text),
-                    DataAkun = new Akun { Nama = user.Nama, Password = user.Password, Username = user.Username, Total = user.Total },
-                    DataBarang = brg,
-                    Tanggal = DateTime.Today,
-                    Total = Convert.ToInt32(textBox1.Text) * brg.Harga
-                });
-            }
-        }
-
-        private void btn2_Click(object sender, EventArgs e)
-        {
-            using (var dao = new BarangDAO(Setting.GetConnectionString()))
-            {
-                Barang brg = dao.GetDataBarangByKode("0002");
-                listData.Add(new Penjualan
-                {
-                    NoOrder = "0002",
-                    Quantity = Convert.ToInt32(textBox1.Text),
-                    DataAkun = new Akun { Nama = user.Nama, Password = user.Password, Username = user.Username, Total = user.Total },
-                    DataBarang = brg,
-                    Tanggal = DateTime.Today,
-                    Total = Convert.ToInt32(textBox1.Text) * brg.Harga
-                });
-            }
-        }
-
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            FrmKeranjang frm = new FrmKeranjang(listData);
-            frm.ShowDialog();
-        }
+            try
+            {
+                listPenjualan = new List<Penjualan>();
 
-        string connString = @"Data Source = (localdb)\mssqllocaldb; Initial Catalog = SimpleECommerce; Integrated Security = True;";
+                foreach (CustomCntrlBrg custom in flowLayoutPnl.Controls)
+                {
+                    Barang brg = custom.GetItemBarang();
+                    int qty = custom.GetQuantityOrder();
+                    listPenjualan.Add(new Penjualan
+                    {
+                        NoOrder = "0001",
+                        DataAkun = user,
+                        DataBarang = brg,
+                        Quantity = qty,
+                        Tanggal = DateTime.Today,
+                        Total = qty * brg.Harga
+                    });
+                }
+
+                FrmKeranjang frm = new FrmKeranjang(listPenjualan);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         private void FrmUserInterface_Load(object sender, EventArgs e)
         {
             try
             {
-                using (var dao = new BarangDAO(connString))
-                {
-                    List<Barang> listData = dao.GetAllDataBarang();
+                this.lblNama.Text = user.Nama;
 
-                    foreach(Barang temp in listData)
+                using (var dao = new BarangDAO(Setting.GetConnectionString()))
+                {
+                    List<Barang> listBarang = dao.GetAllDataBarang();
+
+                    foreach (var brg in listBarang)
                     {
-                        if(temp.Kode.Equals("0001"))
-                        {
-                            this.lblBarang1.Text = temp.Jumlah.ToString();
-                        }
-                        else if (temp.Kode.Equals("0002"))
-                        {
-                            this.lblBarang2.Text = temp.Jumlah.ToString();
-                        }
+                        CustomCntrlBrg custom = new CustomCntrlBrg(brg);
+                        this.flowLayoutPnl.Controls.Add(custom);
                     }
-                    
                 }
             }
             catch (Exception ex)
