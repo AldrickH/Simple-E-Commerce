@@ -24,6 +24,28 @@ namespace OrderLibrary
                 throw ex;
             }
         }
+        public int Delete(string kode)
+        {
+            int result = 0;
+            try
+            {
+                string sqlString =
+                    @"delete jurusan where kode = @kode";
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.CommandText = sqlString;
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@kode", kode);
+                    result = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
 
         public List<Barang> GetAllDataBarang()
         {
