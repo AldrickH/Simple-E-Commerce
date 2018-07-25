@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabData = new System.Windows.Forms.TabControl();
             this.tabDataBarang = new System.Windows.Forms.TabPage();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.txtHarga = new System.Windows.Forms.TextBox();
             this.txtJumlah = new System.Windows.Forms.TextBox();
             this.txtNamaBarang = new System.Windows.Forms.TextBox();
@@ -69,7 +70,7 @@
             this.clmUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotalPembelian = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnTambah = new System.Windows.Forms.Button();
             this.gbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabData.SuspendLayout();
@@ -153,6 +154,7 @@
             // 
             // tabDataBarang
             // 
+            this.tabDataBarang.Controls.Add(this.btnTambah);
             this.tabDataBarang.Controls.Add(this.btnDelete);
             this.tabDataBarang.Controls.Add(this.txtHarga);
             this.tabDataBarang.Controls.Add(this.txtJumlah);
@@ -172,6 +174,18 @@
             this.tabDataBarang.Text = "Data Barang";
             this.tabDataBarang.UseVisualStyleBackColor = true;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Location = new System.Drawing.Point(587, 33);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(111, 33);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // txtHarga
             // 
             this.txtHarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -180,7 +194,6 @@
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(403, 22);
             this.txtHarga.TabIndex = 8;
-            this.txtHarga.TextChanged += new System.EventHandler(this.txtHarga_TextChanged);
             // 
             // txtJumlah
             // 
@@ -190,7 +203,6 @@
             this.txtJumlah.Name = "txtJumlah";
             this.txtJumlah.Size = new System.Drawing.Size(403, 22);
             this.txtJumlah.TabIndex = 7;
-            this.txtJumlah.TextChanged += new System.EventHandler(this.txtJumlah_TextChanged);
             // 
             // txtNamaBarang
             // 
@@ -200,7 +212,6 @@
             this.txtNamaBarang.Name = "txtNamaBarang";
             this.txtNamaBarang.Size = new System.Drawing.Size(403, 22);
             this.txtNamaBarang.TabIndex = 6;
-            this.txtNamaBarang.TextChanged += new System.EventHandler(this.txtNamaBarang_TextChanged);
             // 
             // txtKodeBarang
             // 
@@ -210,7 +221,6 @@
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(403, 22);
             this.txtKodeBarang.TabIndex = 5;
-            this.txtKodeBarang.TextChanged += new System.EventHandler(this.txtKodeBarang_TextChanged);
             // 
             // lblHarga
             // 
@@ -518,17 +528,17 @@
             this.clmTotalPembelian.Name = "clmTotalPembelian";
             this.clmTotalPembelian.ReadOnly = true;
             // 
-            // btnDelete
+            // btnTambah
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(575, 65);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(111, 33);
-            this.btnDelete.TabIndex = 10;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnTambah.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTambah.Location = new System.Drawing.Point(587, 81);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(111, 33);
+            this.btnTambah.TabIndex = 10;
+            this.btnTambah.Text = "Tambah";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // FrmAdminInterface
             // 
@@ -605,5 +615,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmJumlahBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotal;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnTambah;
     }
 }

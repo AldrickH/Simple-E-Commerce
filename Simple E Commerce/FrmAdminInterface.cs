@@ -77,9 +77,9 @@ namespace Simple_E_Commerce
                 {
                     using (var dao = new BarangDAO(Setting.GetConnectionString()))
                     {
-                        if (dao.Delete(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
+                        if (dao.DeleteBarang(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
                         {
-                            this.btnFilter_Click(null, null);
+                            FrmAdminInterface_Load(null, null);
 
                         }
                     }
@@ -91,36 +91,11 @@ namespace Simple_E_Commerce
             }
         }
 
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTambah_Click(object sender, EventArgs e)
         {
             FrmTambahDataBarang frm = new FrmTambahDataBarang();
             frm.ShowDialog();
             FrmAdminInterface_Load(null, null);
-        }
-
-        private void txtJumlah_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtHarga_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNamaBarang_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtKodeBarang_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
