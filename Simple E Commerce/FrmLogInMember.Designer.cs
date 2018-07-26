@@ -174,6 +174,7 @@
             this.Name = "FrmLogInMember";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Log In Member";
+            this.Load += new System.EventHandler(this.FrmLogInMember_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

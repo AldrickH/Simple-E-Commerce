@@ -35,7 +35,7 @@ namespace OrderLibrary
                 {
                     cmd.Connection = _conn;
                     cmd.CommandText = @"select * from barang order by kode";
-
+                  
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
