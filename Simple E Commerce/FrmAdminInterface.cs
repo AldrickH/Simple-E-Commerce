@@ -54,7 +54,7 @@ namespace Simple_E_Commerce
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
+        
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (this.dgvDataBarang.SelectedRows.Count > 0 &&

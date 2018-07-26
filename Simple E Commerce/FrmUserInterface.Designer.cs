@@ -40,10 +40,9 @@
             // pbUser
             // 
             this.pbUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbUser.Location = new System.Drawing.Point(962, 19);
-            this.pbUser.Margin = new System.Windows.Forms.Padding(2);
+            this.pbUser.Location = new System.Drawing.Point(1443, 30);
             this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(99, 97);
+            this.pbUser.Size = new System.Drawing.Size(148, 152);
             this.pbUser.TabIndex = 0;
             this.pbUser.TabStop = false;
             // 
@@ -51,10 +50,9 @@
             // 
             this.lblNama.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNama.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNama.Location = new System.Drawing.Point(1075, 19);
-            this.lblNama.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNama.Location = new System.Drawing.Point(1612, 30);
             this.lblNama.Name = "lblNama";
-            this.lblNama.Size = new System.Drawing.Size(189, 32);
+            this.lblNama.Size = new System.Drawing.Size(284, 50);
             this.lblNama.TabIndex = 1;
             this.lblNama.Text = "{ Nama }";
             this.lblNama.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -62,22 +60,21 @@
             // btnLogOut
             // 
             this.btnLogOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogOut.Location = new System.Drawing.Point(1158, 72);
-            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogOut.Location = new System.Drawing.Point(1737, 112);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(102, 33);
+            this.btnLogOut.Size = new System.Drawing.Size(153, 52);
             this.btnLogOut.TabIndex = 0;
             this.btnLogOut.TabStop = false;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnSejarahPembelian
             // 
             this.btnSejarahPembelian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSejarahPembelian.Location = new System.Drawing.Point(762, 56);
-            this.btnSejarahPembelian.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSejarahPembelian.Location = new System.Drawing.Point(1143, 88);
             this.btnSejarahPembelian.Name = "btnSejarahPembelian";
-            this.btnSejarahPembelian.Size = new System.Drawing.Size(175, 33);
+            this.btnSejarahPembelian.Size = new System.Drawing.Size(262, 52);
             this.btnSejarahPembelian.TabIndex = 3;
             this.btnSejarahPembelian.Text = "Sejarah Pembelian";
             this.btnSejarahPembelian.UseVisualStyleBackColor = true;
@@ -86,9 +83,10 @@
             // btnCheckout
             // 
             this.btnCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCheckout.Location = new System.Drawing.Point(1096, 137);
+            this.btnCheckout.Location = new System.Drawing.Point(1644, 214);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(101, 31);
+            this.btnCheckout.Size = new System.Drawing.Size(152, 48);
             this.btnCheckout.TabIndex = 33;
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
@@ -96,26 +94,23 @@
             // 
             // flowLayoutPnl
             // 
-            this.flowLayoutPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPnl.Location = new System.Drawing.Point(12, 183);
+            this.flowLayoutPnl.Location = new System.Drawing.Point(54, 286);
+            this.flowLayoutPnl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flowLayoutPnl.Name = "flowLayoutPnl";
-            this.flowLayoutPnl.Size = new System.Drawing.Size(1087, 459);
+            this.flowLayoutPnl.Size = new System.Drawing.Size(1590, 666);
             this.flowLayoutPnl.TabIndex = 34;
             // 
             // FrmUserInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1275, 654);
+            this.ClientSize = new System.Drawing.Size(1912, 1022);
             this.Controls.Add(this.flowLayoutPnl);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnSejarahPembelian);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.lblNama);
             this.Controls.Add(this.pbUser);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmUserInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form User Interface";

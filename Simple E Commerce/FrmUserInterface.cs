@@ -64,6 +64,7 @@ namespace Simple_E_Commerce
             try
             {
                 this.lblNama.Text = user.Nama;
+                this.pbUser.Image = new ImageConverter().ConvertFrom(user.Pict) as Image;
 
                 using (var dao = new BarangDAO(Setting.GetConnectionString()))
                 {
@@ -82,10 +83,14 @@ namespace Simple_E_Commerce
             }
         }
 
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            }
         private void btnSejarahPembelian_Click(object sender, EventArgs e)
         {
             FrmSejarahPembelian frm = new FrmSejarahPembelian(user);
-            frm.Show();
+            frm.Show();s
         }
     }
 }
