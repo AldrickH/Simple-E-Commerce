@@ -34,6 +34,7 @@ namespace OrderLibrary
                 {
                     cmd.Connection = _conn;
                     cmd.CommandText = @"select * from akun order by username";
+                    cmd.Parameters.Clear();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -46,7 +47,8 @@ namespace OrderLibrary
                                     Username = reader["username"].ToString(),
                                     Nama = reader["Nama"].ToString(),
                                     Password = reader["Password"].ToString(),
-                                    Total = Convert.ToDecimal(reader["Total"])
+                                    Total = Convert.ToDecimal(reader["Total"]),
+                                    Pict = reader["Pict"] as byte []                                    
                                 });
                             }
                         }
@@ -82,8 +84,40 @@ namespace OrderLibrary
                                     Username = reader["username"].ToString(),
                                     Nama = reader["Nama"].ToString(),
                                     Password = reader["Password"].ToString(),
-                                    Total = Convert.ToDecimal(reader["Total"])
+                                    Total = Convert.ToDecimal(reader["Total"]),
+                                    Pict = reader["Pict"] as byte[]
+                                    
                                 };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public bool CheckAkunByUsername(string username)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.CommandText = @"select username from akun Where username = @username";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            if (reader.Read())
+                            {
+                                result = true;
                             }
                         }
                     }
@@ -106,13 +140,14 @@ namespace OrderLibrary
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    cmd.Transaction = trans;
-                    cmd.CommandText = @"insert into akun values (@username, @nama, @password, @total)";
+                    cmd.Transaction = trans; 
+                    cmd.CommandText = @"insert into akun values (@username, @nama, @password, @total, @pict)";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", akun.Username);
                     cmd.Parameters.AddWithValue("@nama", akun.Nama);
                     cmd.Parameters.AddWithValue("@password", akun.Password);
                     cmd.Parameters.AddWithValue("@total", akun.Total);
+                    cmd.Parameters.AddWithValue("@pict", akun.Pict);
                     result = cmd.ExecuteNonQuery();
                 }
                 trans.Commit();

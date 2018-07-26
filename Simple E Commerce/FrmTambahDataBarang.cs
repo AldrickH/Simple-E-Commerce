@@ -51,17 +51,13 @@ namespace Simple_E_Commerce
             {
                 try
                 {
-                    ImageConverter imgConvert = new ImageConverter();
-                    Barang brg = new Barang();
-                    brg.Gambar = (System.Byte[])imgConvert.ConvertTo(pictureBox.Image, Type.GetType("System.Byte[]"));
-
                     Barang barang = new Barang
                     {
                         Kode = this.txtKodeBarang.Text.Trim(),
                         Nama = this.txtNamaBarang.Text.Trim(),
                         Jumlah = Convert.ToInt32(txtJumlah.Text.Trim()),
                         Harga = Convert.ToDecimal(txtHarga.Text.Trim()),
-                        Gambar = brg.Gambar
+                        Gambar = new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])) as byte[]
                     };
                     _result = new BarangDAO(Setting.GetConnectionString()).AddBarang(barang) > 0;
                     this.Close();
@@ -79,7 +75,6 @@ namespace Simple_E_Commerce
             OpenFd.Filter = "Images only. |*.jpg; *,jpeg; *.png; *.gif;";
             DialogResult dr = OpenFd.ShowDialog();
             pictureBox.Image = Image.FromFile(OpenFd.FileName);
-
         }
 
         private void btnBatal_Click(object sender, EventArgs e)

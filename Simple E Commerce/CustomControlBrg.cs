@@ -43,6 +43,7 @@ namespace Simple_E_Commerce
                 this.lblNama.Text = brg.Nama;
                 this.lblHarga.Text = brg.Harga.ToString("n0");
                 this.lblQty.Text = brg.Jumlah.ToString();
+                this.pBox.Image = new ImageConverter().ConvertFrom(brg.Gambar) as Image;
             }
         }
 

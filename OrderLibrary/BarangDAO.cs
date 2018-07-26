@@ -11,6 +11,7 @@ namespace OrderLibrary
     {
 
         SqlConnection _conn = null;
+        SqlTransaction _trans = null;
 
         public BarangDAO(string connectionString)
         {
@@ -24,27 +25,6 @@ namespace OrderLibrary
                 throw ex;
             }
         }
-        public int DeleteBarang(string kode)
-        {
-            int result = 0;
-            try
-            {
-                string sqlString = @"delete barang where kode = @kode";
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = _conn;
-                    cmd.CommandText = sqlString;
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@kode", kode);
-                    result = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
-        }
 
         public List<Barang> GetAllDataBarang()
         {
@@ -55,7 +35,7 @@ namespace OrderLibrary
                 {
                     cmd.Connection = _conn;
                     cmd.CommandText = @"select * from barang order by kode";
-
+                  
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -68,20 +48,19 @@ namespace OrderLibrary
                                     Kode = reader["Kode"].ToString(),
                                     Nama = reader["Nama"].ToString(),
                                     Harga = Convert.ToDecimal(reader["Harga"]),
-                                    Jumlah = Convert.ToInt32(reader["Jumlah"])
+                                    Jumlah = Convert.ToInt32(reader["Jumlah"]),
+                                    Gambar = reader["gambar"] as byte[]
                                 });
                             }
                         }
                     }
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
+            catch (Exception ex)
+            { 
+                throw ex;
             }
             return listData;
-
         }
 
         public Barang GetDataBarangByKode(string kode)
@@ -108,6 +87,7 @@ namespace OrderLibrary
                                     Nama = reader["Nama"].ToString(),
                                     Harga = Convert.ToDecimal(reader["Harga"]),
                                     Jumlah = Convert.ToInt32(reader["Jumlah"]),
+                                    Gambar = reader["gambar"] as byte[]
                                 };
                             }
                         }
@@ -116,7 +96,6 @@ namespace OrderLibrary
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             return result;
@@ -125,14 +104,13 @@ namespace OrderLibrary
         public int AddBarang (Barang barang)
         {
             int result = 0;
-            SqlTransaction trans = null;
             try
             {
-                trans = _conn.BeginTransaction();
+                _trans = _conn.BeginTransaction();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    cmd.Transaction = trans;
+                    cmd.Transaction = _trans;
                     cmd.CommandText = @"insert into barang values (@kode, @nama, @jumlah, @harga, @gambar)";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@kode", barang.Kode);
@@ -142,16 +120,38 @@ namespace OrderLibrary
                     cmd.Parameters.AddWithValue("@gambar", barang.Gambar);
                     result = cmd.ExecuteNonQuery();
                 }
-                trans.Commit();
+                _trans.Commit();
             }
             catch (Exception ex)
             {
-                if (trans != null) trans.Rollback();
+                if (_trans != null) _trans.Rollback();
                 throw ex;
             }
             finally
             {
-                if (trans != null) trans.Dispose();
+                if (_trans != null) _trans.Dispose();
+            }
+            return result;
+        }
+
+        public int DeleteBarang(string kode)
+        {
+            int result = 0;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.Transaction = _trans;
+                    cmd.CommandText = @"delete barang where kode = @kode";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@kode", kode);
+                    result = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             return result;
         }

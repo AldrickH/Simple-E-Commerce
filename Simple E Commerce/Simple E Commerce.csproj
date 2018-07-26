@@ -125,6 +125,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="CustomControlBrg.resx">
       <DependentUpon>CustomControlBrg.cs</DependentUpon>
@@ -147,6 +148,9 @@
       <Project>{fba2fdfa-e119-45da-b6ac-89e2c12dc1b8}</Project>
       <Name>OrderLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unknown.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,19 +33,19 @@ namespace Simple_E_Commerce
                             FrmAdminInterface frm = new FrmAdminInterface(temp);
                             this.Hide();
                             frm.ShowDialog();
-                            this.Close();
+                            this.Show();
                         }
                         else
                         {
                             FrmUserInterface frm = new FrmUserInterface(temp);
                             this.Hide();
                             frm.ShowDialog();
-                            this.Close();
+                            this.Show();
                         }
                     }
                     else
                     {
-                        throw new Exception("Password yang anda masukkan salah");
+                        this.lblPasswordError.Visible = true;
                     }
                 }
             }
@@ -60,7 +60,34 @@ namespace Simple_E_Commerce
             FrmSignUpMember frm = new FrmSignUpMember();
             this.Hide();
             frm.ShowDialog();
-            this.Close();
+
+            FrmLogInMember_Load(null, null);
+            this.Show();
+        }
+
+        private void txtUsername_Leave(object sender, EventArgs e)
+        {
+            using (var dao = new AkunDAO(Setting.GetConnectionString()))
+            {
+                if(!dao.CheckAkunByUsername(this.txtUsername.Text))
+                {
+                    this.lblUsernameError.Visible = true;
+                    this.txtUsername.Focus();
+                }
+                else
+                {
+                    this.lblUsernameError.Visible = false;
+                }
+            }
+        }
+
+        private void FrmLogInMember_Load(object sender, EventArgs e)
+        {
+            this.txtUsername.Text = "";
+            this.txtPassword.Text = "";
+            this.lblPasswordError.Visible = false;
+            this.lblUsernameError.Visible = false;
+            this.txtUsername.Focus();
         }
     }
 }
