@@ -37,6 +37,8 @@
             this.clmHargaBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmJumlahBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,11 +119,34 @@
             this.clmTotal.Name = "clmTotal";
             this.clmTotal.ReadOnly = true;
             // 
+            // btnOrder
+            // 
+            this.btnOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrder.Location = new System.Drawing.Point(910, 518);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(142, 44);
+            this.btnOrder.TabIndex = 2;
+            this.btnOrder.Text = "Order";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(738, 518);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(142, 44);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // FrmKeranjang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 574);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.dgvDataOrder);
             this.Name = "FrmKeranjang";
             this.Text = "FrmKeranjang";
@@ -142,5 +167,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmHargaBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmJumlahBrg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotal;
+        private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

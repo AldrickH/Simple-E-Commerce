@@ -60,6 +60,8 @@ namespace Simple_E_Commerce
             FrmSignUpMember frm = new FrmSignUpMember();
             this.Hide();
             frm.ShowDialog();
+
+            FrmLogInMember_Load(null, null);
             this.Show();
         }
 
@@ -79,5 +81,13 @@ namespace Simple_E_Commerce
             }
         }
 
+        private void FrmLogInMember_Load(object sender, EventArgs e)
+        {
+            this.txtUsername.Text = "";
+            this.txtPassword.Text = "";
+            this.lblPasswordError.Visible = false;
+            this.lblUsernameError.Visible = false;
+            this.txtUsername.Focus();
+        }
     }
 }

@@ -59,13 +59,14 @@
             this.clmHargaBrg,
             this.clmJumlahBrg,
             this.clmTotal});
-            this.dgvDataOrder.Location = new System.Drawing.Point(30, 35);
+            this.dgvDataOrder.Location = new System.Drawing.Point(20, 22);
+            this.dgvDataOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDataOrder.Name = "dgvDataOrder";
             this.dgvDataOrder.ReadOnly = true;
             this.dgvDataOrder.RowHeadersVisible = false;
             this.dgvDataOrder.RowTemplate.Height = 33;
             this.dgvDataOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataOrder.Size = new System.Drawing.Size(1587, 880);
+            this.dgvDataOrder.Size = new System.Drawing.Size(1058, 563);
             this.dgvDataOrder.TabIndex = 1;
             // 
             // clmNoOrder
@@ -113,9 +114,10 @@
             // lblTotalPembelian
             // 
             this.lblTotalPembelian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalPembelian.Location = new System.Drawing.Point(1154, 961);
+            this.lblTotalPembelian.Location = new System.Drawing.Point(769, 615);
+            this.lblTotalPembelian.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalPembelian.Name = "lblTotalPembelian";
-            this.lblTotalPembelian.Size = new System.Drawing.Size(179, 38);
+            this.lblTotalPembelian.Size = new System.Drawing.Size(119, 24);
             this.lblTotalPembelian.TabIndex = 2;
             this.lblTotalPembelian.Text = "Total Pembelian";
             // 
@@ -123,24 +125,27 @@
             // 
             this.lblNominalHarga.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNominalHarga.AutoSize = true;
-            this.lblNominalHarga.Location = new System.Drawing.Point(1373, 961);
+            this.lblNominalHarga.Location = new System.Drawing.Point(915, 615);
+            this.lblNominalHarga.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNominalHarga.Name = "lblNominalHarga";
-            this.lblNominalHarga.Size = new System.Drawing.Size(180, 25);
+            this.lblNominalHarga.Size = new System.Drawing.Size(120, 17);
             this.lblNominalHarga.TabIndex = 3;
             this.lblNominalHarga.Text = "{ Nominal Harga }";
             // 
             // FrmSejarahPembelian
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1645, 1035);
+            this.ClientSize = new System.Drawing.Size(1097, 662);
             this.Controls.Add(this.lblNominalHarga);
             this.Controls.Add(this.lblTotalPembelian);
             this.Controls.Add(this.dgvDataOrder);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmSejarahPembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Sejarah Pembelian";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmSejarahPembelian_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

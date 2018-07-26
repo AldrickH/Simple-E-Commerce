@@ -62,7 +62,6 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(265, 22);
             this.txtPassword.TabIndex = 16;
-            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // lblPassword
             // 
@@ -175,6 +174,7 @@
             this.Name = "FrmLogInMember";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Log In Member";
+            this.Load += new System.EventHandler(this.FrmLogInMember_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

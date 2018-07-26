@@ -81,6 +81,7 @@
             this.btnSejarahPembelian.TabIndex = 3;
             this.btnSejarahPembelian.Text = "Sejarah Pembelian";
             this.btnSejarahPembelian.UseVisualStyleBackColor = true;
+            this.btnSejarahPembelian.Click += new System.EventHandler(this.btnSejarahPembelian_Click);
             // 
             // btnCheckout
             // 
@@ -95,9 +96,12 @@
             // 
             // flowLayoutPnl
             // 
-            this.flowLayoutPnl.Location = new System.Drawing.Point(36, 183);
+            this.flowLayoutPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPnl.Location = new System.Drawing.Point(12, 183);
             this.flowLayoutPnl.Name = "flowLayoutPnl";
-            this.flowLayoutPnl.Size = new System.Drawing.Size(1060, 426);
+            this.flowLayoutPnl.Size = new System.Drawing.Size(1087, 459);
             this.flowLayoutPnl.TabIndex = 34;
             // 
             // FrmUserInterface
