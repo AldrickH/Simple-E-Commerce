@@ -55,7 +55,7 @@ namespace OrderLibrary
                 {
                     cmd.Connection = _conn;
                     cmd.CommandText = @"select * from barang order by kode";
-
+                  
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -67,8 +67,9 @@ namespace OrderLibrary
                                 {
                                     Kode = reader["Kode"].ToString(),
                                     Nama = reader["Nama"].ToString(),
-                                    Harga = Convert.ToDecimal(reader["Harga"]),
-                                    Jumlah = Convert.ToInt32(reader["Jumlah"])
+                                    Jumlah = Convert.ToInt32(reader["Jumlah"]),
+                                    Harga = Convert.ToDecimal(reader["Harga"])
+                                    
                                 });
                             }
                         }

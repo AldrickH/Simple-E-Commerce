@@ -12,6 +12,6 @@ namespace OrderLibrary
         public string Nama { get; set; }
         public int Jumlah { get; set; }
         public decimal Harga { get; set; }
-        //public byte[] Image { get; set; }
+        public byte[] Gambar { get; set; }
     }
 }

@@ -66,8 +66,6 @@ namespace Simple_E_Commerce
 
         }
 
-
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (this.dgvDataBarang.SelectedRows.Count > 0 &&

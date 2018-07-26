@@ -57,6 +57,7 @@ namespace Simple_E_Commerce
             try
             {
                 this.lblNama.Text = user.Nama;
+                this.pbUser.Image = new ImageConverter().ConvertFrom(user.Pict) as Image;
 
                 using (var dao = new BarangDAO(Setting.GetConnectionString()))
                 {
@@ -73,6 +74,13 @@ namespace Simple_E_Commerce
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            FrmLogInMember flim = new FrmLogInMember();
+            this.Hide();
+            flim.ShowDialog();
         }
     }
 }
