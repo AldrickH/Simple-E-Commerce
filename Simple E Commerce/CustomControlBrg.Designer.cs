@@ -44,6 +44,7 @@
             this.pBox.Location = new System.Drawing.Point(54, 22);
             this.pBox.Name = "pBox";
             this.pBox.Size = new System.Drawing.Size(150, 150);
+            this.pBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBox.TabIndex = 0;
             this.pBox.TabStop = false;
             // 

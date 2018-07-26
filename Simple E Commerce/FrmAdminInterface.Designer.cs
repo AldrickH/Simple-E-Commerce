@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabData = new System.Windows.Forms.TabControl();
             this.tabDataBarang = new System.Windows.Forms.TabPage();
+            this.btnTambah = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtHarga = new System.Windows.Forms.TextBox();
             this.txtJumlah = new System.Windows.Forms.TextBox();
@@ -70,7 +71,6 @@
             this.clmUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotalPembelian = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTambah = new System.Windows.Forms.Button();
             this.gbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabData.SuspendLayout();
@@ -106,6 +106,7 @@
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Log Out";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lblAdmin
             // 
@@ -154,7 +155,6 @@
             // 
             // tabDataBarang
             // 
-            this.tabDataBarang.Controls.Add(this.btnTambah);
             this.tabDataBarang.Controls.Add(this.btnDelete);
             this.tabDataBarang.Controls.Add(this.txtHarga);
             this.tabDataBarang.Controls.Add(this.txtJumlah);
@@ -173,6 +173,17 @@
             this.tabDataBarang.TabIndex = 0;
             this.tabDataBarang.Text = "Data Barang";
             this.tabDataBarang.UseVisualStyleBackColor = true;
+            // 
+            // btnTambah
+            // 
+            this.btnTambah.Location = new System.Drawing.Point(95, 347);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(111, 50);
+            this.btnTambah.TabIndex = 10;
+            this.btnTambah.Text = "Tambah Data Barang";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // btnDelete
             // 
@@ -528,23 +539,12 @@
             this.clmTotalPembelian.Name = "clmTotalPembelian";
             this.clmTotalPembelian.ReadOnly = true;
             // 
-            // btnTambah
-            // 
-            this.btnTambah.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTambah.Location = new System.Drawing.Point(587, 81);
-            this.btnTambah.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(111, 33);
-            this.btnTambah.TabIndex = 10;
-            this.btnTambah.Text = "Tambah";
-            this.btnTambah.UseVisualStyleBackColor = true;
-            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
-            // 
             // FrmAdminInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 500);
+            this.Controls.Add(this.btnTambah);
             this.Controls.Add(this.gbAdmin);
             this.Controls.Add(this.tabData);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -579,7 +579,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabControl tabData;
         private System.Windows.Forms.TabPage tabDataBarang;
-        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.TextBox txtJumlah;
         private System.Windows.Forms.TextBox txtNamaBarang;

@@ -36,6 +36,8 @@
             this.lblLogIn = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLblSignUp = new System.Windows.Forms.LinkLabel();
+            this.lblPasswordError = new System.Windows.Forms.Label();
+            this.lblUsernameError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogIn
@@ -57,8 +59,10 @@
             this.txtPassword.Location = new System.Drawing.Point(205, 133);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(265, 22);
             this.txtPassword.TabIndex = 16;
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // lblPassword
             // 
@@ -78,6 +82,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(265, 22);
             this.txtUsername.TabIndex = 14;
+            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // lblUsername
             // 
@@ -124,11 +129,37 @@
             this.linkLblSignUp.Text = "Sign up !";
             this.linkLblSignUp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblSignUp_LinkClicked);
             // 
+            // lblPasswordError
+            // 
+            this.lblPasswordError.AutoSize = true;
+            this.lblPasswordError.BackColor = System.Drawing.Color.Transparent;
+            this.lblPasswordError.ForeColor = System.Drawing.Color.Red;
+            this.lblPasswordError.Location = new System.Drawing.Point(202, 114);
+            this.lblPasswordError.Name = "lblPasswordError";
+            this.lblPasswordError.Size = new System.Drawing.Size(107, 17);
+            this.lblPasswordError.TabIndex = 20;
+            this.lblPasswordError.Text = "Password salah";
+            this.lblPasswordError.Visible = false;
+            // 
+            // lblUsernameError
+            // 
+            this.lblUsernameError.AutoSize = true;
+            this.lblUsernameError.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsernameError.ForeColor = System.Drawing.Color.Red;
+            this.lblUsernameError.Location = new System.Drawing.Point(202, 73);
+            this.lblUsernameError.Name = "lblUsernameError";
+            this.lblUsernameError.Size = new System.Drawing.Size(111, 17);
+            this.lblUsernameError.TabIndex = 20;
+            this.lblUsernameError.Text = "Username salah";
+            this.lblUsernameError.Visible = false;
+            // 
             // FrmLogInMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(543, 259);
+            this.Controls.Add(this.lblUsernameError);
+            this.Controls.Add(this.lblPasswordError);
             this.Controls.Add(this.linkLblSignUp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogIn);
@@ -159,5 +190,7 @@
         private System.Windows.Forms.Label lblLogIn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLblSignUp;
+        private System.Windows.Forms.Label lblPasswordError;
+        private System.Windows.Forms.Label lblUsernameError;
     }
 }

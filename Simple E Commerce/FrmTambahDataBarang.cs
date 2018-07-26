@@ -42,6 +42,11 @@ namespace Simple_E_Commerce
                 MessageBox.Show("Sorry, harga tidak boleh kosong ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtHarga.Focus();
             }
+            else if (this.pictureBox.Image == null)
+            {
+                MessageBox.Show("Sorry, foto tidak boleh kosong ...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.pictureBox.Focus();
+            }
             else
             {
                 try
@@ -51,7 +56,8 @@ namespace Simple_E_Commerce
                         Kode = this.txtKodeBarang.Text.Trim(),
                         Nama = this.txtNamaBarang.Text.Trim(),
                         Jumlah = Convert.ToInt32(txtJumlah.Text.Trim()),
-                        Harga = Convert.ToDecimal(txtHarga.Text.Trim())                       
+                        Harga = Convert.ToDecimal(txtHarga.Text.Trim()),
+                        Gambar = new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])) as byte[]
                     };
                     _result = new BarangDAO(Setting.GetConnectionString()).AddBarang(barang) > 0;
                     this.Close();
@@ -67,9 +73,7 @@ namespace Simple_E_Commerce
         {
             OpenFileDialog OpenFd = new OpenFileDialog();
             OpenFd.Filter = "Images only. |*.jpg; *,jpeg; *.png; *.gif;";
-
             DialogResult dr = OpenFd.ShowDialog();
-
             pictureBox.Image = Image.FromFile(OpenFd.FileName);
         }
 
