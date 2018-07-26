@@ -19,7 +19,6 @@ namespace Simple_E_Commerce
         }
 
         bool _result = false;
-        string connString = @"Data Source = (localdb)\mssqllocaldb; Initial Catalog = SimpleECommerce; Integrated Security = True;";
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
@@ -46,24 +45,35 @@ namespace Simple_E_Commerce
                     {
                         Username = this.txtUserID.Text.Trim(),
                         Nama = this.txtNama.Text.Trim(),
-                        Password = this.txtPassword.Text.Trim()
+                        Password = this.txtPassword.Text.Trim(),
+                        Pict = new ImageConverter().ConvertTo(pboxPict.Image, typeof(byte[])) as byte[]                  
                     };
-                    _result = new AkunDAO(connString).AddAkun(akun) > 0;
+                    _result = new AkunDAO(Setting.GetConnectionString()).AddAkun(akun) > 0;
                     MessageBox.Show("Akun telah berhasil terdaftar...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //FrmLogInMember frm = new FrmLogInMember();
-                    //this.Close();
-                    //frm.ShowDialog();
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            FrmLogInMember flm = new FrmLogInMember();
+            this.Hide();
+            flm.ShowDialog();
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OpenFd = new OpenFileDialog();
+            OpenFd.Filter = "Images only. |*.jpg; *,jpeg; *.png; *.gif;";
+            DialogResult dr = OpenFd.ShowDialog();
+            pboxPict.Image = Image.FromFile(OpenFd.FileName);
         }
     }
 }
