@@ -96,6 +96,36 @@ namespace OrderLibrary
             return result;
         }
 
+        public bool CheckAkunByUsername(string username)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.CommandText = @"select * from akun Where username = @username";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            if (reader.Read())
+                            {
+                                result = true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
         public int AddAkun (Akun akun)
         {
             int result = 0;

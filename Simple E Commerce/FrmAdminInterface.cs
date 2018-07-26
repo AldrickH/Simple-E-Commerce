@@ -14,17 +14,22 @@ namespace Simple_E_Commerce
 {
     public partial class FrmAdminInterface : Form
     {
+
+        Akun admin = null;
+
         public FrmAdminInterface(Akun temp)
         {
             InitializeComponent();
             this.dgvDataBarang.AutoGenerateColumns = this.dgvDataMember.AutoGenerateColumns = false;
-            this.lblAdmin.Text = temp.Nama;
+            admin = temp;
         }
 
         private void FrmAdminInterface_Load(object sender, EventArgs e)
         {
             try
             {
+                this.lblAdmin.Text = admin.Nama;
+
                 using (var dao = new BarangDAO(Setting.GetConnectionString()))
                 {
                     this.dgvDataBarang.DataSource = null;
@@ -50,24 +55,6 @@ namespace Simple_E_Commerce
             }
         }
 
-        private void dgvDataBarang_Resize(object sender, EventArgs e)
-        {
-            this.dgvDataBarang.Columns[0].Width = 24 * this.dgvDataBarang.Width / 100;
-            this.dgvDataBarang.Columns[1].Width = 25 * this.dgvDataBarang.Width / 100;
-            this.dgvDataBarang.Columns[2].Width = 25 * this.dgvDataBarang.Width / 100;
-            this.dgvDataBarang.Columns[3].Width = 25 * this.dgvDataBarang.Width / 100;
-        }
-
-        private void dgvDataMember_Resize(object sender, EventArgs e)
-        {
-            this.dgvDataMember.Columns[0].Width = 33 * this.dgvDataBarang.Width / 100;
-            this.dgvDataMember.Columns[1].Width = 33 * this.dgvDataBarang.Width / 100;
-            this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
-
-        }
-
-
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (this.dgvDataBarang.SelectedRows.Count > 0 &&
@@ -80,7 +67,6 @@ namespace Simple_E_Commerce
                         if (dao.DeleteBarang(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
                         {
                             FrmAdminInterface_Load(null, null);
-
                         }
                     }
                 }
@@ -96,6 +82,27 @@ namespace Simple_E_Commerce
             FrmTambahDataBarang frm = new FrmTambahDataBarang();
             frm.ShowDialog();
             FrmAdminInterface_Load(null, null);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvDataBarang_Resize(object sender, EventArgs e)
+        {
+            this.dgvDataBarang.Columns[0].Width = 24 * this.dgvDataBarang.Width / 100;
+            this.dgvDataBarang.Columns[1].Width = 25 * this.dgvDataBarang.Width / 100;
+            this.dgvDataBarang.Columns[2].Width = 25 * this.dgvDataBarang.Width / 100;
+            this.dgvDataBarang.Columns[3].Width = 25 * this.dgvDataBarang.Width / 100;
+        }
+
+        private void dgvDataMember_Resize(object sender, EventArgs e)
+        {
+            this.dgvDataMember.Columns[0].Width = 33 * this.dgvDataBarang.Width / 100;
+            this.dgvDataMember.Columns[1].Width = 33 * this.dgvDataBarang.Width / 100;
+            this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
+
         }
     }
 }
