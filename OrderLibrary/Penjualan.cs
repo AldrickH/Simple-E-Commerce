@@ -8,7 +8,7 @@ namespace OrderLibrary
 {
      public class Penjualan
     {
-        public string NoOrder { get; set; }
+        public int NoOrder { get; set; }
         public DateTime Tanggal { get; set; }
         public Akun DataAkun { get; set; }
         public Barang DataBarang { get; set; }

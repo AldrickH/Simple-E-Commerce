@@ -13,7 +13,8 @@ namespace Simple_E_Commerce
 {
     public partial class FrmKeranjang : Form
     {
-        List<Penjualan> data;
+        List<Penjualan> data = null;
+        bool _result = false;
 
         public FrmKeranjang(List<Penjualan> temp)
         {
@@ -28,8 +29,16 @@ namespace Simple_E_Commerce
             {
                 this.dgvDataOrder.Rows.Add(new string[]
                 {
-                    jual.NoOrder, jual.Tanggal.ToShortDateString(), jual.DataAkun.Nama, jual.DataBarang.Kode,
+                    jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataAkun.Nama, jual.DataBarang.Kode,
                     jual.DataBarang.Nama, jual.DataBarang.Harga.ToString(), jual.Quantity.ToString(), jual.Total.ToString()});
+            }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            foreach(Penjualan jual in data)
+            {
+                _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
             }
         }
     }

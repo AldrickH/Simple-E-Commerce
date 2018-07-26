@@ -78,6 +78,7 @@
             this.btnSejarahPembelian.TabIndex = 3;
             this.btnSejarahPembelian.Text = "Sejarah Pembelian";
             this.btnSejarahPembelian.UseVisualStyleBackColor = true;
+            this.btnSejarahPembelian.Click += new System.EventHandler(this.btnSejarahPembelian_Click);
             // 
             // btnCheckout
             // 

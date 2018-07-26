@@ -34,6 +34,7 @@ namespace OrderLibrary
                 {
                     cmd.Connection = _conn;
                     cmd.CommandText = @"select * from akun order by username";
+                    cmd.Parameters.Clear();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -87,6 +88,36 @@ namespace OrderLibrary
                                     Pict = reader["Pict"] as byte[]
                                     
                                 };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public bool CheckAkunByUsername(string username)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.CommandText = @"select username from akun Where username = @username";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            if (reader.Read())
+                            {
+                                result = true;
                             }
                         }
                     }

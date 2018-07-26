@@ -103,6 +103,7 @@
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Log Out";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lblAdmin
             // 
@@ -147,7 +148,6 @@
             // 
             // tabDataBarang
             // 
-            this.tabDataBarang.Controls.Add(this.btnTambah);
             this.tabDataBarang.Controls.Add(this.btnDelete);
             this.tabDataBarang.Controls.Add(this.txtHarga);
             this.tabDataBarang.Controls.Add(this.txtJumlah);
@@ -558,7 +558,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabControl tabData;
         private System.Windows.Forms.TabPage tabDataBarang;
-        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.TextBox txtJumlah;
         private System.Windows.Forms.TextBox txtNamaBarang;

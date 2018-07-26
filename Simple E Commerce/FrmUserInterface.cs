@@ -27,20 +27,27 @@ namespace Simple_E_Commerce
             try
             {
                 listPenjualan = new List<Penjualan>();
-
-                foreach (CustomCntrlBrg custom in flowLayoutPnl.Controls)
+                using (PenjualanDAO dao = new PenjualanDAO(Setting.GetConnectionString()))
                 {
-                    Barang brg = custom.GetItemBarang();
-                    int qty = custom.GetQuantityOrder();
-                    listPenjualan.Add(new Penjualan
+                    int Nomor = dao.GetNoOrderBerikutnya();
+                    foreach (CustomCntrlBrg custom in flowLayoutPnl.Controls)
                     {
-                        NoOrder = "0001",
-                        DataAkun = user,
-                        DataBarang = brg,
-                        Quantity = qty,
-                        Tanggal = DateTime.Today,
-                        Total = qty * brg.Harga
-                    });
+                        Barang brg = custom.GetItemBarang();
+                        int qty = custom.GetQuantityOrder();
+                        if (qty > 0)
+                        {
+                            listPenjualan.Add(new Penjualan
+                            {
+                                NoOrder = Nomor,
+                                DataAkun = user,
+                                DataBarang = brg,
+                                Quantity = qty,
+                                Tanggal = DateTime.Today,
+                                Total = qty * brg.Harga
+                            });
+                        }
+                        Nomor++;
+                    }
                 }
 
                 FrmKeranjang frm = new FrmKeranjang(listPenjualan);
@@ -78,9 +85,12 @@ namespace Simple_E_Commerce
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            FrmLogInMember flim = new FrmLogInMember();
-            this.Hide();
-            flim.ShowDialog();
+            this.Close();
+            }
+        private void btnSejarahPembelian_Click(object sender, EventArgs e)
+        {
+            FrmSejarahPembelian frm = new FrmSejarahPembelian(user);
+            frm.Show();s
         }
     }
 }
