@@ -21,12 +21,6 @@ namespace Simple_E_Commerce
             this.lblAdmin.Text = temp.Nama;
         }
 
-        bool _result = false;
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-        }
-
         private void FrmAdminInterface_Load(object sender, EventArgs e)
         {
             try
@@ -69,6 +63,32 @@ namespace Simple_E_Commerce
             this.dgvDataMember.Columns[0].Width = 33 * this.dgvDataBarang.Width / 100;
             this.dgvDataMember.Columns[1].Width = 33 * this.dgvDataBarang.Width / 100;
             this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
+
+        }
+
+
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (this.dgvDataBarang.SelectedRows.Count > 0 &&
+                MessageBox.Show("Hapus Item Data Terpilih ?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    using (var dao = new BarangDAO(Setting.GetConnectionString()))
+                    {
+                        if (dao.DeleteBarang(this.dgvDataBarang.SelectedRows[0].Cells[0].Value.ToString().Trim()) > 0)
+                        {
+                            FrmAdminInterface_Load(null, null);
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
