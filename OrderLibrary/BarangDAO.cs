@@ -62,6 +62,48 @@ namespace OrderLibrary
             }
             return listData;
         }
+        public List<Barang> GetFilter(Barang barang)
+        {
+            List<Barang> listData = null;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    
+                    cmd.Connection = _conn;
+                    cmd.CommandText = @"select * from barang where kode line @kode and nama like @nama and jumlah like @jumlah and harga like @harga";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue(@"" ,barang.Kode);
+                    cmd.Parameters.AddWithValue(@"" , barang.Nama);
+                    cmd.Parameters.AddWithValue(@"" , barang.Harga);
+                    cmd.Parameters.AddWithValue(@"" , barang.Jumlah);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            listData = new List<Barang>();
+                            while (reader.Read())
+                            {
+                                listData.Add(new Barang
+                                {
+                                    Kode = reader["Kode"].ToString(),
+                                    Nama = reader["Nama"].ToString(),
+                                    Harga = Convert.ToDecimal(reader["Harga"]),
+                                    Jumlah = Convert.ToInt32(reader["Jumlah"]),
+                                    Gambar = reader["gambar"] as byte[]
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return listData;
+        }
 
         public Barang GetDataBarangByKode(string kode)
         {

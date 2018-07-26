@@ -104,5 +104,10 @@ namespace Simple_E_Commerce
             this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
 
         }
+
+        private void txtKodeBarang_Leave(object sender, EventArgs e)
+        {
+
+        }
     }
 }

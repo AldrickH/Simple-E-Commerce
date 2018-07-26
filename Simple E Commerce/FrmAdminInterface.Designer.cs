@@ -35,7 +35,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabData = new System.Windows.Forms.TabControl();
             this.tabDataBarang = new System.Windows.Forms.TabPage();
-            this.btnTambah = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtHarga = new System.Windows.Forms.TextBox();
             this.txtJumlah = new System.Windows.Forms.TextBox();
@@ -71,6 +70,7 @@
             this.clmUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotalPembelian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTambah = new System.Windows.Forms.Button();
             this.gbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabData.SuspendLayout();
@@ -174,17 +174,6 @@
             this.tabDataBarang.Text = "Data Barang";
             this.tabDataBarang.UseVisualStyleBackColor = true;
             // 
-            // btnTambah
-            // 
-            this.btnTambah.Location = new System.Drawing.Point(95, 347);
-            this.btnTambah.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(111, 50);
-            this.btnTambah.TabIndex = 10;
-            this.btnTambah.Text = "Tambah Data Barang";
-            this.btnTambah.UseVisualStyleBackColor = true;
-            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
-            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -232,6 +221,7 @@
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(403, 22);
             this.txtKodeBarang.TabIndex = 5;
+            this.txtKodeBarang.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
             // 
             // lblHarga
             // 
@@ -538,6 +528,17 @@
             this.clmTotalPembelian.HeaderText = "Total Pembelian";
             this.clmTotalPembelian.Name = "clmTotalPembelian";
             this.clmTotalPembelian.ReadOnly = true;
+            // 
+            // btnTambah
+            // 
+            this.btnTambah.Location = new System.Drawing.Point(95, 347);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(111, 50);
+            this.btnTambah.TabIndex = 10;
+            this.btnTambah.Text = "Tambah Data Barang";
+            this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // FrmAdminInterface
             // 
