@@ -90,7 +90,7 @@ namespace Simple_E_Commerce
         private void btnSejarahPembelian_Click(object sender, EventArgs e)
         {
             FrmSejarahPembelian frm = new FrmSejarahPembelian(user);
-            frm.Show();s
+            frm.Show();
         }
     }
 }
