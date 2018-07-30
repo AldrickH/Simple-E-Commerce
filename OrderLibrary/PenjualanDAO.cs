@@ -98,7 +98,7 @@ namespace OrderLibrary
              
             try
             {
-                using (SqlCommand cmd = new SqlCommand(@"select * from penjualan where username = @username order by tanggal", _conn))
+                using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
                     if (akun.Username.Equals("admin"))

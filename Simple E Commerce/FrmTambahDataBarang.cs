@@ -81,5 +81,19 @@ namespace Simple_E_Commerce
         {
             this.Close();
         }
+
+        private void txtHarga_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtHarga_TextChanged(object sender, EventArgs e)
+        {
+            txtHarga.Text = string.Format("{0:n0}", double.Parse(txtHarga.Text));
+            this.txtHarga.Select(txtHarga.Text.Length, 0);
+        }
     }
 }
