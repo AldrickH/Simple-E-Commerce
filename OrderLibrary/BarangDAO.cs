@@ -134,6 +134,28 @@ namespace OrderLibrary
             return result;
         }
 
+        public void UpdateQuantity(Barang temp, int qty)
+        {
+            int a = temp.Jumlah - qty;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.CommandText = @"update barang set jumlah = @jumlah where kode = @kode";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@jumlah", a);
+                    cmd.Parameters.AddWithValue("@kode", temp.Kode);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (_trans != null) _trans.Rollback();
+                throw ex;
+            }
+        }
+
         public int DeleteBarang(string kode)
         {
             int result = 0;

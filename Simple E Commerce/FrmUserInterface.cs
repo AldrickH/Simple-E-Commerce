@@ -34,7 +34,8 @@ namespace Simple_E_Commerce
                     {
                         Barang brg = custom.GetItemBarang();
                         int qty = custom.GetQuantityOrder();
-                        if (qty > 0)
+                        //
+                        if (qty > 0 && brg.Jumlah > 0)
                         {
                             listPenjualan.Add(new Penjualan
                             {
@@ -86,11 +87,12 @@ namespace Simple_E_Commerce
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
-            }
+        }
+
         private void btnSejarahPembelian_Click(object sender, EventArgs e)
         {
             FrmSejarahPembelian frm = new FrmSejarahPembelian(user);
-            frm.Show();s
+            frm.Show();
         }
     }
 }

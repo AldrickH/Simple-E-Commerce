@@ -14,9 +14,10 @@ namespace Simple_E_Commerce
 {
     public partial class FrmAdminInterface : Form
     {
-
+        
         Akun admin = null;
-
+        List<Penjualan> listData = null;
+        
         public FrmAdminInterface(Akun temp)
         {
             InitializeComponent();
@@ -48,7 +49,21 @@ namespace Simple_E_Commerce
                     this.dgvDataMember.Columns[1].DataPropertyName = "Nama";
                     this.dgvDataMember.Columns[2].DataPropertyName = "Total";
                 }
-            }
+
+                using (var dao = new PenjualanDAO(Setting.GetConnectionString()))
+                {
+                    this.dgvDataOrder.DataSource = null;
+                    listData = dao.SejarahPenjualan(admin, Setting.GetConnectionString());
+
+                    foreach (Penjualan jual in listData)
+                    {
+                        this.dgvDataOrder.Rows.Add(new string[]
+                            {
+                                jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
+                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString(), jual.Quantity.ToString(), jual.Total.ToString()});
+                            }
+                     }
+                 }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
