@@ -107,11 +107,14 @@ namespace Simple_E_Commerce
 
         private void txtKodeBarang_Leave(object sender, EventArgs e)
         {
-            using (var dao = new BarangDAO(Setting.GetConnectionString())) {
+            using (
+                var dao = new BarangDAO(Setting.GetConnectionString())) {
                 decimal harga = 0;
                 int jumlah = 0;
                 decimal.TryParse(this.txtHarga.Text.Trim(), out harga);
                 int.TryParse(this.txtJumlah.Text.Trim(), out jumlah);
+
+                MessageBox.Show($"{this.txtKodeBarang.Text} + {harga.ToString()}");
 
                 this.dgvDataBarang.DataSource = null;
                 this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
@@ -124,10 +127,10 @@ namespace Simple_E_Commerce
 
                 });
 
-                this.dgvDataBarang.Columns[0].DataPropertyName = "Kode";
-                this.dgvDataBarang.Columns[1].DataPropertyName = "Nama";
-                this.dgvDataBarang.Columns[2].DataPropertyName = "Jumlah";
-                this.dgvDataBarang.Columns[3].DataPropertyName = "Harga";
+                this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
+                this.dgvDataBarang.Columns[1].DataPropertyName = nameof(Barang.Nama);
+                this.dgvDataBarang.Columns[2].DataPropertyName = nameof(Barang.Jumlah);
+                this.dgvDataBarang.Columns[3].DataPropertyName = nameof(Barang.Jumlah);
 
             }
         }
