@@ -40,8 +40,6 @@ namespace Simple_E_Commerce
                     }
                 this.lblNominalHarga.Text = totalBelanja.ToString();
             }
-
-            this.lblNominalHarga.Text = user.Total.ToString();
         }
 
         private void dgvDataOrder_Resize(object sender, EventArgs e)
