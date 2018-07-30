@@ -119,5 +119,35 @@ namespace Simple_E_Commerce
             this.dgvDataMember.Columns[2].Width = 33 * this.dgvDataBarang.Width / 100;
 
         }
+
+        private void txtKodeBarang_Leave(object sender, EventArgs e)
+        {
+            using (
+                var dao = new BarangDAO(Setting.GetConnectionString())) {
+                decimal harga = 0;
+                int jumlah = 0;
+                decimal.TryParse(this.txtHarga.Text.Trim(), out harga);
+                int.TryParse(this.txtJumlah.Text.Trim(), out jumlah);
+
+                MessageBox.Show($"{this.txtKodeBarang.Text} + {harga.ToString()}");
+
+                this.dgvDataBarang.DataSource = null;
+                this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
+                {
+                    Nama = this.txtNamaBarang.Text.Trim(),
+                    Kode = this.txtKodeBarang.Text.Trim(),
+                    Harga = harga,
+                    Jumlah = jumlah,
+                    Gambar = null
+
+                });
+
+                this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
+                this.dgvDataBarang.Columns[1].DataPropertyName = nameof(Barang.Nama);
+                this.dgvDataBarang.Columns[2].DataPropertyName = nameof(Barang.Jumlah);
+                this.dgvDataBarang.Columns[3].DataPropertyName = nameof(Barang.Jumlah);
+
+            }
+        }
     }
 }

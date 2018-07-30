@@ -26,7 +26,7 @@ namespace OrderLibrary
             }
         }
 
-        public List<Barang> GetAllDataBarang()
+        public List<Barang> GetAllDataBarang(Barang brg = null)
         {
             List<Barang> listData = null;
             try
@@ -34,7 +34,18 @@ namespace OrderLibrary
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    cmd.CommandText = @"select * from barang order by kode";
+                    if (brg == null)
+                    {
+                        cmd.CommandText = @"select * from barang order by kode";
+                    }
+                    else {
+                        cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah like @jumlah and harga like @harga  order by kode";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
+                        cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
+                        cmd.Parameters.AddWithValue("@jumlah", $"%{brg.Jumlah}%");
+                        cmd.Parameters.AddWithValue("@harga", $"%{brg.Harga}%");
+                    }
                   
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -62,6 +73,7 @@ namespace OrderLibrary
             }
             return listData;
         }
+      
 
         public Barang GetDataBarangByKode(string kode)
         {

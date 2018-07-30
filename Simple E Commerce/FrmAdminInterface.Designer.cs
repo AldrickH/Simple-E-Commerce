@@ -88,18 +88,21 @@
             this.gbAdmin.Controls.Add(this.lblAdmin);
             this.gbAdmin.Controls.Add(this.txtNamaAdmin);
             this.gbAdmin.Controls.Add(this.pictureBox1);
-            this.gbAdmin.Location = new System.Drawing.Point(60, 62);
+            this.gbAdmin.Location = new System.Drawing.Point(40, 40);
+            this.gbAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.gbAdmin.Name = "gbAdmin";
-            this.gbAdmin.Size = new System.Drawing.Size(332, 473);
+            this.gbAdmin.Padding = new System.Windows.Forms.Padding(2);
+            this.gbAdmin.Size = new System.Drawing.Size(221, 303);
             this.gbAdmin.TabIndex = 3;
             this.gbAdmin.TabStop = false;
             this.gbAdmin.Text = "Admin";
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(110, 380);
+            this.btnLogout.Location = new System.Drawing.Point(73, 243);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(116, 55);
+            this.btnLogout.Size = new System.Drawing.Size(77, 35);
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Log Out";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -108,9 +111,10 @@
             // lblAdmin
             // 
             this.lblAdmin.AutoSize = true;
-            this.lblAdmin.Location = new System.Drawing.Point(141, 312);
+            this.lblAdmin.Location = new System.Drawing.Point(94, 200);
+            this.lblAdmin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAdmin.Name = "lblAdmin";
-            this.lblAdmin.Size = new System.Drawing.Size(155, 25);
+            this.lblAdmin.Size = new System.Drawing.Size(103, 17);
             this.lblAdmin.TabIndex = 2;
             this.lblAdmin.Text = "{ nama admin }";
             // 
@@ -118,17 +122,19 @@
             // 
             this.txtNamaAdmin.AutoSize = true;
             this.txtNamaAdmin.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtNamaAdmin.Location = new System.Drawing.Point(38, 312);
+            this.txtNamaAdmin.Location = new System.Drawing.Point(25, 200);
+            this.txtNamaAdmin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtNamaAdmin.Name = "txtNamaAdmin";
-            this.txtNamaAdmin.Size = new System.Drawing.Size(98, 25);
+            this.txtNamaAdmin.Size = new System.Drawing.Size(65, 17);
             this.txtNamaAdmin.TabIndex = 1;
             this.txtNamaAdmin.Text = "Nama    :";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(69, 59);
+            this.pictureBox1.Location = new System.Drawing.Point(46, 38);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(202, 209);
+            this.pictureBox1.Size = new System.Drawing.Size(135, 134);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -143,7 +149,7 @@
             this.tabData.Location = new System.Drawing.Point(426, 17);
             this.tabData.Name = "tabData";
             this.tabData.SelectedIndex = 0;
-            this.tabData.Size = new System.Drawing.Size(1108, 747);
+            this.tabData.Size = new System.Drawing.Size(739, 478);
             this.tabData.TabIndex = 2;
             // 
             // tabDataOrder
@@ -152,19 +158,21 @@
             this.tabDataOrder.Controls.Add(this.cmbFilter);
             this.tabDataOrder.Controls.Add(this.lblFilter);
             this.tabDataOrder.Controls.Add(this.dgvDataOrder);
-            this.tabDataOrder.Location = new System.Drawing.Point(8, 39);
+            this.tabDataOrder.Location = new System.Drawing.Point(4, 25);
+            this.tabDataOrder.Margin = new System.Windows.Forms.Padding(2);
             this.tabDataOrder.Name = "tabDataOrder";
-            this.tabDataOrder.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabDataOrder.Size = new System.Drawing.Size(1092, 700);
+            this.tabDataOrder.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDataOrder.Size = new System.Drawing.Size(731, 449);
             this.tabDataOrder.TabIndex = 1;
             this.tabDataOrder.Text = "Data Order";
             this.tabDataOrder.UseVisualStyleBackColor = true;
             // 
             // btnCari
             // 
-            this.btnCari.Location = new System.Drawing.Point(626, 45);
+            this.btnCari.Location = new System.Drawing.Point(417, 29);
+            this.btnCari.Margin = new System.Windows.Forms.Padding(2);
             this.btnCari.Name = "btnCari";
-            this.btnCari.Size = new System.Drawing.Size(146, 41);
+            this.btnCari.Size = new System.Drawing.Size(97, 26);
             this.btnCari.TabIndex = 3;
             this.btnCari.Text = "Cari";
             this.btnCari.UseVisualStyleBackColor = true;
@@ -180,17 +188,19 @@
             "NamaPembeli",
             "Harga",
             "Jumlah"});
-            this.cmbFilter.Location = new System.Drawing.Point(274, 52);
+            this.cmbFilter.Location = new System.Drawing.Point(183, 33);
+            this.cmbFilter.Margin = new System.Windows.Forms.Padding(2);
             this.cmbFilter.Name = "cmbFilter";
-            this.cmbFilter.Size = new System.Drawing.Size(294, 33);
+            this.cmbFilter.Size = new System.Drawing.Size(197, 24);
             this.cmbFilter.TabIndex = 2;
             // 
             // lblFilter
             // 
             this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(56, 55);
+            this.lblFilter.Location = new System.Drawing.Point(37, 35);
+            this.lblFilter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(179, 25);
+            this.lblFilter.Size = new System.Drawing.Size(118, 17);
             this.lblFilter.TabIndex = 1;
             this.lblFilter.Text = "Cari Berdasarkan";
             // 
@@ -214,7 +224,8 @@
             this.clmHargaBrg,
             this.clmJumlahBrg,
             this.clmTotal});
-            this.dgvDataOrder.Location = new System.Drawing.Point(6, 155);
+            this.dgvDataOrder.Location = new System.Drawing.Point(4, 99);
+            this.dgvDataOrder.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDataOrder.Name = "dgvDataOrder";
             this.dgvDataOrder.ReadOnly = true;
             this.dgvDataOrder.RowHeadersVisible = false;
@@ -277,19 +288,21 @@
             this.tabDataMember.Controls.Add(this.cmbFilterMember);
             this.tabDataMember.Controls.Add(this.lblFilterMember);
             this.tabDataMember.Controls.Add(this.dgvDataMember);
-            this.tabDataMember.Location = new System.Drawing.Point(8, 39);
+            this.tabDataMember.Location = new System.Drawing.Point(4, 25);
+            this.tabDataMember.Margin = new System.Windows.Forms.Padding(2);
             this.tabDataMember.Name = "tabDataMember";
-            this.tabDataMember.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDataMember.Size = new System.Drawing.Size(1092, 700);
+            this.tabDataMember.Padding = new System.Windows.Forms.Padding(2);
+            this.tabDataMember.Size = new System.Drawing.Size(731, 449);
             this.tabDataMember.TabIndex = 2;
             this.tabDataMember.Text = "Data Member";
             this.tabDataMember.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(687, 45);
+            this.button1.Location = new System.Drawing.Point(458, 29);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 41);
+            this.button1.Size = new System.Drawing.Size(97, 26);
             this.button1.TabIndex = 4;
             this.button1.Text = "Cari";
             this.button1.UseVisualStyleBackColor = true;
@@ -297,17 +310,19 @@
             // cmbFilterMember
             // 
             this.cmbFilterMember.FormattingEnabled = true;
-            this.cmbFilterMember.Location = new System.Drawing.Point(298, 45);
+            this.cmbFilterMember.Location = new System.Drawing.Point(199, 29);
+            this.cmbFilterMember.Margin = new System.Windows.Forms.Padding(2);
             this.cmbFilterMember.Name = "cmbFilterMember";
-            this.cmbFilterMember.Size = new System.Drawing.Size(320, 33);
+            this.cmbFilterMember.Size = new System.Drawing.Size(215, 24);
             this.cmbFilterMember.TabIndex = 2;
             // 
             // lblFilterMember
             // 
             this.lblFilterMember.AutoSize = true;
-            this.lblFilterMember.Location = new System.Drawing.Point(56, 48);
+            this.lblFilterMember.Location = new System.Drawing.Point(37, 31);
+            this.lblFilterMember.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFilterMember.Name = "lblFilterMember";
-            this.lblFilterMember.Size = new System.Drawing.Size(179, 25);
+            this.lblFilterMember.Size = new System.Drawing.Size(118, 17);
             this.lblFilterMember.TabIndex = 1;
             this.lblFilterMember.Text = "Cari Berdasarkan";
             // 
@@ -326,7 +341,8 @@
             this.clmUsername,
             this.clmNama,
             this.clmTotalPembelian});
-            this.dgvDataMember.Location = new System.Drawing.Point(6, 158);
+            this.dgvDataMember.Location = new System.Drawing.Point(4, 101);
+            this.dgvDataMember.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDataMember.Name = "dgvDataMember";
             this.dgvDataMember.ReadOnly = true;
             this.dgvDataMember.RowHeadersVisible = false;
@@ -354,6 +370,7 @@
             this.clmTotalPembelian.Name = "clmTotalPembelian";
             this.clmTotalPembelian.ReadOnly = true;
             // 
+
             // tabDataBarang
             // 
             this.tabDataBarang.Controls.Add(this.btnDelete);
@@ -524,12 +541,13 @@
             // 
             // FrmAdminInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1551, 781);
             this.Controls.Add(this.btnTambah);
             this.Controls.Add(this.gbAdmin);
             this.Controls.Add(this.tabData);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmAdminInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAdminInterface";
