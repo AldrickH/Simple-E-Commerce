@@ -42,7 +42,7 @@ namespace Simple_E_Commerce
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            foreach (Penjualan jual in data)
+            foreach (Penjualan jual in listPenjualan)
             {
                 _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
 

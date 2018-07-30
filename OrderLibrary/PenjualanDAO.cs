@@ -110,9 +110,9 @@ namespace OrderLibrary
                         cmd.CommandText = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from
                                             penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode
                                             where p.username = @username";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@username", akun.Username);
                     }
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@username", akun.Username);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -123,7 +123,7 @@ namespace OrderLibrary
                                 listSejarahPenjualan.Add(new Penjualan
                                 {
                                     DataAkun = new AkunDAO(connString).GetDataCustomerByUsername(reader["username"].ToString()),
-                                    DataBarang = new BarangDAO(connString).GetDataBarangByKode(reader["kodebarang"].ToString()),
+                                    DataBarang = new BarangDAO(connString).GetDataBarangByKode(reader["kode"].ToString()),
                                     NoOrder = reader["noOrder"].ToString(),
                                     Quantity = int.Parse(reader["quantity"].ToString()),
                                     Tanggal = Convert.ToDateTime(reader["Tanggal"].ToString()),
