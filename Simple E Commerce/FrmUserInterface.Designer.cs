@@ -43,6 +43,7 @@
             this.pbUser.Location = new System.Drawing.Point(1443, 30);
             this.pbUser.Name = "pbUser";
             this.pbUser.Size = new System.Drawing.Size(148, 152);
+            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbUser.TabIndex = 0;
             this.pbUser.TabStop = false;
             // 

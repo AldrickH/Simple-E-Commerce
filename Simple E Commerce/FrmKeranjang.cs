@@ -36,10 +36,19 @@ namespace Simple_E_Commerce
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            foreach(Penjualan jual in data)
+            foreach (Penjualan jual in data)
             {
                 _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
+
+                MessageBox.Show(jual.DataBarang.Kode);
+                using (var dao = new BarangDAO(Setting.GetConnectionString()))
+                {
+                    dao.UpdateQuantity(jual.DataBarang, jual.Quantity);
+                }
+                MessageBox.Show("Order telah diproses.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
         }
     }
 }
+
