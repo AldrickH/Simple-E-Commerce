@@ -38,7 +38,7 @@ namespace Simple_E_Commerce
 
         private void CustomCntrlBrg_Load(object sender, EventArgs e)
         {
-            if (brg != null)
+            if (brg != null && brg.Jumlah >= 0)
             {
                 this.lblNama.Text = brg.Nama;
                 this.lblHarga.Text = brg.Harga.ToString("n0");
@@ -49,7 +49,8 @@ namespace Simple_E_Commerce
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            txtBoxJumlah.Text = (Convert.ToInt32(txtBoxJumlah.Text) + 1).ToString();
+            if (brg.Jumlah > 0 && Convert.ToInt32(txtBoxJumlah.Text) < brg.Jumlah)
+                txtBoxJumlah.Text = (Convert.ToInt32(txtBoxJumlah.Text) + 1).ToString();
         }
 
         private void btnKurang_Click(object sender, EventArgs e)
@@ -57,6 +58,36 @@ namespace Simple_E_Commerce
             if (Convert.ToInt32(txtBoxJumlah.Text) > 0)
             {
                 txtBoxJumlah.Text = (Convert.ToInt32(txtBoxJumlah.Text) - 1).ToString();
+            }
+        }
+
+        private void txtBoxJumlah_TextChanged(object sender, EventArgs e)
+        {
+            int temp = 0;
+            if (this.txtBoxJumlah.Text != "")
+            {
+                temp = Convert.ToInt32(this.txtBoxJumlah.Text);
+                if (temp >= brg.Jumlah)
+                {
+                    this.txtBoxJumlah.Text = Convert.ToInt32(brg.Jumlah).ToString();
+                }
+                else
+                {
+                    this.txtBoxJumlah.Text = temp.ToString();
+                }
+                this.txtBoxJumlah.Select(txtBoxJumlah.Text.Length, 0);
+            }
+            else
+            {
+                txtBoxJumlah.Text = "0";
+            }
+        }
+
+        private void txtBoxJumlah_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
             }
         }
     }

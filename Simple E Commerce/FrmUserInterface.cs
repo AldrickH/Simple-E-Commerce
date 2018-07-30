@@ -29,12 +29,13 @@ namespace Simple_E_Commerce
                 listPenjualan = new List<Penjualan>();
                 using (PenjualanDAO dao = new PenjualanDAO(Setting.GetConnectionString()))
                 {
-                    int Nomor = dao.GetNoOrderBerikutnya();
+                    string Nomor = dao.GetNoOrderBerikutnya();
                     foreach (CustomCntrlBrg custom in flowLayoutPnl.Controls)
                     {
                         Barang brg = custom.GetItemBarang();
                         int qty = custom.GetQuantityOrder();
-                        if (qty > 0)
+                        //
+                        if (qty > 0 && brg.Jumlah > 0)
                         {
                             listPenjualan.Add(new Penjualan
                             {
@@ -45,13 +46,22 @@ namespace Simple_E_Commerce
                                 Tanggal = DateTime.Today,
                                 Total = qty * brg.Harga
                             });
+                            Nomor = $"{(int.Parse(Nomor) + 1).ToString("0000")}";
                         }
-                        Nomor++;
                     }
                 }
 
-                FrmKeranjang frm = new FrmKeranjang(listPenjualan);
-                frm.ShowDialog();
+                if (listPenjualan.Capacity > 0)
+                {
+                    if (new FrmKeranjang().Run(listPenjualan) == true)
+                    {
+                        this.FrmUserInterface_Load(null, null);
+                    }
+                }
+                else
+                {
+                    throw new Exception("Maaf anda belum order barang");
+                }
             }
             catch (Exception ex)
             {
@@ -63,6 +73,7 @@ namespace Simple_E_Commerce
         {
             try
             {
+                this.flowLayoutPnl.Controls.Clear();
                 this.lblNama.Text = user.Nama;
                 this.pbUser.Image = new ImageConverter().ConvertFrom(user.Pict) as Image;
 
@@ -86,7 +97,8 @@ namespace Simple_E_Commerce
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
-            }
+        }
+
         private void btnSejarahPembelian_Click(object sender, EventArgs e)
         {
             FrmSejarahPembelian frm = new FrmSejarahPembelian(user);
