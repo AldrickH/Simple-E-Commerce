@@ -39,13 +39,12 @@ namespace OrderLibrary
                         cmd.CommandText = @"select * from barang order by kode";
                     }
                     else {
-                        cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and harga like @harga and jumlah like @jumlah order by kode";
+                        cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah like @jumlah and harga like @harga  order by kode";
                         cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@kode",brg.Kode);
-                        cmd.Parameters.AddWithValue("@nama", brg.Nama);
-                        cmd.Parameters.AddWithValue("@jumlah", brg.Jumlah);
-                        cmd.Parameters.AddWithValue("@harga", brg.Harga);
-
+                        cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
+                        cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
+                        cmd.Parameters.AddWithValue("@jumlah", $"%{brg.Jumlah}%");
+                        cmd.Parameters.AddWithValue("@harga", $"%{brg.Harga}%");
                     }
                   
                     using (SqlDataReader reader = cmd.ExecuteReader())
