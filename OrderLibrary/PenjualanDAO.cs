@@ -95,11 +95,22 @@ namespace OrderLibrary
         public List<Penjualan> SejarahPenjualan(Akun akun, string connString) 
         {
             List<Penjualan> listSejarahPenjualan = null;
-
+             
             try
             {
                 using (SqlCommand cmd = new SqlCommand(@"select * from penjualan where username = @username order by tanggal", _conn))
                 {
+                    cmd.Connection = _conn;
+                    if (akun.Username.Equals("admin"))
+                    {
+                        cmd.CommandText = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from
+                                            penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode";                                        
+                    } else
+                    {
+                        cmd.CommandText = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from
+                                            penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode
+                                            where p.username = @username";
+                    }
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", akun.Username);
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -131,7 +142,7 @@ namespace OrderLibrary
         }
 
         public void Dispose()
-        {
+         {
             if (_conn != null) _conn.Close();
         }
     }

@@ -34,7 +34,8 @@ namespace Simple_E_Commerce
                     {
                         Barang brg = custom.GetItemBarang();
                         int qty = custom.GetQuantityOrder();
-                        if (qty > 0)
+                        //
+                        if (qty > 0 && brg.Jumlah > 0)
                         {
                             listPenjualan.Add(new Penjualan
                             {
