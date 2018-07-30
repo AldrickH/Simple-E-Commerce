@@ -10,6 +10,7 @@ namespace OrderLibrary
     public class PenjualanDAO : IDisposable
     {
         SqlConnection _conn = null;
+        SqlTransaction _trans = null;
 
         public PenjualanDAO(string connectionString) 
         {
@@ -20,20 +21,17 @@ namespace OrderLibrary
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public int GetNoOrderBerikutnya()
+        public string GetNoOrderBerikutnya()
         {
-            int result = 0;
+            string result = "";
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand(@"Select Top 1 NoOrder from Penjualan order by NoOrder desc", _conn))
                 {
-                    cmd.Connection = _conn;
-                    cmd.CommandText = @"Select Top 1 NoOrder from Penjualan order by NoOrder desc";
                     cmd.Parameters.Clear();
                     using(SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -41,7 +39,7 @@ namespace OrderLibrary
                         {
                             if(reader.Read())
                             {
-                                result = int.Parse(reader["NoOrder"].ToString());
+                                result = reader["NoOrder"].ToString();
                             }
                         }
                     }
@@ -49,33 +47,28 @@ namespace OrderLibrary
 
                 if (result.Equals(""))
                 {
-                    result = 0001;
-                } else
+                    result = "0001";
+                }
+                else
                 {
-                    result += 1;
+                    result = $"{(int.Parse(result) + 1).ToString("0000")}";
                 }
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-
             return result;
         }
 
         public int AddPenjualan(Penjualan jual)
         {
             int result = 0;
-            SqlTransaction trans = null;
             try
             {
-                trans = _conn.BeginTransaction();
-                using (SqlCommand cmd = new SqlCommand())
+                _trans = _conn.BeginTransaction();
+                using (SqlCommand cmd = new SqlCommand(@"insert into penjualan values (@NoOrder, @Tanggal, @Username, @KodeBarang, @Quantity, @Total)", _conn, _trans))
                 {
-                    cmd.Connection = _conn;
-                    cmd.Transaction = trans;
-                    cmd.CommandText = @"insert into penjualan values (@NoOrder, @Tanggal, @Username, @KodeBarang, @Quantity, @Total)";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@NoOrder", jual.NoOrder);
                     cmd.Parameters.AddWithValue("@Tanggal", jual.Tanggal);
@@ -85,16 +78,16 @@ namespace OrderLibrary
                     cmd.Parameters.AddWithValue("@Total", jual.Total);
                     result = cmd.ExecuteNonQuery();
                 }
-                trans.Commit();
+                _trans.Commit();
             }
             catch (Exception ex)
             {
-                if (trans != null) trans.Rollback();
+                if (_trans != null) _trans.Rollback();
                 throw ex;
             }
             finally
             {
-                if (trans != null) trans.Dispose();
+                if (_trans != null) _trans.Dispose();
             }
             return result;
         }
@@ -105,10 +98,8 @@ namespace OrderLibrary
 
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand(@"select * from penjualan where username = @username order by tanggal", _conn))
                 {
-                    cmd.Connection = _conn;
-                    cmd.CommandText = @"select * from penjualan where username = @username order by tanggal";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", akun.Username);
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -122,7 +113,7 @@ namespace OrderLibrary
                                 {
                                     DataAkun = new AkunDAO(connString).GetDataCustomerByUsername(reader["username"].ToString()),
                                     DataBarang = new BarangDAO(connString).GetDataBarangByKode(reader["kodebarang"].ToString()),
-                                    NoOrder = int.Parse(reader["noOrder"].ToString()),
+                                    NoOrder = reader["noOrder"].ToString(),
                                     Quantity = int.Parse(reader["quantity"].ToString()),
                                     Tanggal = Convert.ToDateTime(reader["Tanggal"].ToString()),
                                     Total = Convert.ToDecimal(reader["Total"])
@@ -136,7 +127,6 @@ namespace OrderLibrary
             {
                 throw ex;
             }
-
             return listSejarahPenjualan;
         }
 

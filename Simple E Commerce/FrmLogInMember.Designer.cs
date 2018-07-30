@@ -36,8 +36,7 @@
             this.lblLogIn = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLblSignUp = new System.Windows.Forms.LinkLabel();
-            this.lblPasswordError = new System.Windows.Forms.Label();
-            this.lblUsernameError = new System.Windows.Forms.Label();
+            this.lblAccountError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogIn
@@ -45,7 +44,7 @@
             this.btnLogIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogIn.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnLogIn.Location = new System.Drawing.Point(359, 200);
+            this.btnLogIn.Location = new System.Drawing.Point(259, 200);
             this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(109, 35);
@@ -81,7 +80,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(265, 22);
             this.txtUsername.TabIndex = 14;
-            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // lblUsername
             // 
@@ -99,7 +97,7 @@
             this.lblLogIn.AutoSize = true;
             this.lblLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogIn.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblLogIn.Location = new System.Drawing.Point(209, 26);
+            this.lblLogIn.Location = new System.Drawing.Point(230, 33);
             this.lblLogIn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLogIn.Name = "lblLogIn";
             this.lblLogIn.Size = new System.Drawing.Size(78, 25);
@@ -110,7 +108,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(131, 168);
+            this.label1.Location = new System.Drawing.Point(152, 250);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 24);
             this.label1.TabIndex = 18;
@@ -119,8 +117,9 @@
             // linkLblSignUp
             // 
             this.linkLblSignUp.AutoSize = true;
+            this.linkLblSignUp.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.linkLblSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLblSignUp.Location = new System.Drawing.Point(317, 166);
+            this.linkLblSignUp.Location = new System.Drawing.Point(314, 250);
             this.linkLblSignUp.Name = "linkLblSignUp";
             this.linkLblSignUp.Size = new System.Drawing.Size(85, 24);
             this.linkLblSignUp.TabIndex = 19;
@@ -128,37 +127,24 @@
             this.linkLblSignUp.Text = "Sign up !";
             this.linkLblSignUp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblSignUp_LinkClicked);
             // 
-            // lblPasswordError
+            // lblAccountError
             // 
-            this.lblPasswordError.AutoSize = true;
-            this.lblPasswordError.BackColor = System.Drawing.Color.Transparent;
-            this.lblPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.lblPasswordError.Location = new System.Drawing.Point(202, 114);
-            this.lblPasswordError.Name = "lblPasswordError";
-            this.lblPasswordError.Size = new System.Drawing.Size(107, 17);
-            this.lblPasswordError.TabIndex = 20;
-            this.lblPasswordError.Text = "Password salah";
-            this.lblPasswordError.Visible = false;
-            // 
-            // lblUsernameError
-            // 
-            this.lblUsernameError.AutoSize = true;
-            this.lblUsernameError.BackColor = System.Drawing.Color.Transparent;
-            this.lblUsernameError.ForeColor = System.Drawing.Color.Red;
-            this.lblUsernameError.Location = new System.Drawing.Point(202, 73);
-            this.lblUsernameError.Name = "lblUsernameError";
-            this.lblUsernameError.Size = new System.Drawing.Size(111, 17);
-            this.lblUsernameError.TabIndex = 20;
-            this.lblUsernameError.Text = "Username salah";
-            this.lblUsernameError.Visible = false;
+            this.lblAccountError.AutoSize = true;
+            this.lblAccountError.BackColor = System.Drawing.Color.Transparent;
+            this.lblAccountError.ForeColor = System.Drawing.Color.Red;
+            this.lblAccountError.Location = new System.Drawing.Point(202, 172);
+            this.lblAccountError.Name = "lblAccountError";
+            this.lblAccountError.Size = new System.Drawing.Size(243, 17);
+            this.lblAccountError.TabIndex = 20;
+            this.lblAccountError.Text = "Username atau password anda salah";
+            this.lblAccountError.Visible = false;
             // 
             // FrmLogInMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 259);
-            this.Controls.Add(this.lblUsernameError);
-            this.Controls.Add(this.lblPasswordError);
+            this.ClientSize = new System.Drawing.Size(561, 283);
+            this.Controls.Add(this.lblAccountError);
             this.Controls.Add(this.linkLblSignUp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogIn);
@@ -190,7 +176,6 @@
         private System.Windows.Forms.Label lblLogIn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLblSignUp;
-        private System.Windows.Forms.Label lblPasswordError;
-        private System.Windows.Forms.Label lblUsernameError;
+        private System.Windows.Forms.Label lblAccountError;
     }
 }

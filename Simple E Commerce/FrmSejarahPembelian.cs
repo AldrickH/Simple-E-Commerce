@@ -32,10 +32,23 @@ namespace Simple_E_Commerce
                 {
                     this.dgvDataOrder.Rows.Add(new string[]
                     {
-                    jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataAkun.Nama, jual.DataBarang.Kode,
-                    jual.DataBarang.Nama, jual.DataBarang.Harga.ToString(), jual.Quantity.ToString(), jual.Total.ToString()});
+                    jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode, jual.DataBarang.Nama,
+                    jual.DataBarang.Harga.ToString(), jual.Quantity.ToString(), jual.Total.ToString()});
                 }
             }
+
+            this.lblNominalHarga.Text = user.Total.ToString();
+        }
+
+        private void dgvDataOrder_Resize(object sender, EventArgs e)
+        {
+            this.dgvDataOrder.Columns[0].Width = 15 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[1].Width = 15 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[2].Width = 15 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[3].Width = 15 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[4].Width = 15 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[5].Width = 10 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[6].Width = 15 * this.dgvDataOrder.Width / 100;
         }
     }
 }

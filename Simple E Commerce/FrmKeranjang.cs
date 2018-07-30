@@ -13,19 +13,25 @@ namespace Simple_E_Commerce
 {
     public partial class FrmKeranjang : Form
     {
-        List<Penjualan> data = null;
+        List<Penjualan> listPenjualan = null;
         bool _result = false;
 
-        public FrmKeranjang(List<Penjualan> temp)
+        public FrmKeranjang()
         {
             InitializeComponent();
             this.dgvDataOrder.AutoGenerateColumns = false;
-            data = temp;
+        }
+
+        public bool Run(List<Penjualan> temp)
+        {
+            listPenjualan = temp;
+            this.ShowDialog();
+            return _result;
         }
 
         private void FrmKeranjang_Load(object sender, EventArgs e)
         {
-            foreach (Penjualan jual in data)
+            foreach (Penjualan jual in listPenjualan)
             {
                 this.dgvDataOrder.Rows.Add(new string[]
                 {
@@ -36,9 +42,19 @@ namespace Simple_E_Commerce
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            foreach(Penjualan jual in data)
+            if (MessageBox.Show("Apakah anda yakin membeli barang ini ?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
+                using (var dao = new AkunDAO(Setting.GetConnectionString()))
+                {
+                    foreach (Penjualan jual in listPenjualan)
+                    {
+                        _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
+                        
+                    }
+                }
+
+                MessageBox.Show("Barang anda berhasil dipesan.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
         }
     }

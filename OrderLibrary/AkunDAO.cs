@@ -30,10 +30,8 @@ namespace OrderLibrary
             List<Akun> listData = null;
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand(@"select * from akun order by username", _conn))
                 {
-                    cmd.Connection = _conn;
-                    cmd.CommandText = @"select * from akun order by username";
                     cmd.Parameters.Clear();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -67,10 +65,8 @@ namespace OrderLibrary
             Akun result = null;
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand(@"select * from akun Where username = @username", _conn))
                 {
-                    cmd.Connection = _conn;
-                    cmd.CommandText = @"select * from akun Where username = @username";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", username);
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -105,10 +101,8 @@ namespace OrderLibrary
             bool result = false;
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand(@"select username from akun Where username = @username", _conn))
                 {
-                    cmd.Connection = _conn;
-                    cmd.CommandText = @"select username from akun Where username = @username";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", username);
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -137,11 +131,8 @@ namespace OrderLibrary
             try
             {
                 trans = _conn.BeginTransaction();
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand(@"insert into akun values (@username, @nama, @password, @total, @pict)", _conn, trans))
                 {
-                    cmd.Connection = _conn;
-                    cmd.Transaction = trans; 
-                    cmd.CommandText = @"insert into akun values (@username, @nama, @password, @total, @pict)";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", akun.Username);
                     cmd.Parameters.AddWithValue("@nama", akun.Nama);

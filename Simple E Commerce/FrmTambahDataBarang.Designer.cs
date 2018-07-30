@@ -48,7 +48,7 @@
             // 
             this.btnUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpload.Location = new System.Drawing.Point(391, 79);
-            this.btnUpload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(91, 25);
             this.btnUpload.TabIndex = 33;
@@ -59,7 +59,7 @@
             // pictureBox
             // 
             this.pictureBox.Location = new System.Drawing.Point(213, 36);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(137, 112);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -80,7 +80,7 @@
             // 
             this.btnSimpan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSimpan.Location = new System.Drawing.Point(296, 330);
-            this.btnSimpan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSimpan.Margin = new System.Windows.Forms.Padding(2);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(111, 33);
             this.btnSimpan.TabIndex = 30;
@@ -93,7 +93,7 @@
             this.txtHarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHarga.Location = new System.Drawing.Point(213, 275);
-            this.txtHarga.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHarga.Margin = new System.Windows.Forms.Padding(2);
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(333, 22);
             this.txtHarga.TabIndex = 29;
@@ -103,7 +103,7 @@
             this.txtJumlah.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtJumlah.Location = new System.Drawing.Point(213, 244);
-            this.txtJumlah.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtJumlah.Margin = new System.Windows.Forms.Padding(2);
             this.txtJumlah.Name = "txtJumlah";
             this.txtJumlah.Size = new System.Drawing.Size(333, 22);
             this.txtJumlah.TabIndex = 28;
@@ -113,7 +113,7 @@
             this.txtNamaBarang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNamaBarang.Location = new System.Drawing.Point(213, 210);
-            this.txtNamaBarang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNamaBarang.Margin = new System.Windows.Forms.Padding(2);
             this.txtNamaBarang.Name = "txtNamaBarang";
             this.txtNamaBarang.Size = new System.Drawing.Size(333, 22);
             this.txtNamaBarang.TabIndex = 27;
@@ -123,7 +123,7 @@
             this.txtKodeBarang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKodeBarang.Location = new System.Drawing.Point(213, 178);
-            this.txtKodeBarang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKodeBarang.Margin = new System.Windows.Forms.Padding(2);
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(333, 22);
             this.txtKodeBarang.TabIndex = 26;
@@ -172,7 +172,7 @@
             // 
             this.btnBatal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBatal.Location = new System.Drawing.Point(435, 330);
-            this.btnBatal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBatal.Margin = new System.Windows.Forms.Padding(2);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.Size = new System.Drawing.Size(111, 33);
             this.btnBatal.TabIndex = 34;
@@ -199,7 +199,7 @@
             this.Controls.Add(this.lblNamaBarang);
             this.Controls.Add(this.lblKodeBarang);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmTambahDataBarang";
