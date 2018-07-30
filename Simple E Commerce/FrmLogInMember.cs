@@ -33,6 +33,8 @@ namespace Simple_E_Commerce
                             FrmAdminInterface frm = new FrmAdminInterface(temp);
                             this.Hide();
                             frm.ShowDialog();
+
+                            FrmLogInMember_Load(null, null);
                             this.Show();
                         }
                         else
@@ -40,18 +42,23 @@ namespace Simple_E_Commerce
                             FrmUserInterface frm = new FrmUserInterface(temp);
                             this.Hide();
                             frm.ShowDialog();
+
+                            FrmLogInMember_Load(null, null);
                             this.Show();
                         }
                     }
                     else
                     {
-                        this.lblPasswordError.Visible = true;
+                        throw new Exception();
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.lblAccountError.Visible = true;
+                this.txtUsername.Text = "";
+                this.txtPassword.Text = "";
+                this.txtUsername.Focus();
             }
         }
 
@@ -65,28 +72,11 @@ namespace Simple_E_Commerce
             this.Show();
         }
 
-        private void txtUsername_Leave(object sender, EventArgs e)
-        {
-            using (var dao = new AkunDAO(Setting.GetConnectionString()))
-            {
-                if(!dao.CheckAkunByUsername(this.txtUsername.Text))
-                {
-                    this.lblUsernameError.Visible = true;
-                    this.txtUsername.Focus();
-                }
-                else
-                {
-                    this.lblUsernameError.Visible = false;
-                }
-            }
-        }
-
         private void FrmLogInMember_Load(object sender, EventArgs e)
         {
             this.txtUsername.Text = "";
             this.txtPassword.Text = "";
-            this.lblPasswordError.Visible = false;
-            this.lblUsernameError.Visible = false;
+            this.lblAccountError.Visible = false;
             this.txtUsername.Focus();
         }
     }

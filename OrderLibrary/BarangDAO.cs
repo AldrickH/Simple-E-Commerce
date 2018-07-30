@@ -26,7 +26,7 @@ namespace OrderLibrary
             }
         }
 
-        public List<Barang> GetAllDataBarang()
+        public List<Barang> GetAllDataBarang(Barang brg = null)
         {
             List<Barang> listData = null;
             try
@@ -34,8 +34,19 @@ namespace OrderLibrary
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    cmd.CommandText = @"select * from barang order by kode";
-                  
+                    if (brg == null)
+                    {
+                        cmd.CommandText = @"select * from barang order by kode";
+                    }
+                    else
+                    {
+                        cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and harga like @harga and jumlah like @jumlah order by kode";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
+                        cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
+                        cmd.Parameters.AddWithValue("@harga", $"%{brg.Harga}%");
+                        cmd.Parameters.AddWithValue("@jumlah", $"%{brg.Jumlah}%");
+                    }
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -68,10 +79,8 @@ namespace OrderLibrary
             Barang result = null;
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand(@"select * from barang where kode = @kode", _conn))
                 {
-                    cmd.Connection = _conn;
-                    cmd.CommandText = @"select * from barang where kode = @kode";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@Kode", kode);
 
@@ -107,11 +116,8 @@ namespace OrderLibrary
             try
             {
                 _trans = _conn.BeginTransaction();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = _conn;
-                    cmd.Transaction = _trans;
-                    cmd.CommandText = @"insert into barang values (@kode, @nama, @jumlah, @harga, @gambar)";
+                using (SqlCommand cmd = new SqlCommand(@"insert into barang values (@kode, @nama, @jumlah, @harga, @gambar)", _conn, _trans))
+                { 
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@kode", barang.Kode);
                     cmd.Parameters.AddWithValue("@nama", barang.Nama);
@@ -134,16 +140,35 @@ namespace OrderLibrary
             return result;
         }
 
-        public int DeleteBarang(string kode)
+        public void UpdateQuantity(Barang temp, int qty)
         {
-            int result = 0;
+            int a = temp.Jumlah - qty;
             try
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    cmd.Transaction = _trans;
-                    cmd.CommandText = @"delete barang where kode = @kode";
+                    cmd.CommandText = @"update barang set jumlah = @jumlah where kode = @kode";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@jumlah", a);
+                    cmd.Parameters.AddWithValue("@kode", temp.Kode);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (_trans != null) _trans.Rollback();
+                throw ex;
+            }
+        }
+
+        public int DeleteBarang(string kode)
+        {
+            int result = 0;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(@"delete barang where kode = @kode", _conn))
+                {
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@kode", kode);
                     result = cmd.ExecuteNonQuery();
