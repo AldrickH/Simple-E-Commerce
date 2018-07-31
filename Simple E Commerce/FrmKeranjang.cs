@@ -51,9 +51,9 @@ namespace Simple_E_Commerce
                 {
                     dao.UpdateQuantity(jual.DataBarang, jual.Quantity);
                 }
-                MessageBox.Show("Order telah diproses.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
             }
+            MessageBox.Show("Order telah diproses.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }

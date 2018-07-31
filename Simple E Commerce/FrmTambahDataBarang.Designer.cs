@@ -94,6 +94,7 @@
             this.txtJumlah.Name = "txtJumlah";
             this.txtJumlah.Size = new System.Drawing.Size(498, 31);
             this.txtJumlah.TabIndex = 28;
+            this.txtJumlah.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHarga_KeyPress);
             // 
             // txtNamaBarang
             // 
@@ -103,15 +104,18 @@
             this.txtNamaBarang.Name = "txtNamaBarang";
             this.txtNamaBarang.Size = new System.Drawing.Size(498, 31);
             this.txtNamaBarang.TabIndex = 27;
+            this.txtNamaBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNamaBarang_KeyPress);
             // 
             // txtKodeBarang
             // 
             this.txtKodeBarang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKodeBarang.Location = new System.Drawing.Point(320, 278);
+            this.txtKodeBarang.MaxLength = 4;
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(498, 31);
             this.txtKodeBarang.TabIndex = 26;
+            this.txtKodeBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHarga_KeyPress);
             // 
             // lblHarga
             // 
@@ -194,6 +198,7 @@
             this.Name = "FrmTambahDataBarang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Tambah Data Barang";
+            this.Load += new System.EventHandler(this.FrmTambahDataBarang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

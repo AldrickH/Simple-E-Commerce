@@ -14,10 +14,11 @@ namespace Simple_E_Commerce
 {
     public partial class FrmAdminInterface : Form
     {
-        
+
         Akun admin = null;
         List<Penjualan> listData = null;
-        
+        Barang brg = null;
+
         public FrmAdminInterface(Akun temp)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Simple_E_Commerce
             try
             {
                 this.lblAdmin.Text = admin.Nama;
+                this.pictureBox1.Image = new ImageConverter().ConvertFrom(admin.Pict) as Image;
 
                 using (var dao = new BarangDAO(Setting.GetConnectionString()))
                 {
@@ -61,9 +63,9 @@ namespace Simple_E_Commerce
                             {
                                 jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
                                 jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString(), jual.Quantity.ToString(), jual.Total.ToString()});
-                            }
-                     }
-                 }
+                    }
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -97,6 +99,17 @@ namespace Simple_E_Commerce
             frm.ShowDialog();
             FrmAdminInterface_Load(null, null);
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (this.dgvDataBarang.SelectedRows.Count > 0)
+            {
+                FrmTambahDataBarang frm = new FrmTambahDataBarang();
+                    frm.Run(new BarangDAO(Setting.GetConnectionString()).GetDataBarangByKode(this.dgvDataBarang.CurrentRow.Cells[0].Value.ToString()));                   
+            }
+            FrmAdminInterface_Load(null, null);
+        }
+
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -147,7 +160,5 @@ namespace Simple_E_Commerce
 
             }
         }
-
-        
     }
 }

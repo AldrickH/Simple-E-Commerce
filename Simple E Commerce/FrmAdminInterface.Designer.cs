@@ -35,9 +35,17 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabData = new System.Windows.Forms.TabControl();
             this.tabDataBarang = new System.Windows.Forms.TabPage();
+            this.lblPenghubung2 = new System.Windows.Forms.Label();
+            this.txtHargaMax = new System.Windows.Forms.TextBox();
+            this.txtHargaMin = new System.Windows.Forms.TextBox();
+            this.lblPenghubung = new System.Windows.Forms.Label();
+            this.txtJumlahMax = new System.Windows.Forms.TextBox();
+            this.txtJumlahMin = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtNamaBarang = new System.Windows.Forms.TextBox();
             this.txtKodeBarang = new System.Windows.Forms.TextBox();
+            this.lblHarga = new System.Windows.Forms.Label();
+            this.lblJumlah = new System.Windows.Forms.Label();
             this.lblNamaBarang = new System.Windows.Forms.Label();
             this.dgvDataBarang = new System.Windows.Forms.DataGridView();
             this.clmKodeBarang = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,14 +75,7 @@
             this.clmJumlahBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTambah = new System.Windows.Forms.Button();
-            this.lblJumlah = new System.Windows.Forms.Label();
-            this.lblHarga = new System.Windows.Forms.Label();
-            this.txtJumlahMin = new System.Windows.Forms.TextBox();
-            this.txtJumlahMax = new System.Windows.Forms.TextBox();
-            this.lblPenghubung = new System.Windows.Forms.Label();
-            this.lblPenghubung2 = new System.Windows.Forms.Label();
-            this.txtHargaMax = new System.Windows.Forms.TextBox();
-            this.txtHargaMin = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.gbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabData.SuspendLayout();
@@ -133,6 +134,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(69, 59);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(202, 209);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -176,6 +178,60 @@
             this.tabDataBarang.Text = "Data Barang";
             this.tabDataBarang.UseVisualStyleBackColor = true;
             // 
+            // lblPenghubung2
+            // 
+            this.lblPenghubung2.AutoSize = true;
+            this.lblPenghubung2.Location = new System.Drawing.Point(669, 230);
+            this.lblPenghubung2.Name = "lblPenghubung2";
+            this.lblPenghubung2.Size = new System.Drawing.Size(19, 25);
+            this.lblPenghubung2.TabIndex = 15;
+            this.lblPenghubung2.Text = "-";
+            // 
+            // txtHargaMax
+            // 
+            this.txtHargaMax.Location = new System.Drawing.Point(711, 230);
+            this.txtHargaMax.Name = "txtHargaMax";
+            this.txtHargaMax.Size = new System.Drawing.Size(300, 31);
+            this.txtHargaMax.TabIndex = 14;
+            this.txtHargaMax.Text = "Max";
+            this.txtHargaMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtHargaMin
+            // 
+            this.txtHargaMin.Location = new System.Drawing.Point(349, 230);
+            this.txtHargaMin.Name = "txtHargaMin";
+            this.txtHargaMin.Size = new System.Drawing.Size(300, 31);
+            this.txtHargaMin.TabIndex = 13;
+            this.txtHargaMin.Text = "Min";
+            this.txtHargaMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblPenghubung
+            // 
+            this.lblPenghubung.AutoSize = true;
+            this.lblPenghubung.Location = new System.Drawing.Point(669, 167);
+            this.lblPenghubung.Name = "lblPenghubung";
+            this.lblPenghubung.Size = new System.Drawing.Size(19, 25);
+            this.lblPenghubung.TabIndex = 12;
+            this.lblPenghubung.Text = "-";
+            // 
+            // txtJumlahMax
+            // 
+            this.txtJumlahMax.Location = new System.Drawing.Point(711, 167);
+            this.txtJumlahMax.Name = "txtJumlahMax";
+            this.txtJumlahMax.Size = new System.Drawing.Size(300, 31);
+            this.txtJumlahMax.TabIndex = 11;
+            this.txtJumlahMax.Text = "Max";
+            this.txtJumlahMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtJumlahMin
+            // 
+            this.txtJumlahMin.Location = new System.Drawing.Point(349, 167);
+            this.txtJumlahMin.Name = "txtJumlahMin";
+            this.txtJumlahMin.Size = new System.Drawing.Size(300, 31);
+            this.txtJumlahMin.TabIndex = 10;
+            this.txtJumlahMin.Text = "Min";
+            this.txtJumlahMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -207,6 +263,26 @@
             this.txtKodeBarang.Size = new System.Drawing.Size(650, 31);
             this.txtKodeBarang.TabIndex = 5;
             this.txtKodeBarang.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
+            // 
+            // lblHarga
+            // 
+            this.lblHarga.AutoSize = true;
+            this.lblHarga.Location = new System.Drawing.Point(72, 230);
+            this.lblHarga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHarga.Name = "lblHarga";
+            this.lblHarga.Size = new System.Drawing.Size(70, 25);
+            this.lblHarga.TabIndex = 4;
+            this.lblHarga.Text = "Harga";
+            // 
+            // lblJumlah
+            // 
+            this.lblJumlah.AutoSize = true;
+            this.lblJumlah.Location = new System.Drawing.Point(72, 173);
+            this.lblJumlah.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblJumlah.Name = "lblJumlah";
+            this.lblJumlah.Size = new System.Drawing.Size(81, 25);
+            this.lblJumlah.TabIndex = 3;
+            this.lblJumlah.Text = "Jumlah";
             // 
             // lblNamaBarang
             // 
@@ -498,85 +574,23 @@
             this.btnTambah.UseVisualStyleBackColor = true;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
-            // lblJumlah
+            // btnEdit
             // 
-            this.lblJumlah.AutoSize = true;
-            this.lblJumlah.Location = new System.Drawing.Point(72, 173);
-            this.lblJumlah.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblJumlah.Name = "lblJumlah";
-            this.lblJumlah.Size = new System.Drawing.Size(81, 25);
-            this.lblJumlah.TabIndex = 3;
-            this.lblJumlah.Text = "Jumlah";
-            // 
-            // lblHarga
-            // 
-            this.lblHarga.AutoSize = true;
-            this.lblHarga.Location = new System.Drawing.Point(72, 230);
-            this.lblHarga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblHarga.Name = "lblHarga";
-            this.lblHarga.Size = new System.Drawing.Size(70, 25);
-            this.lblHarga.TabIndex = 4;
-            this.lblHarga.Text = "Harga";
-            // 
-            // txtJumlahMin
-            // 
-            this.txtJumlahMin.Location = new System.Drawing.Point(349, 167);
-            this.txtJumlahMin.Name = "txtJumlahMin";
-            this.txtJumlahMin.Size = new System.Drawing.Size(300, 31);
-            this.txtJumlahMin.TabIndex = 10;
-            this.txtJumlahMin.Text = "Min";
-            this.txtJumlahMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtJumlahMax
-            // 
-            this.txtJumlahMax.Location = new System.Drawing.Point(711, 167);
-            this.txtJumlahMax.Name = "txtJumlahMax";
-            this.txtJumlahMax.Size = new System.Drawing.Size(300, 31);
-            this.txtJumlahMax.TabIndex = 11;
-            this.txtJumlahMax.Text = "Max";
-            this.txtJumlahMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblPenghubung
-            // 
-            this.lblPenghubung.AutoSize = true;
-            this.lblPenghubung.Location = new System.Drawing.Point(669, 167);
-            this.lblPenghubung.Name = "lblPenghubung";
-            this.lblPenghubung.Size = new System.Drawing.Size(19, 25);
-            this.lblPenghubung.TabIndex = 12;
-            this.lblPenghubung.Text = "-";
-            // 
-            // lblPenghubung2
-            // 
-            this.lblPenghubung2.AutoSize = true;
-            this.lblPenghubung2.Location = new System.Drawing.Point(669, 230);
-            this.lblPenghubung2.Name = "lblPenghubung2";
-            this.lblPenghubung2.Size = new System.Drawing.Size(19, 25);
-            this.lblPenghubung2.TabIndex = 15;
-            this.lblPenghubung2.Text = "-";
-            // 
-            // txtHargaMax
-            // 
-            this.txtHargaMax.Location = new System.Drawing.Point(711, 230);
-            this.txtHargaMax.Name = "txtHargaMax";
-            this.txtHargaMax.Size = new System.Drawing.Size(300, 31);
-            this.txtHargaMax.TabIndex = 14;
-            this.txtHargaMax.Text = "Max";
-            this.txtHargaMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtHargaMin
-            // 
-            this.txtHargaMin.Location = new System.Drawing.Point(349, 230);
-            this.txtHargaMin.Name = "txtHargaMin";
-            this.txtHargaMin.Size = new System.Drawing.Size(300, 31);
-            this.txtHargaMin.TabIndex = 13;
-            this.txtHargaMin.Text = "Min";
-            this.txtHargaMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnEdit.Location = new System.Drawing.Point(83, 706);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(273, 81);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Text = "Edit Data";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // FrmAdminInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1808, 1018);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnTambah);
             this.Controls.Add(this.gbAdmin);
             this.Controls.Add(this.tabData);
@@ -651,5 +665,6 @@
         private System.Windows.Forms.TextBox txtJumlahMin;
         private System.Windows.Forms.Label lblHarga;
         private System.Windows.Forms.Label lblJumlah;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

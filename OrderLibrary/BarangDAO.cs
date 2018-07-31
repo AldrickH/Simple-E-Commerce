@@ -162,6 +162,40 @@ namespace OrderLibrary
             }
         }
 
+        public int UpdateBarang(Barang barang)
+        {
+            int result = 0;
+            SqlTransaction trans = null;
+            try
+            {
+                trans = _conn.BeginTransaction();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.Transaction = trans;
+                    cmd.CommandText = @"update barang set nama = @nama, jumlah = @jumlah , harga = @harga, gambar = @gambar where kode = @kode";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@kode", barang.Kode);
+                    cmd.Parameters.AddWithValue("@nama", barang.Nama);
+                    cmd.Parameters.AddWithValue("@jumlah", barang.Jumlah);
+                    cmd.Parameters.AddWithValue("@harga", barang.Harga);
+                    cmd.Parameters.AddWithValue("@gambar", barang.Gambar);
+                    result = cmd.ExecuteNonQuery();
+                }
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (trans != null) trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (trans != null) trans.Dispose();
+            }
+            return result;
+        }
+
         public int DeleteBarang(string kode)
         {
             int result = 0;
