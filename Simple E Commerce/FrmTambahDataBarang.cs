@@ -13,12 +13,12 @@ namespace Simple_E_Commerce
 {
     public partial class FrmTambahDataBarang : Form
     {
+        bool _result = false;
+
         public FrmTambahDataBarang()
         {
             InitializeComponent();
         }
-
-        bool _result = false;
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
@@ -82,7 +82,7 @@ namespace Simple_E_Commerce
             this.Close();
         }
 
-        private void txtHarga_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtAngka_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
@@ -92,8 +92,20 @@ namespace Simple_E_Commerce
 
         private void txtHarga_TextChanged(object sender, EventArgs e)
         {
-            txtHarga.Text = string.Format("{0:n0}", double.Parse(txtHarga.Text));
-            this.txtHarga.Select(txtHarga.Text.Length, 0);
+            if (this.txtHarga.Text != "")
+            {
+                this.txtHarga.Text = string.Format("{0:n0}", double.Parse(this.txtHarga.Text));
+                this.txtHarga.Select(this.txtHarga.Text.Length, 0);
+            }
+        }
+
+        private void txtJumlah_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtJumlah.Text != "")
+            {
+                this.txtJumlah.Text = string.Format("{0:n0}", double.Parse(this.txtJumlah.Text));
+                this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
+            }
         }
     }
 }
