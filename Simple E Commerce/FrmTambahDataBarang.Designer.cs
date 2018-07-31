@@ -87,6 +87,7 @@
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(333, 22);
             this.txtHarga.TabIndex = 29;
+            this.txtHarga.TextChanged += new System.EventHandler(this.txtHarga_TextChanged);
             this.txtHarga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             // 
             // txtJumlah
@@ -98,6 +99,7 @@
             this.txtJumlah.Name = "txtJumlah";
             this.txtJumlah.Size = new System.Drawing.Size(333, 22);
             this.txtJumlah.TabIndex = 28;
+            this.txtJumlah.TextChanged += new System.EventHandler(this.txtJumlah_TextChanged);
             this.txtJumlah.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             // 
             // txtNamaBarang

@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace OrderLibrary 
+namespace OrderLibrary
 {
     public class PenjualanDAO : IDisposable
     {
         SqlConnection _conn = null;
         SqlTransaction _trans = null;
 
-        public PenjualanDAO(string connectionString) 
+        public PenjualanDAO(string connectionString)
         {
             try
             {
@@ -33,11 +33,11 @@ namespace OrderLibrary
                 using (SqlCommand cmd = new SqlCommand(@"Select Top 1 NoOrder from Penjualan order by NoOrder desc", _conn))
                 {
                     cmd.Parameters.Clear();
-                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        if(reader.HasRows)
+                        if (reader.HasRows)
                         {
-                            if(reader.Read())
+                            if (reader.Read())
                             {
                                 result = reader["NoOrder"].ToString();
                             }
@@ -92,27 +92,24 @@ namespace OrderLibrary
             return result;
         }
 
-        public List<Penjualan> SejarahPenjualan(Akun akun, string connString) 
+        public List<Penjualan> SejarahPenjualan(Akun akun, string connString)
         {
             List<Penjualan> listSejarahPenjualan = null;
-             
+            string sqlString = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from
+                                            penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode";
             try
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    if (akun.Username.Equals("admin"))
+                    if (!akun.Username.Equals("admin"))
                     {
-                        cmd.CommandText = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from
-                                            penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode";                                        
-                    } else
-                    {
-                        cmd.CommandText = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from
-                                            penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode
-                                            where p.username = @username";
-                        cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@username", akun.Username);
+                        sqlString += " where p.username = @username";
                     }
+
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@username", akun.Username);
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         listSejarahPenjualan = new List<Penjualan>();
@@ -142,7 +139,7 @@ namespace OrderLibrary
         }
 
         public void Dispose()
-         {
+        {
             if (_conn != null) _conn.Close();
         }
     }

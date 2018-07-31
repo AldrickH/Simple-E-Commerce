@@ -77,7 +77,7 @@ namespace Simple_E_Commerce
                     {
                         Kode = this.txtKodeBarang.Text.Trim(),
                         Nama = this.txtNamaBarang.Text.Trim(),
-                        Jumlah = Convert.ToInt32(txtJumlah.Text.Trim()),
+                        Jumlah = int.Parse(txtJumlah.Text.Trim(), System.Globalization.NumberStyles.AllowThousands ),
                         Harga = Convert.ToDecimal(txtHarga.Text.Trim()),
                         Gambar = new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])) as byte[]
                     };
@@ -116,23 +116,25 @@ namespace Simple_E_Commerce
             }
         }
 
-        //private void txtHarga_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (this.txtHarga.Text != "")
-        //    {
-        //        this.txtHarga.Text = string.Format("{0:n0}", double.Parse(this.txtHarga.Text));
-        //        this.txtHarga.Select(this.txtHarga.Text.Length, 0);
-        //    }
-        //}
+        private void txtHarga_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtHarga.Text != "")
+            {
+                this.txtHarga.Text = Convert.ToDecimal(this.txtHarga.Text).ToString("n0");
+                this.txtHarga.SelectionStart = this.txtHarga.Text.Length;
+                //this.txtHarga.Text = string.Format("{0:n0}", double.Parse(this.txtHarga.Text));
+                //this.txtHarga.Select(this.txtHarga.Text.Length, 0);
+            }
+        }
 
-        //private void txtJumlah_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (this.txtJumlah.Text != "")
-        //    {
-        //        this.txtJumlah.Text = string.Format("{0:n0}", double.Parse(this.txtJumlah.Text));
-        //        this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
-        //    }
-        //}
+        private void txtJumlah_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtJumlah.Text != "")
+            {
+                this.txtJumlah.Text = string.Format("{0:n0}", double.Parse(this.txtJumlah.Text));
+                this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
+            }
+        }
 
     }
 }
