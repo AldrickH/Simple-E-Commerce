@@ -36,11 +36,8 @@ namespace OrderLibrary
                 {
                     cmd.Connection = _conn;
                     if (brg != null)
-                    {
-                        sqlString += " where";
-
-                        if (brg.Kode != "") sqlString += " kode like @kode";
-                        if (brg.Nama != "") sqlString += " nama like @nama";
+                    { 
+                        sqlString += " where kode like @kode and nama like @nama";
 
                         if (jumlahMIN > 0 && jumlahMAX == 0) sqlString += " and jumlah >= @jumlahMIN";
                         else if (jumlahMAX > 0 && jumlahMIN == 0) sqlString += " and jumlah <= @jumlahMAX";
@@ -56,19 +53,18 @@ namespace OrderLibrary
                     cmd.Parameters.Clear();
                     if (brg != null)
                     {
-                        if (brg.Kode != "") cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
-                        if (brg.Nama != "") cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
+                        cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
+                        cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
+                        if (jumlahMIN > 0) cmd.Parameters.AddWithValue("@jumlahMIN", jumlahMIN);
+                        if (jumlahMAX > 0) cmd.Parameters.AddWithValue("@jumlahMAX", jumlahMAX);
+                        if (hargaMIN > 0) cmd.Parameters.AddWithValue("@hargaMIN", hargaMIN);
+                        if (hargaMAX > 0) cmd.Parameters.AddWithValue("@hargaMAX", hargaMAX);
                     }
-                    if (jumlahMIN > 0) cmd.Parameters.AddWithValue("@jumlahMIN", jumlahMIN);
-                    if (jumlahMAX > 0) cmd.Parameters.AddWithValue("@jumlahMAX", jumlahMAX);
-                    if (hargaMIN > 0) cmd.Parameters.AddWithValue("@hargaMIN", hargaMIN);
-                    if (hargaMAX > 0) cmd.Parameters.AddWithValue("@hargaMAX", hargaMAX);
-
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
+                        listData = new List<Barang>();
                         if (reader.HasRows)
                         {
-                            listData = new List<Barang>();
                             while (reader.Read())
                             {
                                 listData.Add(new Barang
