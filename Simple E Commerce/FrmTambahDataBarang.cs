@@ -116,23 +116,23 @@ namespace Simple_E_Commerce
             }
         }
 
-        private void txtHarga_TextChanged(object sender, EventArgs e)
-        {
-            if (this.txtHarga.Text != "")
-            {
-                this.txtHarga.Text = string.Format("{0:n0}", double.Parse(this.txtHarga.Text));
-                this.txtHarga.Select(this.txtHarga.Text.Length, 0);
-            }
-        }
+        //private void txtHarga_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (this.txtHarga.Text != "")
+        //    {
+        //        this.txtHarga.Text = string.Format("{0:n0}", double.Parse(this.txtHarga.Text));
+        //        this.txtHarga.Select(this.txtHarga.Text.Length, 0);
+        //    }
+        //}
 
-        private void txtJumlah_TextChanged(object sender, EventArgs e)
-        {
-            if (this.txtJumlah.Text != "")
-            {
-                this.txtJumlah.Text = string.Format("{0:n0}", double.Parse(this.txtJumlah.Text));
-                this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
-            }
-        }
+        //private void txtJumlah_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (this.txtJumlah.Text != "")
+        //    {
+        //        this.txtJumlah.Text = string.Format("{0:n0}", double.Parse(this.txtJumlah.Text));
+        //        this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
+        //    }
+        //}
 
     }
 }

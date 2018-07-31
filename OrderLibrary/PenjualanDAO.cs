@@ -115,9 +115,9 @@ namespace OrderLibrary
                     }
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
+                        listSejarahPenjualan = new List<Penjualan>();
                         if (reader.HasRows)
                         {
-                            listSejarahPenjualan = new List<Penjualan>();
                             while (reader.Read())
                             {
                                 listSejarahPenjualan.Add(new Penjualan
