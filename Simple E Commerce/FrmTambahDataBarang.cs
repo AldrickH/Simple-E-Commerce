@@ -13,13 +13,35 @@ namespace Simple_E_Commerce
 {
     public partial class FrmTambahDataBarang : Form
     {
+        Barang brg = null;
+        bool _result = false;
+
         public FrmTambahDataBarang()
         {
             InitializeComponent();
         }
 
-        bool _result = false;
+        public bool Run(Barang temp = null)
+        {
+            brg = temp;
+            this.ShowDialog();
+            return _result;
+        }
 
+
+        private void FrmTambahDataBarang_Load(object sender, EventArgs e)
+        {
+            if (brg != null)
+            {
+                this.pictureBox.Image = new ImageConverter().ConvertFrom(brg.Gambar) as Image;
+                this.txtKodeBarang.Text = brg.Kode;
+                this.txtKodeBarang.Enabled = false;
+                this.txtNamaBarang.Text = brg.Nama;
+                this.txtJumlah.Text = Convert.ToInt32(brg.Jumlah).ToString();
+                this.txtHarga.Text = Convert.ToDecimal(brg.Harga).ToString();
+            }
+        }
+        
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             if (this.txtKodeBarang.Text.Trim() == "")
@@ -55,10 +77,14 @@ namespace Simple_E_Commerce
                     {
                         Kode = this.txtKodeBarang.Text.Trim(),
                         Nama = this.txtNamaBarang.Text.Trim(),
-                        Jumlah = Convert.ToInt32(txtJumlah.Text.Trim()),
+                        Jumlah = int.Parse(txtJumlah.Text.Trim(), System.Globalization.NumberStyles.AllowThousands ),
                         Harga = Convert.ToDecimal(txtHarga.Text.Trim()),
                         Gambar = new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])) as byte[]
                     };
+
+                    if (brg != null)
+                    _result = new BarangDAO(Setting.GetConnectionString()).UpdateBarang(barang) > 0;
+                    else
                     _result = new BarangDAO(Setting.GetConnectionString()).AddBarang(barang) > 0;
                     this.Close();
                 }
@@ -82,7 +108,7 @@ namespace Simple_E_Commerce
             this.Close();
         }
 
-        private void txtHarga_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtAngka_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
@@ -92,8 +118,23 @@ namespace Simple_E_Commerce
 
         private void txtHarga_TextChanged(object sender, EventArgs e)
         {
-            txtHarga.Text = string.Format("{0:n0}", double.Parse(txtHarga.Text));
-            this.txtHarga.Select(txtHarga.Text.Length, 0);
+            if (this.txtHarga.Text != "")
+            {
+                this.txtHarga.Text = Convert.ToDecimal(this.txtHarga.Text).ToString("n0");
+                this.txtHarga.SelectionStart = this.txtHarga.Text.Length;
+                //this.txtHarga.Text = string.Format("{0:n0}", double.Parse(this.txtHarga.Text));
+                //this.txtHarga.Select(this.txtHarga.Text.Length, 0);
+            }
         }
+
+        private void txtJumlah_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtJumlah.Text != "")
+            {
+                this.txtJumlah.Text = string.Format("{0:n0}", double.Parse(this.txtJumlah.Text));
+                this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
+            }
+        }
+
     }
 }

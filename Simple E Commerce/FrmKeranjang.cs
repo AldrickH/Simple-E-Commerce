@@ -42,16 +42,27 @@ namespace Simple_E_Commerce
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            foreach (Penjualan jual in listPenjualan)
+            if (MessageBox.Show("Apakah anda yakin membeli barang ini ?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
-
-                MessageBox.Show(jual.DataBarang.Kode);
-                using (var dao = new BarangDAO(Setting.GetConnectionString()))
+                foreach (Penjualan jual in listPenjualan)
                 {
-                    dao.UpdateQuantity(jual.DataBarang, jual.Quantity);
+                    _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
+
+                    using (var dao = new BarangDAO(Setting.GetConnectionString()))
+                    {
+                        dao.UpdateQuantity(jual.DataBarang, jual.Quantity);
+                    }
+
+                    using (var dao = new AkunDAO(Setting.GetConnectionString()))
+                    {
+                        dao.UpdateTotal(jual.DataAkun, jual.Total);
+                    }
                 }
                 MessageBox.Show("Order telah diproses.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
                 this.Close();
             }
         }
