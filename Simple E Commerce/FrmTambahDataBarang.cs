@@ -116,7 +116,7 @@ namespace Simple_E_Commerce
             }
         }
 
-        private void txtNamaBarang_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtHarga_TextChanged(object sender, EventArgs e)
         {
             if (this.txtHarga.Text != "")
             {
