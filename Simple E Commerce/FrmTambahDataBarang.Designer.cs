@@ -111,7 +111,6 @@
             this.txtNamaBarang.Name = "txtNamaBarang";
             this.txtNamaBarang.Size = new System.Drawing.Size(333, 22);
             this.txtNamaBarang.TabIndex = 27;
-            this.txtNamaBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNamaBarang_KeyPress);
             // 
             // txtKodeBarang
             // 
@@ -122,7 +121,6 @@
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(333, 22);
             this.txtKodeBarang.TabIndex = 26;
-            this.txtKodeBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHarga_KeyPress);
             // 
             // lblHarga
             // 

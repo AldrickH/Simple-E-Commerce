@@ -165,6 +165,11 @@ namespace Simple_E_Commerce
             this.dgvDataBarang.Columns[3].DataPropertyName = nameof(Barang.Harga);
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
