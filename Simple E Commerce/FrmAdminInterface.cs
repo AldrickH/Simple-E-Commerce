@@ -62,7 +62,7 @@ namespace Simple_E_Commerce
                         this.dgvDataOrder.Rows.Add(new string[]
                             {
                                 jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
-                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString(), jual.Quantity.ToString(), jual.Total.ToString()});
+                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});     
                     }
                 }
             }
@@ -133,32 +133,39 @@ namespace Simple_E_Commerce
 
         private void txtKodeBarang_Leave(object sender, EventArgs e)
         {
-            using (
-                var dao = new BarangDAO(Setting.GetConnectionString())) {
-                decimal harga = 0;
-                int jumlah = 0;
-                //decimal.TryParse(this.txtHarga.Text.Trim(), out harga);
-                //int.TryParse(this.txtJumlah.Text.Trim(), out jumlah);
-
-                MessageBox.Show($"{this.txtKodeBarang.Text} + {harga.ToString()}");
-
-                this.dgvDataBarang.DataSource = null;
-                this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
+            this.dgvDataBarang.DataSource = null;
+            using (var dao = new BarangDAO(Setting.GetConnectionString()))
+            {
+                if (this.txtJumlahMin.Text != "" && this.txtJumlahMax.Text == "")
                 {
-                    Nama = this.txtNamaBarang.Text.Trim(),
-                    Kode = this.txtKodeBarang.Text.Trim(),
-                    Harga = harga,
-                    Jumlah = jumlah,
-                    Gambar = null
-
-                });
-
-                this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
-                this.dgvDataBarang.Columns[1].DataPropertyName = nameof(Barang.Nama);
-                this.dgvDataBarang.Columns[2].DataPropertyName = nameof(Barang.Jumlah);
-                this.dgvDataBarang.Columns[3].DataPropertyName = nameof(Barang.Jumlah);
-
+                    this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
+                    {
+                        Nama = this.txtNamaBarang.Text.Trim(),
+                        Kode = this.txtKodeBarang.Text.Trim(),
+                        Gambar = null,
+                        Harga = 0,
+                        Jumlah = 0,
+                    }, int.Parse(this.txtJumlahMin.Text));
+                } else if (this.txtJumlahMin.Text != "" && this.txtJumlahMax.Text != "")
+                {
+                    this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
+                    {
+                        Nama = this.txtNamaBarang.Text.Trim(),
+                        Kode = this.txtKodeBarang.Text.Trim(),
+                        Gambar = null,
+                        Harga = 0,
+                        Jumlah = 0,
+                    }, int.Parse(this.txtJumlahMin.Text), int.Parse(this.txtJumlahMax.Text));
+                }
             }
+
+            this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
+            this.dgvDataBarang.Columns[1].DataPropertyName = nameof(Barang.Nama);
+            this.dgvDataBarang.Columns[2].DataPropertyName = nameof(Barang.Jumlah);
+            this.dgvDataBarang.Columns[3].DataPropertyName = nameof(Barang.Harga);
+
         }
     }
+
+
 }

@@ -124,6 +124,24 @@ namespace OrderLibrary
             return result;
         }
 
+        public void UpdateTotal(Akun temp, decimal total)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(@"update akun set total = @total where username = @username", _conn))
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@total", temp.Total += total);
+                    cmd.Parameters.AddWithValue("@username", temp.Username);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int AddAkun (Akun akun)
         {
             int result = 0;
