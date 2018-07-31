@@ -95,8 +95,7 @@ namespace OrderLibrary
         public List<Penjualan> SejarahPenjualan(Akun akun, string connString)
         {
             List<Penjualan> listSejarahPenjualan = null;
-            string sqlString = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from
-                                            penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode";
+            string sqlString = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode";
             try
             {
                 using (SqlCommand cmd = new SqlCommand())
@@ -107,6 +106,7 @@ namespace OrderLibrary
                         sqlString += " where p.username = @username";
                     }
 
+                    cmd.CommandText = sqlString;
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", akun.Username);
 

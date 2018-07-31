@@ -14,6 +14,7 @@ namespace Simple_E_Commerce
     public partial class FrmUserInterface : Form
     {
         List<Penjualan> listPenjualan = null;
+        List<Barang> listBarang = null;
         Akun user = null;
 
         public FrmUserInterface(Akun temp)
@@ -78,12 +79,15 @@ namespace Simple_E_Commerce
 
                 using (var dao = new BarangDAO(Setting.GetConnectionString()))
                 {
-                    List<Barang> listBarang = dao.GetAllDataBarang();
-
-                    foreach (var brg in listBarang)
+                    if (dao.GetAllDataBarang().Capacity > 0)
                     {
-                        CustomCntrlBrg custom = new CustomCntrlBrg(brg);
-                        this.flowLayoutPnl.Controls.Add(custom);
+                        listBarang = dao.GetAllDataBarang();
+
+                        foreach (var brg in listBarang)
+                        {
+                            CustomCntrlBrg custom = new CustomCntrlBrg(brg);
+                            this.flowLayoutPnl.Controls.Add(custom);
+                        }
                     }
                 }
             }
