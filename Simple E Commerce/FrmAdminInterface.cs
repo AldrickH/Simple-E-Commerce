@@ -17,6 +17,7 @@ namespace Simple_E_Commerce
 
         Akun admin = null;
         List<Penjualan> listData = null;
+        Barang brg = null;
 
         public FrmAdminInterface(Akun temp)
         {
@@ -30,6 +31,7 @@ namespace Simple_E_Commerce
             try
             {
                 this.lblAdmin.Text = admin.Nama;
+                this.pictureBox1.Image = new ImageConverter().ConvertFrom(admin.Pict) as Image;
 
                 using (var dao = new BarangDAO(Setting.GetConnectionString()))
                 {
@@ -60,7 +62,7 @@ namespace Simple_E_Commerce
                         this.dgvDataOrder.Rows.Add(new string[]
                             {
                                 jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
-                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});
+                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});     
                     }
                 }
             }
@@ -97,6 +99,17 @@ namespace Simple_E_Commerce
             frm.ShowDialog();
             FrmAdminInterface_Load(null, null);
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (this.dgvDataBarang.SelectedRows.Count > 0)
+            {
+                FrmTambahDataBarang frm = new FrmTambahDataBarang();
+                    frm.Run(new BarangDAO(Setting.GetConnectionString()).GetDataBarangByKode(this.dgvDataBarang.CurrentRow.Cells[0].Value.ToString()));                   
+            }
+            FrmAdminInterface_Load(null, null);
+        }
+
 
         private void btnLogout_Click(object sender, EventArgs e)
         {

@@ -56,9 +56,8 @@ namespace Simple_E_Commerce
                     using (var dao = new AkunDAO(Setting.GetConnectionString()))
                     {
                         dao.UpdateTotal(jual.DataAkun, jual.Total);
+                    }
                 }
-                }
-
                 MessageBox.Show("Order telah diproses.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

@@ -95,6 +95,10 @@
             // 
             // flowLayoutPnl
             // 
+            this.flowLayoutPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPnl.AutoScroll = true;
             this.flowLayoutPnl.Location = new System.Drawing.Point(54, 286);
             this.flowLayoutPnl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flowLayoutPnl.Name = "flowLayoutPnl";

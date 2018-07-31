@@ -111,6 +111,7 @@
             this.txtNamaBarang.Name = "txtNamaBarang";
             this.txtNamaBarang.Size = new System.Drawing.Size(333, 22);
             this.txtNamaBarang.TabIndex = 27;
+            this.txtNamaBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNamaBarang_KeyPress);
             // 
             // txtKodeBarang
             // 
@@ -121,6 +122,7 @@
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(333, 22);
             this.txtKodeBarang.TabIndex = 26;
+            this.txtKodeBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHarga_KeyPress);
             // 
             // lblHarga
             // 
@@ -210,6 +212,7 @@
             this.Name = "FrmTambahDataBarang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Tambah Data Barang";
+            this.Load += new System.EventHandler(this.FrmTambahDataBarang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

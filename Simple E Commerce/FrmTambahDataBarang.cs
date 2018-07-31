@@ -13,6 +13,7 @@ namespace Simple_E_Commerce
 {
     public partial class FrmTambahDataBarang : Form
     {
+        Barang brg = null;
         bool _result = false;
 
         public FrmTambahDataBarang()
@@ -20,6 +21,27 @@ namespace Simple_E_Commerce
             InitializeComponent();
         }
 
+        public bool Run(Barang temp = null)
+        {
+            brg = temp;
+            this.ShowDialog();
+            return _result;
+        }
+
+
+        private void FrmTambahDataBarang_Load(object sender, EventArgs e)
+        {
+            if (brg != null)
+            {
+                this.pictureBox.Image = new ImageConverter().ConvertFrom(brg.Gambar) as Image;
+                this.txtKodeBarang.Text = brg.Kode;
+                this.txtKodeBarang.Enabled = false;
+                this.txtNamaBarang.Text = brg.Nama;
+                this.txtJumlah.Text = Convert.ToInt32(brg.Jumlah).ToString();
+                this.txtHarga.Text = Convert.ToDecimal(brg.Harga).ToString();
+            }
+        }
+        
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             if (this.txtKodeBarang.Text.Trim() == "")
@@ -59,6 +81,10 @@ namespace Simple_E_Commerce
                         Harga = Convert.ToDecimal(txtHarga.Text.Trim()),
                         Gambar = new ImageConverter().ConvertTo(pictureBox.Image, typeof(byte[])) as byte[]
                     };
+
+                    if (brg != null)
+                    _result = new BarangDAO(Setting.GetConnectionString()).UpdateBarang(barang) > 0;
+                    else
                     _result = new BarangDAO(Setting.GetConnectionString()).AddBarang(barang) > 0;
                     this.Close();
                 }
@@ -90,7 +116,7 @@ namespace Simple_E_Commerce
             }
         }
 
-        private void txtHarga_TextChanged(object sender, EventArgs e)
+        private void txtNamaBarang_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (this.txtHarga.Text != "")
             {
@@ -107,5 +133,6 @@ namespace Simple_E_Commerce
                 this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
             }
         }
+
     }
 }
