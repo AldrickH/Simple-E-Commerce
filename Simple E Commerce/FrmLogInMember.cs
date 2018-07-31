@@ -79,5 +79,13 @@ namespace Simple_E_Commerce
             this.lblAccountError.Visible = false;
             this.txtUsername.Focus();
         }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

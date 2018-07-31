@@ -26,7 +26,7 @@ namespace OrderLibrary
             }
         }
 
-        public List<Barang> GetAllDataBarang(Barang brg = null)
+        public List<Barang> GetAllDataBarang(Barang brg = null, int jumlahMIN = 0, int jumlahMAX = 0, int hargaMIN = 0, int hargaMAX = 0)
         {
             List<Barang> listData = null;
             try
@@ -40,12 +40,23 @@ namespace OrderLibrary
                     }
                     else
                     {
-                        cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and harga like @harga and jumlah like @jumlah order by kode";
+                        if (jumlahMIN > 0 && jumlahMAX == 0)
+                        {
+                            cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah >= @jumlahMIN order by kode";
+                        }
+                        else if (jumlahMAX > 0 && jumlahMIN == 0)
+                        {
+                            cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah <= @jumlahMAX order by kode";
+                        }
+                        else if (jumlahMIN > 0 && jumlahMAX > 0)
+                        {
+                            cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah between @jumlahMIN and @jumlahMAX order by kode";
+                        }
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
                         cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
-                        cmd.Parameters.AddWithValue("@harga", $"%{brg.Harga}%");
-                        cmd.Parameters.AddWithValue("@jumlah", $"%{brg.Jumlah}%");
+                        cmd.Parameters.AddWithValue("@jumlahMIN", jumlahMIN);
+                        cmd.Parameters.AddWithValue("@jumlahMAX", jumlahMAX);
                     }
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -160,6 +171,40 @@ namespace OrderLibrary
                 if (_trans != null) _trans.Rollback();
                 throw ex;
             }
+        }
+
+        public int UpdateBarang(Barang barang)
+        {
+            int result = 0;
+            SqlTransaction trans = null;
+            try
+            {
+                trans = _conn.BeginTransaction();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = _conn;
+                    cmd.Transaction = trans;
+                    cmd.CommandText = @"update barang set nama = @nama, jumlah = @jumlah , harga = @harga, gambar = @gambar where kode = @kode";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@kode", barang.Kode);
+                    cmd.Parameters.AddWithValue("@nama", barang.Nama);
+                    cmd.Parameters.AddWithValue("@jumlah", barang.Jumlah);
+                    cmd.Parameters.AddWithValue("@harga", barang.Harga);
+                    cmd.Parameters.AddWithValue("@gambar", barang.Gambar);
+                    result = cmd.ExecuteNonQuery();
+                }
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (trans != null) trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (trans != null) trans.Dispose();
+            }
+            return result;
         }
 
         public int DeleteBarang(string kode)
