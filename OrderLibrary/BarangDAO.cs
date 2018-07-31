@@ -29,35 +29,41 @@ namespace OrderLibrary
         public List<Barang> GetAllDataBarang(Barang brg = null, int jumlahMIN = 0, int jumlahMAX = 0, int hargaMIN = 0, int hargaMAX = 0)
         {
             List<Barang> listData = null;
+            string sqlString = @"select * from barang";
             try
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    if (brg == null)
+                    if (brg != null)
                     {
-                        cmd.CommandText = @"select * from barang order by kode";
+                        sqlString += " where";
+
+                        if (brg.Kode != "") sqlString += " kode like @kode";
+                        if (brg.Nama != "") sqlString += " nama like @nama";
+
+                        if (jumlahMIN > 0 && jumlahMAX == 0) sqlString += " and jumlah >= @jumlahMIN";
+                        else if (jumlahMAX > 0 && jumlahMIN == 0) sqlString += " and jumlah <= @jumlahMAX";
+                        else if (jumlahMIN > 0 && jumlahMAX > 0) sqlString += " and jumlah between @jumlahMIN and @jumlahMAX";
+
+                        if (hargaMIN > 0 && hargaMAX == 0) sqlString += " and harga >= @hargaMIN";
+                        else if (hargaMAX > 0 && hargaMIN == 0) sqlString += " and harga <= @hargaMAX";
+                        else if (hargaMIN > 0 && hargaMAX > 0) sqlString += " and harga between @hargaMIN and @hargaMAX";
                     }
-                    else
+                    sqlString += " order by kode";
+
+                    cmd.CommandText = sqlString;
+                    cmd.Parameters.Clear();
+                    if (brg != null)
                     {
-                        if (jumlahMIN > 0 && jumlahMAX == 0)
-                        {
-                            cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah >= @jumlahMIN order by kode";
-                        }
-                        else if (jumlahMAX > 0 && jumlahMIN == 0)
-                        {
-                            cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah <= @jumlahMAX order by kode";
-                        }
-                        else if (jumlahMIN > 0 && jumlahMAX > 0)
-                        {
-                            cmd.CommandText = @"select * from barang where kode like @kode and nama like @nama and jumlah between @jumlahMIN and @jumlahMAX order by kode";
-                        }
-                        cmd.Parameters.Clear();
-                        cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
-                        cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
-                        cmd.Parameters.AddWithValue("@jumlahMIN", jumlahMIN);
-                        cmd.Parameters.AddWithValue("@jumlahMAX", jumlahMAX);
+                        if (brg.Kode != "") cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
+                        if (brg.Nama != "") cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
                     }
+                    if (jumlahMIN > 0) cmd.Parameters.AddWithValue("@jumlahMIN", jumlahMIN);
+                    if (jumlahMAX > 0) cmd.Parameters.AddWithValue("@jumlahMAX", jumlahMAX);
+                    if (hargaMIN > 0) cmd.Parameters.AddWithValue("@hargaMIN", hargaMIN);
+                    if (hargaMAX > 0) cmd.Parameters.AddWithValue("@hargaMAX", hargaMAX);
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -79,7 +85,7 @@ namespace OrderLibrary
                 }
             }
             catch (Exception ex)
-            { 
+            {
                 throw ex;
             }
             return listData;
@@ -121,14 +127,14 @@ namespace OrderLibrary
             return result;
         }
 
-        public int AddBarang (Barang barang)
+        public int AddBarang(Barang barang)
         {
             int result = 0;
             try
             {
                 _trans = _conn.BeginTransaction();
                 using (SqlCommand cmd = new SqlCommand(@"insert into barang values (@kode, @nama, @jumlah, @harga, @gambar)", _conn, _trans))
-                { 
+                {
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@kode", barang.Kode);
                     cmd.Parameters.AddWithValue("@nama", barang.Nama);

@@ -17,7 +17,6 @@ namespace Simple_E_Commerce
 
         Akun admin = null;
         List<Penjualan> listData = null;
-        Barang brg = null;
 
         public FrmAdminInterface(Akun temp)
         {
@@ -56,7 +55,7 @@ namespace Simple_E_Commerce
                 {
                     this.dgvDataOrder.DataSource = null;
                     listData = dao.SejarahPenjualan(admin, Setting.GetConnectionString());
-
+                    
                     foreach (Penjualan jual in listData)
                     {
                         this.dgvDataOrder.Rows.Add(new string[]
@@ -136,27 +135,14 @@ namespace Simple_E_Commerce
             this.dgvDataBarang.DataSource = null;
             using (var dao = new BarangDAO(Setting.GetConnectionString()))
             {
-                if (this.txtJumlahMin.Text != "" && this.txtJumlahMax.Text == "")
+                this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
                 {
-                    this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
-                    {
-                        Nama = this.txtNamaBarang.Text.Trim(),
-                        Kode = this.txtKodeBarang.Text.Trim(),
-                        Gambar = null,
-                        Harga = 0,
-                        Jumlah = 0,
-                    }, int.Parse(this.txtJumlahMin.Text));
-                } else if (this.txtJumlahMin.Text != "" && this.txtJumlahMax.Text != "")
-                {
-                    this.dgvDataBarang.DataSource = dao.GetAllDataBarang(new Barang
-                    {
-                        Nama = this.txtNamaBarang.Text.Trim(),
-                        Kode = this.txtKodeBarang.Text.Trim(),
-                        Gambar = null,
-                        Harga = 0,
-                        Jumlah = 0,
-                    }, int.Parse(this.txtJumlahMin.Text), int.Parse(this.txtJumlahMax.Text));
-                }
+                    Nama = this.txtNamaBarang.Text.Trim(),
+                    Kode = this.txtKodeBarang.Text.Trim(),
+                    Gambar = null,
+                    Harga = 0,
+                    Jumlah = 0,
+                }, int.Parse(this.txtJumlahMin.Text), int.Parse(this.txtJumlahMax.Text), int.Parse(this.txtHargaMin.Text), int.Parse(this.txtHargaMax.Text));
             }
 
             this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
