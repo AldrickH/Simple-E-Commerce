@@ -91,6 +91,7 @@
             this.txtBoxJumlah.TabIndex = 3;
             this.txtBoxJumlah.Text = "0";
             this.txtBoxJumlah.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxJumlah.Click += new System.EventHandler(this.txtBoxJumlah_Click);
             this.txtBoxJumlah.TextChanged += new System.EventHandler(this.txtBoxJumlah_TextChanged);
             this.txtBoxJumlah.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxJumlah_KeyPress);
             // 

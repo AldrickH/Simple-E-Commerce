@@ -31,13 +31,22 @@ namespace Simple_E_Commerce
 
         private void FrmKeranjang_Load(object sender, EventArgs e)
         {
+            int tempJumlahBrg = 0;
+            decimal tempTotalHrg = 0;
+
             foreach (Penjualan jual in listPenjualan)
             {
                 this.dgvDataOrder.Rows.Add(new string[]
                 {
                     jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataAkun.Nama, jual.DataBarang.Kode,
-                    jual.DataBarang.Nama, jual.DataBarang.Harga.ToString(), jual.Quantity.ToString(), jual.Total.ToString()});
+                    jual.DataBarang.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});
+
+                tempJumlahBrg += jual.Quantity;
+                tempTotalHrg += jual.Total;
             }
+
+            this.lblTotalBarangIsi.Text = tempJumlahBrg.ToString("n0");
+            this.lblTotalHargaIsi.Text = tempTotalHrg.ToString("n0");
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
@@ -65,6 +74,23 @@ namespace Simple_E_Commerce
             {
                 this.Close();
             }
+        }
+
+        private void dgvDataOrder_Resize(object sender, EventArgs e)
+        {
+            this.dgvDataOrder.Columns[0].Width = 10 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[1].Width = 10 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[2].Width = 20 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[3].Width = 10 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[4].Width = 20 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[5].Width = 10 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[6].Width = 5 * this.dgvDataOrder.Width / 100;
+            this.dgvDataOrder.Columns[7].Width = 15 * this.dgvDataOrder.Width / 100;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

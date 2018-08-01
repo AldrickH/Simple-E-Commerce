@@ -131,7 +131,7 @@ namespace Simple_E_Commerce
         }
 
         private void txtKodeBarang_Leave(object sender, EventArgs e)
-        {
+        { 
             this.dgvDataBarang.DataSource = null;
             using (var dao = new BarangDAO(Setting.GetConnectionString()))
             {
@@ -142,7 +142,7 @@ namespace Simple_E_Commerce
                     Gambar = null,
                     Harga = 0,
                     Jumlah = 0,
-                }, int.Parse(this.txtJumlahMin.Text), int.Parse(this.txtJumlahMax.Text), int.Parse(this.txtHargaMin.Text), int.Parse(this.txtHargaMax.Text));
+                }, int.Parse(this.txtJumlahMin.Text, System.Globalization.NumberStyles.AllowThousands), int.Parse(this.txtJumlahMax.Text, System.Globalization.NumberStyles.AllowThousands), int.Parse(this.txtHargaMin.Text, System.Globalization.NumberStyles.AllowThousands), int.Parse(this.txtHargaMax.Text, System.Globalization.NumberStyles.AllowThousands));
             }
 
             this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
@@ -152,11 +152,98 @@ namespace Simple_E_Commerce
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void txtNamaBarang_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
+        private void txtAngka_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtJumlahHarga_Click(object sender, EventArgs e)
+        {
+            if (this.txtJumlahMin.Focus() == true)
+            {
+                this.txtJumlahMin.SelectionStart = this.txtJumlahMin.Text.Length;
+            }
+            else if (this.txtJumlahMax.Focus() == true)
+            {
+                this.txtJumlahMax.SelectionStart = this.txtJumlahMax.Text.Length;
+            }
+            else if (this.txtHargaMin.Focus() == true)
+            {
+                this.txtHargaMin.SelectionStart = this.txtHargaMin.Text.Length;
+            }
+            else if (this.txtHargaMax.Focus() == true)
+            {
+                this.txtHargaMax.SelectionStart = this.txtHargaMax.Text.Length;
+            }
+        }
+
+        private void txtJumlahHarga_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtJumlahMin.Focus() == true)
+            {
+                if (this.txtJumlahMin.Text != "")
+                {
+                    this.txtJumlahMin.Text = Convert.ToDecimal(this.txtJumlahMin.Text).ToString("n0");
+                }
+                else
+                {
+                    this.txtJumlahMin.Text = "0";
+                }
+                this.txtJumlahMin.SelectionStart = this.txtJumlahMin.Text.Length;
+            }
+
+            else if (this.txtJumlahMax.Focus() == true)
+            {
+                if (this.txtJumlahMax.Text != "")
+                {
+                    this.txtJumlahMax.Text = Convert.ToDecimal(this.txtJumlahMax.Text).ToString("n0");
+                    this.txtJumlahMax.SelectionStart = this.txtJumlahMax.Text.Length;
+                }
+                else
+                {
+                    this.txtJumlahMax.Text = "0";
+                }
+                this.txtJumlahMax.SelectionStart = this.txtJumlahMax.Text.Length;
+            }
+
+            else if (this.txtHargaMin.Focus() == true)
+            {
+                if (this.txtHargaMin.Text != "")
+                {
+                    this.txtHargaMin.Text = Convert.ToDecimal(this.txtHargaMin.Text).ToString("n0");
+                    this.txtHargaMin.SelectionStart = this.txtHargaMin.Text.Length;
+                }
+                else
+                {
+                    this.txtHargaMin.Text = "0";
+                }
+                this.txtHargaMin.SelectionStart = this.txtHargaMin.Text.Length;
+            }
+
+            else if (this.txtHargaMax.Focus() == true)
+            {
+                if (this.txtHargaMax.Text != "")
+                {
+                    this.txtHargaMax.Text = Convert.ToDecimal(this.txtHargaMax.Text).ToString("n0");
+                    this.txtHargaMax.SelectionStart = this.txtHargaMax.Text.Length;
+                }
+                else
+                {
+                    this.txtHargaMax.Text = "0";
+                }
+                this.txtHargaMax.SelectionStart = this.txtHargaMax.Text.Length;
+            }
         }
     }
-
-
 }
