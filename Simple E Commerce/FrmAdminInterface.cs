@@ -39,7 +39,9 @@ namespace Simple_E_Commerce
                     this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
                     this.dgvDataBarang.Columns[1].DataPropertyName = nameof(Barang.Nama);
                     this.dgvDataBarang.Columns[2].DataPropertyName = nameof(Barang.Jumlah);
+                    this.dgvDataBarang.Columns[2].DefaultCellStyle.Format = "n0";
                     this.dgvDataBarang.Columns[3].DataPropertyName = nameof(Barang.Harga);
+                    this.dgvDataBarang.Columns[3].DefaultCellStyle.Format = "n0";
                 }
 
                 using (var dao = new AkunDAO(Setting.GetConnectionString()))
@@ -49,19 +51,20 @@ namespace Simple_E_Commerce
                     this.dgvDataMember.Columns[0].DataPropertyName = nameof(Akun.Username);
                     this.dgvDataMember.Columns[1].DataPropertyName = nameof(Akun.Nama);
                     this.dgvDataMember.Columns[2].DataPropertyName = nameof(Akun.Total);
+                    this.dgvDataMember.Columns[2].DefaultCellStyle.Format = "n0";
                 }
 
                 using (var dao = new PenjualanDAO(Setting.GetConnectionString()))
                 {
                     this.dgvDataOrder.DataSource = null;
-                    listData = dao.SejarahPenjualan(admin, Setting.GetConnectionString());
-                    
+                    listData = dao.SejarahPenjualan(null, Setting.GetConnectionString());
+
                     foreach (Penjualan jual in listData)
                     {
                         this.dgvDataOrder.Rows.Add(new string[]
                             {
                                 jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
-                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});     
+                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});
                     }
                 }
             }
@@ -104,7 +107,7 @@ namespace Simple_E_Commerce
             if (this.dgvDataBarang.SelectedRows.Count > 0)
             {
                 FrmTambahDataBarang frm = new FrmTambahDataBarang();
-                    frm.Run(new BarangDAO(Setting.GetConnectionString()).GetDataBarangByKode(this.dgvDataBarang.CurrentRow.Cells[0].Value.ToString()));                   
+                frm.Run(new BarangDAO(Setting.GetConnectionString()).GetDataBarangByKode(this.dgvDataBarang.CurrentRow.Cells[0].Value.ToString()));
             }
             FrmAdminInterface_Load(null, null);
         }
@@ -152,11 +155,43 @@ namespace Simple_E_Commerce
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void txtDataMember_Leave(object sender, EventArgs e)
         {
+            this.dgvDataMember.DataSource = null;
+            using (var dao = new AkunDAO(Setting.GetConnectionString()))
+            {
+                this.dgvDataMember.DataSource = dao.GetAllDataAccount(new Akun
+                {
+                    Nama = this.txtNamaUser.Text.Trim(),
+                    Username = this.txtUsername.Text.Trim(),
+                    Password = null,
+                    Pict = null,
+                    Total = 0
+                });
 
+                this.dgvDataMember.Columns[0].DataPropertyName = nameof(Akun.Username);
+                this.dgvDataMember.Columns[1].DataPropertyName = nameof(Akun.Nama);
+                this.dgvDataMember.Columns[2].DataPropertyName = nameof(Akun.Total);
+            }
+        }
+
+        private void txtDataOrder_Leave(object sender, EventArgs e)
+        {
+            this.dgvDataOrder.DataSource = null;
+            using (var dao = new PenjualanDAO(Setting.GetConnectionString()))
+            {
+                foreach (Penjualan jual in dao.SejarahPenjualan(null, Setting.GetConnectionString(), this.txtNoOrder.Text.Trim()))
+                {
+                    this.dgvDataOrder.Rows.Add(new string[]
+                        {
+                                jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
+                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")
+                        });
+                }
+            }
         }
     }
-
-
 }
+
+
+
