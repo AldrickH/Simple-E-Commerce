@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTambahDataBarang));
             this.btnUpload = new System.Windows.Forms.Button();
             this.lblUploadPicture = new System.Windows.Forms.Label();
             this.btnSimpan = new System.Windows.Forms.Button();
@@ -41,13 +42,15 @@
             this.lblKodeBarang = new System.Windows.Forms.Label();
             this.btnBatal = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUpload
             // 
             this.btnUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpload.Location = new System.Drawing.Point(391, 79);
+            this.btnUpload.Location = new System.Drawing.Point(455, 98);
             this.btnUpload.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(91, 25);
@@ -59,7 +62,7 @@
             // lblUploadPicture
             // 
             this.lblUploadPicture.AutoSize = true;
-            this.lblUploadPicture.Location = new System.Drawing.Point(47, 36);
+            this.lblUploadPicture.Location = new System.Drawing.Point(47, 80);
             this.lblUploadPicture.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUploadPicture.Name = "lblUploadPicture";
             this.lblUploadPicture.Size = new System.Drawing.Size(101, 17);
@@ -177,7 +180,7 @@
             // pictureBox
             // 
             this.pictureBox.Image = global::Simple_E_Commerce.Properties.Resources._default;
-            this.pictureBox.Location = new System.Drawing.Point(213, 36);
+            this.pictureBox.Location = new System.Drawing.Point(248, 43);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(137, 112);
@@ -185,11 +188,22 @@
             this.pictureBox.TabIndex = 32;
             this.pictureBox.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(50, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(175, 39);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 35;
+            this.pictureBox2.TabStop = false;
+            // 
             // FrmTambahDataBarang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 401);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnBatal);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.pictureBox);
@@ -212,6 +226,7 @@
             this.Text = "Form Tambah Data Barang";
             this.Load += new System.EventHandler(this.FrmTambahDataBarang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,5 +247,6 @@
         private System.Windows.Forms.Label lblNamaBarang;
         private System.Windows.Forms.Label lblKodeBarang;
         private System.Windows.Forms.Button btnBatal;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
