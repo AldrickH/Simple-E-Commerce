@@ -92,7 +92,7 @@ namespace OrderLibrary
             return result;
         }
 
-        public List<Penjualan> SejarahPenjualan(Akun akun, string connString)
+        public List<Penjualan> SejarahPenjualan(Akun akun = null, string connString = null, string noOrder = null)
         {
             List<Penjualan> listSejarahPenjualan = null;
             string sqlString = @"select p.NoOrder, p.Tanggal, p.Username, p.Kode, p.Quantity, p.Total from penjualan p inner join akun a on a.username = p.Username inner join barang b on b.Kode = p.Kode";
@@ -101,14 +101,14 @@ namespace OrderLibrary
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = _conn;
-                    if (!akun.Username.Equals("admin"))
-                    {
-                        sqlString += " where p.username = @username";
-                    }
+                    if (akun != null) sqlString += " where p.username = @username";
+                    if (noOrder != null) sqlString += " where p.noOrder = @noOrder";
 
                     cmd.CommandText = sqlString;
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@username", akun.Username);
+
+                    if (akun != null) cmd.Parameters.AddWithValue("@username", akun.Username);
+                    if (noOrder != null) cmd.Parameters.AddWithValue("@noOrder", $"%{noOrder}%");
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {

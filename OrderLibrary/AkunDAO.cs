@@ -25,14 +25,30 @@ namespace OrderLibrary
             }
         }
 
-        public List<Akun> GetAllDataAccount()
+        public List<Akun> GetAllDataAccount(Akun akn = null)
         {
             List<Akun> listData = null;
+            string sqlString = @"select * from akun";
             try
             {
-                using (SqlCommand cmd = new SqlCommand(@"select * from akun order by username", _conn))
+                using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.Parameters.Clear();
+                    if(akn != null)
+                    {
+                        sqlString += " where nama like @nama and username like @username";
+                    }
+                    sqlString += " order by username";
+
+                    cmd.CommandText = sqlString;
+                    cmd.Connection = _conn;
+
+                    if(akn != null)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@nama", $"%{akn.Nama}%");
+                        cmd.Parameters.AddWithValue("@username", $"%{akn.Username}%");            
+                    }
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
