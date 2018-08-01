@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSejarahPembelian));
             this.dgvDataOrder = new System.Windows.Forms.DataGridView();
             this.clmNoOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTglOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,7 +39,9 @@
             this.clmTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTotalPembelian = new System.Windows.Forms.Label();
             this.lblNominalHarga = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDataOrder
@@ -60,13 +63,14 @@
             this.clmHargaBrg,
             this.clmJumlahBrg,
             this.clmTotal});
-            this.dgvDataOrder.Location = new System.Drawing.Point(30, 34);
+            this.dgvDataOrder.Location = new System.Drawing.Point(20, 73);
+            this.dgvDataOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDataOrder.Name = "dgvDataOrder";
             this.dgvDataOrder.ReadOnly = true;
             this.dgvDataOrder.RowHeadersVisible = false;
             this.dgvDataOrder.RowTemplate.Height = 33;
             this.dgvDataOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataOrder.Size = new System.Drawing.Size(1587, 880);
+            this.dgvDataOrder.Size = new System.Drawing.Size(1048, 512);
             this.dgvDataOrder.TabIndex = 1;
             // 
             // clmNoOrder
@@ -114,9 +118,10 @@
             // lblTotalPembelian
             // 
             this.lblTotalPembelian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalPembelian.Location = new System.Drawing.Point(1154, 961);
+            this.lblTotalPembelian.Location = new System.Drawing.Point(759, 615);
+            this.lblTotalPembelian.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalPembelian.Name = "lblTotalPembelian";
-            this.lblTotalPembelian.Size = new System.Drawing.Size(178, 38);
+            this.lblTotalPembelian.Size = new System.Drawing.Size(119, 24);
             this.lblTotalPembelian.TabIndex = 2;
             this.lblTotalPembelian.Text = "Total Pembelian";
             // 
@@ -124,26 +129,40 @@
             // 
             this.lblNominalHarga.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNominalHarga.AutoSize = true;
-            this.lblNominalHarga.Location = new System.Drawing.Point(1372, 961);
+            this.lblNominalHarga.Location = new System.Drawing.Point(905, 615);
+            this.lblNominalHarga.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNominalHarga.Name = "lblNominalHarga";
-            this.lblNominalHarga.Size = new System.Drawing.Size(180, 25);
+            this.lblNominalHarga.Size = new System.Drawing.Size(120, 17);
             this.lblNominalHarga.TabIndex = 3;
             this.lblNominalHarga.Text = "{ Nominal Harga }";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(20, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(186, 44);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
             // FrmSejarahPembelian
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1646, 1034);
+            this.ClientSize = new System.Drawing.Size(1087, 662);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblNominalHarga);
             this.Controls.Add(this.lblTotalPembelian);
             this.Controls.Add(this.dgvDataOrder);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmSejarahPembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Sejarah Pembelian";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmSejarahPembelian_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotal;
         private System.Windows.Forms.Label lblTotalPembelian;
         private System.Windows.Forms.Label lblNominalHarga;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

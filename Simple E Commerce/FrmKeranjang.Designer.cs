@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKeranjang));
             this.dgvDataOrder = new System.Windows.Forms.DataGridView();
             this.clmNoOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTglOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,9 @@
             this.lblTotalBarangIsi = new System.Windows.Forms.Label();
             this.lblTotalHarga = new System.Windows.Forms.Label();
             this.lblTotalHargaIsi = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDataOrder
@@ -65,12 +68,13 @@
             this.clmHargaBrg,
             this.clmJumlahBrg,
             this.clmTotal});
-            this.dgvDataOrder.Location = new System.Drawing.Point(60, 49);
+            this.dgvDataOrder.Location = new System.Drawing.Point(40, 60);
+            this.dgvDataOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDataOrder.Name = "dgvDataOrder";
             this.dgvDataOrder.RowHeadersVisible = false;
             this.dgvDataOrder.RowTemplate.Height = 33;
             this.dgvDataOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataOrder.Size = new System.Drawing.Size(1475, 480);
+            this.dgvDataOrder.Size = new System.Drawing.Size(983, 307);
             this.dgvDataOrder.TabIndex = 1;
             this.dgvDataOrder.Resize += new System.EventHandler(this.dgvDataOrder_Resize);
             // 
@@ -125,10 +129,9 @@
             // btnOrder
             // 
             this.btnOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOrder.Location = new System.Drawing.Point(1322, 781);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnOrder.Location = new System.Drawing.Point(881, 500);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(213, 69);
+            this.btnOrder.Size = new System.Drawing.Size(142, 44);
             this.btnOrder.TabIndex = 2;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
@@ -137,10 +140,9 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(1064, 781);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(709, 500);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(213, 69);
+            this.btnCancel.Size = new System.Drawing.Size(142, 44);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -151,9 +153,10 @@
             this.lblTotalBarang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalBarang.AutoSize = true;
             this.lblTotalBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalBarang.Location = new System.Drawing.Point(1100, 577);
+            this.lblTotalBarang.Location = new System.Drawing.Point(733, 369);
+            this.lblTotalBarang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalBarang.Name = "lblTotalBarang";
-            this.lblTotalBarang.Size = new System.Drawing.Size(202, 37);
+            this.lblTotalBarang.Size = new System.Drawing.Size(124, 25);
             this.lblTotalBarang.TabIndex = 3;
             this.lblTotalBarang.Text = "Total Barang";
             // 
@@ -162,9 +165,10 @@
             this.lblTotalBarangIsi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalBarangIsi.AutoSize = true;
             this.lblTotalBarangIsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalBarangIsi.Location = new System.Drawing.Point(1307, 577);
+            this.lblTotalBarangIsi.Location = new System.Drawing.Point(871, 369);
+            this.lblTotalBarangIsi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalBarangIsi.Name = "lblTotalBarangIsi";
-            this.lblTotalBarangIsi.Size = new System.Drawing.Size(228, 37);
+            this.lblTotalBarangIsi.Size = new System.Drawing.Size(138, 25);
             this.lblTotalBarangIsi.TabIndex = 4;
             this.lblTotalBarangIsi.Text = "{ total barang }";
             // 
@@ -173,9 +177,10 @@
             this.lblTotalHarga.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalHarga.AutoSize = true;
             this.lblTotalHarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalHarga.Location = new System.Drawing.Point(1109, 657);
+            this.lblTotalHarga.Location = new System.Drawing.Point(739, 420);
+            this.lblTotalHarga.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalHarga.Name = "lblTotalHarga";
-            this.lblTotalHarga.Size = new System.Drawing.Size(186, 37);
+            this.lblTotalHarga.Size = new System.Drawing.Size(114, 25);
             this.lblTotalHarga.TabIndex = 5;
             this.lblTotalHarga.Text = "Total Harga";
             // 
@@ -184,17 +189,29 @@
             this.lblTotalHargaIsi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalHargaIsi.AutoSize = true;
             this.lblTotalHargaIsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalHargaIsi.Location = new System.Drawing.Point(1307, 657);
+            this.lblTotalHargaIsi.Location = new System.Drawing.Point(871, 420);
+            this.lblTotalHargaIsi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalHargaIsi.Name = "lblTotalHargaIsi";
-            this.lblTotalHargaIsi.Size = new System.Drawing.Size(215, 37);
+            this.lblTotalHargaIsi.Size = new System.Drawing.Size(130, 25);
             this.lblTotalHargaIsi.TabIndex = 6;
             this.lblTotalHargaIsi.Text = "{ total Harga }";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(40, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(186, 44);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
             // FrmKeranjang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1594, 897);
+            this.ClientSize = new System.Drawing.Size(1063, 574);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblTotalHargaIsi);
             this.Controls.Add(this.lblTotalHarga);
             this.Controls.Add(this.lblTotalBarangIsi);
@@ -202,12 +219,12 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.dgvDataOrder);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmKeranjang";
             this.Text = "FrmKeranjang";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmKeranjang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +247,6 @@
         private System.Windows.Forms.Label lblTotalBarangIsi;
         private System.Windows.Forms.Label lblTotalHarga;
         private System.Windows.Forms.Label lblTotalHargaIsi;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
