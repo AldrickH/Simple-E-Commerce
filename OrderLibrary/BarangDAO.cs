@@ -50,9 +50,9 @@ namespace OrderLibrary
                     sqlString += " order by kode";
 
                     cmd.CommandText = sqlString;
-                    cmd.Parameters.Clear();
                     if (brg != null)
                     {
+                        cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@kode", $"%{brg.Kode}%");
                         cmd.Parameters.AddWithValue("@nama", $"%{brg.Nama}%");
                         if (jumlahMIN > 0) cmd.Parameters.AddWithValue("@jumlahMIN", jumlahMIN);

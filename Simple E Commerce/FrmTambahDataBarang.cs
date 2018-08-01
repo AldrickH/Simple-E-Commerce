@@ -121,9 +121,7 @@ namespace Simple_E_Commerce
             if (this.txtHarga.Text != "")
             {
                 this.txtHarga.Text = Convert.ToDecimal(this.txtHarga.Text).ToString("n0");
-                this.txtHarga.SelectionStart = this.txtHarga.Text.Length;
-                //this.txtHarga.Text = string.Format("{0:n0}", double.Parse(this.txtHarga.Text));
-                //this.txtHarga.Select(this.txtHarga.Text.Length, 0);
+                this.txtHarga.SelectionStart = this.txtHarga.TextLength;
             }
         }
 
@@ -131,8 +129,8 @@ namespace Simple_E_Commerce
         {
             if (this.txtJumlah.Text != "")
             {
-                this.txtJumlah.Text = string.Format("{0:n0}", double.Parse(this.txtJumlah.Text));
-                this.txtJumlah.Select(this.txtJumlah.Text.Length, 0);
+                this.txtJumlah.Text = Convert.ToDouble(this.txtJumlah.Text).ToString("n0");
+                this.txtJumlah.SelectionStart = this.txtJumlah.TextLength;
             }
         }
 

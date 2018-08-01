@@ -39,7 +39,9 @@ namespace Simple_E_Commerce
                     this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
                     this.dgvDataBarang.Columns[1].DataPropertyName = nameof(Barang.Nama);
                     this.dgvDataBarang.Columns[2].DataPropertyName = nameof(Barang.Jumlah);
+                    this.dgvDataBarang.Columns[2].DefaultCellStyle.Format = "n0";
                     this.dgvDataBarang.Columns[3].DataPropertyName = nameof(Barang.Harga);
+                    this.dgvDataBarang.Columns[3].DefaultCellStyle.Format = "n0";
                 }
 
                 using (var dao = new AkunDAO(Setting.GetConnectionString()))
@@ -49,19 +51,20 @@ namespace Simple_E_Commerce
                     this.dgvDataMember.Columns[0].DataPropertyName = nameof(Akun.Username);
                     this.dgvDataMember.Columns[1].DataPropertyName = nameof(Akun.Nama);
                     this.dgvDataMember.Columns[2].DataPropertyName = nameof(Akun.Total);
+                    this.dgvDataMember.Columns[2].DefaultCellStyle.Format = "n0";
                 }
 
                 using (var dao = new PenjualanDAO(Setting.GetConnectionString()))
                 {
                     this.dgvDataOrder.DataSource = null;
-                    listData = dao.SejarahPenjualan(admin, Setting.GetConnectionString());
-                    
+                    listData = dao.SejarahPenjualan(null, Setting.GetConnectionString());
+
                     foreach (Penjualan jual in listData)
                     {
                         this.dgvDataOrder.Rows.Add(new string[]
                             {
                                 jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
-                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});     
+                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});
                     }
                 }
             }
@@ -104,7 +107,7 @@ namespace Simple_E_Commerce
             if (this.dgvDataBarang.SelectedRows.Count > 0)
             {
                 FrmTambahDataBarang frm = new FrmTambahDataBarang();
-                    frm.Run(new BarangDAO(Setting.GetConnectionString()).GetDataBarangByKode(this.dgvDataBarang.CurrentRow.Cells[0].Value.ToString()));                   
+                frm.Run(new BarangDAO(Setting.GetConnectionString()).GetDataBarangByKode(this.dgvDataBarang.CurrentRow.Cells[0].Value.ToString()));
             }
             FrmAdminInterface_Load(null, null);
         }
@@ -131,7 +134,7 @@ namespace Simple_E_Commerce
         }
 
         private void txtKodeBarang_Leave(object sender, EventArgs e)
-        {
+        { 
             this.dgvDataBarang.DataSource = null;
             using (var dao = new BarangDAO(Setting.GetConnectionString()))
             {
@@ -142,7 +145,7 @@ namespace Simple_E_Commerce
                     Gambar = null,
                     Harga = 0,
                     Jumlah = 0,
-                }, int.Parse(this.txtJumlahMin.Text), int.Parse(this.txtJumlahMax.Text), int.Parse(this.txtHargaMin.Text), int.Parse(this.txtHargaMax.Text));
+                }, int.Parse(this.txtJumlahMin.Text, System.Globalization.NumberStyles.AllowThousands), int.Parse(this.txtJumlahMax.Text, System.Globalization.NumberStyles.AllowThousands), int.Parse(this.txtHargaMin.Text, System.Globalization.NumberStyles.AllowThousands), int.Parse(this.txtHargaMax.Text, System.Globalization.NumberStyles.AllowThousands));
             }
 
             this.dgvDataBarang.Columns[0].DataPropertyName = nameof(Barang.Kode);
@@ -152,11 +155,133 @@ namespace Simple_E_Commerce
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void txtNamaBarang_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
+        private void txtAngka_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+        
+        private void txtDataMember_Leave(object sender, EventArgs e)
+        {
+            this.dgvDataMember.DataSource = null;
+            using (var dao = new AkunDAO(Setting.GetConnectionString()))
+            {
+                this.dgvDataMember.DataSource = dao.GetAllDataAccount(new Akun
+                {
+                    Nama = this.txtNamaUser.Text.Trim(),
+                    Username = this.txtUsername.Text.Trim(),
+                    Password = null,
+                    Pict = null,
+                    Total = 0
+                });
+
+                this.dgvDataMember.Columns[0].DataPropertyName = nameof(Akun.Username);
+                this.dgvDataMember.Columns[1].DataPropertyName = nameof(Akun.Nama);
+                this.dgvDataMember.Columns[2].DataPropertyName = nameof(Akun.Total);
+            }
+        }
+
+        private void txtDataOrder_Leave(object sender, EventArgs e)
+        {
+            this.dgvDataOrder.DataSource = null;
+            using (var dao = new PenjualanDAO(Setting.GetConnectionString()))
+            {
+                foreach (Penjualan jual in dao.SejarahPenjualan(null, Setting.GetConnectionString(), this.txtNoOrder.Text.Trim()))
+                {
+                    this.dgvDataOrder.Rows.Add(new string[]
+                        {
+                                jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataBarang.Kode,
+                                jual.DataBarang.Nama, jual.DataAkun.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")
+                        });
+                }
+            }
+        }
+
+        private void txtJumlahHarga_Click(object sender, EventArgs e)
+        {
+            if (this.txtJumlahMin.Focus() == true)
+            {
+                this.txtJumlahMin.SelectionStart = this.txtJumlahMin.Text.Length;
+            }
+            else if (this.txtJumlahMax.Focus() == true)
+            {
+                this.txtJumlahMax.SelectionStart = this.txtJumlahMax.Text.Length;
+            }
+            else if (this.txtHargaMin.Focus() == true)
+            {
+                this.txtHargaMin.SelectionStart = this.txtHargaMin.Text.Length;
+            }
+            else if (this.txtHargaMax.Focus() == true)
+            {
+                this.txtHargaMax.SelectionStart = this.txtHargaMax.Text.Length;
+            }
+        }
+
+        private void txtJumlahHarga_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtJumlahMin.Focus() == true)
+            {
+                if (this.txtJumlahMin.Text != "")
+                {
+                    this.txtJumlahMin.Text = Convert.ToDecimal(this.txtJumlahMin.Text).ToString("n0");
+                }
+                else
+                {
+                    this.txtJumlahMin.Text = "0";
+                }
+                this.txtJumlahMin.SelectionStart = this.txtJumlahMin.Text.Length;
+            }
+
+            else if (this.txtJumlahMax.Focus() == true)
+            {
+                if (this.txtJumlahMax.Text != "")
+                {
+                    this.txtJumlahMax.Text = Convert.ToDecimal(this.txtJumlahMax.Text).ToString("n0");
+                    this.txtJumlahMax.SelectionStart = this.txtJumlahMax.Text.Length;
+                }
+                else
+                {
+                    this.txtJumlahMax.Text = "0";
+                }
+                this.txtJumlahMax.SelectionStart = this.txtJumlahMax.Text.Length;
+            }
+
+            else if (this.txtHargaMin.Focus() == true)
+            {
+                if (this.txtHargaMin.Text != "")
+                {
+                    this.txtHargaMin.Text = Convert.ToDecimal(this.txtHargaMin.Text).ToString("n0");
+                    this.txtHargaMin.SelectionStart = this.txtHargaMin.Text.Length;
+                }
+                else
+                {
+                    this.txtHargaMin.Text = "0";
+                }
+                this.txtHargaMin.SelectionStart = this.txtHargaMin.Text.Length;
+            }
+            else if (this.txtHargaMax.Focus() == true)
+            {
+                if (this.txtHargaMax.Text != "")
+                {
+                    this.txtHargaMax.Text = Convert.ToDecimal(this.txtHargaMax.Text).ToString("n0");
+                    this.txtHargaMax.SelectionStart = this.txtHargaMax.Text.Length;
+                }
+                else
+                {
+                    this.txtHargaMax.Text = "0";
+                }
+                this.txtHargaMax.SelectionStart = this.txtHargaMax.Text.Length;
+            }
         }
     }
-
-
 }

@@ -28,12 +28,7 @@ namespace Simple_E_Commerce
 
         public int GetQuantityOrder()
         {
-            int result = 0;
-            if (int.TryParse(this.txtBoxJumlah.Text, out int n))
-            {
-                result = n;
-            }
-            return result;
+            return int.Parse(this.txtBoxJumlah.Text, System.Globalization.NumberStyles.AllowThousands);
         }
 
         private void CustomCntrlBrg_Load(object sender, EventArgs e)
@@ -42,40 +37,40 @@ namespace Simple_E_Commerce
             {
                 this.lblNama.Text = brg.Nama;
                 this.lblHarga.Text = brg.Harga.ToString("n0");
-                this.lblQty.Text = brg.Jumlah.ToString();
+                this.lblQty.Text = brg.Jumlah.ToString("n0");
                 this.pBox.Image = new ImageConverter().ConvertFrom(brg.Gambar) as Image;
             }
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            if (brg.Jumlah > 0 && Convert.ToInt32(txtBoxJumlah.Text) < brg.Jumlah)
-                txtBoxJumlah.Text = (Convert.ToInt32(txtBoxJumlah.Text) + 1).ToString();
+            if (brg.Jumlah > 0 && Convert.ToDecimal(txtBoxJumlah.Text) < brg.Jumlah)
+                txtBoxJumlah.Text = (Convert.ToDecimal(txtBoxJumlah.Text) + 1).ToString("n0");
         }
 
         private void btnKurang_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(txtBoxJumlah.Text) > 0)
+            if (Convert.ToDecimal(txtBoxJumlah.Text) > 0)
             {
-                txtBoxJumlah.Text = (Convert.ToInt32(txtBoxJumlah.Text) - 1).ToString();
+                txtBoxJumlah.Text = (Convert.ToDecimal(txtBoxJumlah.Text) - 1).ToString("n0");
             }
         }
 
         private void txtBoxJumlah_TextChanged(object sender, EventArgs e)
         {
-            int temp = 0;
+            decimal temp = 0;
             if (this.txtBoxJumlah.Text != "")
             {
-                temp = Convert.ToInt32(this.txtBoxJumlah.Text);
+                temp = Convert.ToDecimal(this.txtBoxJumlah.Text);
                 if (temp >= brg.Jumlah)
                 {
-                    this.txtBoxJumlah.Text = Convert.ToInt32(brg.Jumlah).ToString();
+                    this.txtBoxJumlah.Text = Convert.ToDecimal(brg.Jumlah).ToString("n0");
                 }
                 else
                 {
-                    this.txtBoxJumlah.Text = temp.ToString();
+                    this.txtBoxJumlah.Text = temp.ToString("n0");
                 }
-                this.txtBoxJumlah.Select(txtBoxJumlah.Text.Length, 0);
+                this.txtBoxJumlah.SelectionStart = this.txtBoxJumlah.Text.Length;
             }
             else
             {
@@ -89,6 +84,11 @@ namespace Simple_E_Commerce
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtBoxJumlah_Click(object sender, EventArgs e)
+        {
+            this.txtBoxJumlah.SelectionStart = this.txtBoxJumlah.Text.Length;
         }
     }
 }
