@@ -27,7 +27,7 @@ namespace Simple_E_Commerce
                 MessageBox.Show("Sorry, nama tidak boleh kosong...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtNama.Focus();
             }
-            else if (this.txtPassword.Text.Trim() == "")
+            else if (this.txtPassword.Text.Trim() == "" && this.txtPassword2.Text.Trim() == "")
             {
                 MessageBox.Show("Sorry, password tidak boleh kosong...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtNama.Focus();
@@ -36,6 +36,12 @@ namespace Simple_E_Commerce
             {
                 MessageBox.Show("Sorry, username tidak boleh kosong...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtNama.Focus();
+            }else if (!this.txtPassword.Text.Trim().Equals(this.txtPassword2.Text.Trim()))
+            {
+                MessageBox.Show("Sorry, Password anda tidak sama...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.txtPassword.Text = "";
+                this.txtPassword2.Text = "";
+                this.txtPassword.Focus();
             }
             else
             {

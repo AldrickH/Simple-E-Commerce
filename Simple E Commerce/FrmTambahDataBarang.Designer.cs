@@ -87,6 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHarga.Location = new System.Drawing.Point(213, 275);
             this.txtHarga.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHarga.MaxLength = 11;
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(333, 22);
             this.txtHarga.TabIndex = 29;
@@ -99,6 +100,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtJumlah.Location = new System.Drawing.Point(213, 244);
             this.txtJumlah.Margin = new System.Windows.Forms.Padding(2);
+            this.txtJumlah.MaxLength = 11;
             this.txtJumlah.Name = "txtJumlah";
             this.txtJumlah.Size = new System.Drawing.Size(333, 22);
             this.txtJumlah.TabIndex = 28;
@@ -193,7 +195,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(50, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(175, 39);
+            this.pictureBox2.Size = new System.Drawing.Size(181, 55);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 35;
             this.pictureBox2.TabStop = false;

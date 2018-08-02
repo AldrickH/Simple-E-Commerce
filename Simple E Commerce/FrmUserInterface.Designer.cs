@@ -44,7 +44,7 @@
             // 
             this.pbUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbUser.Location = new System.Drawing.Point(962, 19);
-            this.pbUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbUser.Margin = new System.Windows.Forms.Padding(2);
             this.pbUser.Name = "pbUser";
             this.pbUser.Size = new System.Drawing.Size(99, 97);
             this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -67,7 +67,7 @@
             // 
             this.btnLogOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogOut.Location = new System.Drawing.Point(1158, 72);
-            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(102, 33);
             this.btnLogOut.TabIndex = 0;
@@ -80,7 +80,7 @@
             // 
             this.btnSejarahPembelian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSejarahPembelian.Location = new System.Drawing.Point(762, 56);
-            this.btnSejarahPembelian.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSejarahPembelian.Margin = new System.Windows.Forms.Padding(2);
             this.btnSejarahPembelian.Name = "btnSejarahPembelian";
             this.btnSejarahPembelian.Size = new System.Drawing.Size(175, 33);
             this.btnSejarahPembelian.TabIndex = 3;
@@ -115,7 +115,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(36, 19);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(186, 44);
+            this.pictureBox2.Size = new System.Drawing.Size(434, 114);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 35;
             this.pictureBox2.TabStop = false;
@@ -132,7 +132,7 @@
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.lblNama);
             this.Controls.Add(this.pbUser);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmUserInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form User Interface";

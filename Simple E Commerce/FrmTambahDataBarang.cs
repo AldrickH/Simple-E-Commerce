@@ -37,7 +37,7 @@ namespace Simple_E_Commerce
                 this.txtKodeBarang.Text = brg.Kode;
                 this.txtKodeBarang.Enabled = false;
                 this.txtNamaBarang.Text = brg.Nama;
-                this.txtJumlah.Text = Convert.ToInt32(brg.Jumlah).ToString();
+                this.txtJumlah.Text = brg.Jumlah.ToString();
                 this.txtHarga.Text = Convert.ToDecimal(brg.Harga).ToString();
             }
         }
@@ -88,7 +88,7 @@ namespace Simple_E_Commerce
                     _result = new BarangDAO(Setting.GetConnectionString()).AddBarang(barang) > 0;
                     this.Close();
                 }
-                catch (Exception ex)
+                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

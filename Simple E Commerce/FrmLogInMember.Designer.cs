@@ -48,7 +48,7 @@
             this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogIn.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnLogIn.Location = new System.Drawing.Point(259, 200);
-            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(109, 35);
             this.btnLogIn.TabIndex = 17;
@@ -59,7 +59,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(205, 133);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(265, 22);
@@ -80,7 +80,7 @@
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(205, 92);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(265, 22);
             this.txtUsername.TabIndex = 14;
@@ -147,9 +147,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(67, 22);
+            this.pictureBox2.Location = new System.Drawing.Point(67, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(186, 44);
+            this.pictureBox2.Size = new System.Drawing.Size(203, 67);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
@@ -170,7 +170,7 @@
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblLogIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLogInMember";

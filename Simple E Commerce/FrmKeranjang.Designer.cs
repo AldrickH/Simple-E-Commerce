@@ -68,13 +68,13 @@
             this.clmHargaBrg,
             this.clmJumlahBrg,
             this.clmTotal});
-            this.dgvDataOrder.Location = new System.Drawing.Point(40, 60);
-            this.dgvDataOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvDataOrder.Location = new System.Drawing.Point(40, 75);
+            this.dgvDataOrder.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDataOrder.Name = "dgvDataOrder";
             this.dgvDataOrder.RowHeadersVisible = false;
             this.dgvDataOrder.RowTemplate.Height = 33;
             this.dgvDataOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataOrder.Size = new System.Drawing.Size(983, 307);
+            this.dgvDataOrder.Size = new System.Drawing.Size(983, 292);
             this.dgvDataOrder.TabIndex = 1;
             this.dgvDataOrder.Resize += new System.EventHandler(this.dgvDataOrder_Resize);
             // 
@@ -201,7 +201,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(40, 11);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(186, 44);
+            this.pictureBox2.Size = new System.Drawing.Size(246, 59);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
