@@ -153,22 +153,22 @@
             this.lblTotalBarang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalBarang.AutoSize = true;
             this.lblTotalBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalBarang.Location = new System.Drawing.Point(733, 369);
+            this.lblTotalBarang.Location = new System.Drawing.Point(673, 399);
             this.lblTotalBarang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalBarang.Name = "lblTotalBarang";
-            this.lblTotalBarang.Size = new System.Drawing.Size(124, 25);
+            this.lblTotalBarang.Size = new System.Drawing.Size(145, 25);
             this.lblTotalBarang.TabIndex = 3;
-            this.lblTotalBarang.Text = "Total Barang";
+            this.lblTotalBarang.Text = "Total Barang   :";
             // 
             // lblTotalBarangIsi
             // 
             this.lblTotalBarangIsi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalBarangIsi.AutoSize = true;
+            this.lblTotalBarangIsi.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblTotalBarangIsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalBarangIsi.Location = new System.Drawing.Point(871, 369);
+            this.lblTotalBarangIsi.Location = new System.Drawing.Point(822, 399);
             this.lblTotalBarangIsi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalBarangIsi.Name = "lblTotalBarangIsi";
-            this.lblTotalBarangIsi.Size = new System.Drawing.Size(138, 25);
+            this.lblTotalBarangIsi.Size = new System.Drawing.Size(201, 25);
             this.lblTotalBarangIsi.TabIndex = 4;
             this.lblTotalBarangIsi.Text = "{ total barang }";
             // 
@@ -177,19 +177,19 @@
             this.lblTotalHarga.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalHarga.AutoSize = true;
             this.lblTotalHarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalHarga.Location = new System.Drawing.Point(739, 420);
+            this.lblTotalHarga.Location = new System.Drawing.Point(673, 445);
             this.lblTotalHarga.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalHarga.Name = "lblTotalHarga";
-            this.lblTotalHarga.Size = new System.Drawing.Size(114, 25);
+            this.lblTotalHarga.Size = new System.Drawing.Size(145, 25);
             this.lblTotalHarga.TabIndex = 5;
-            this.lblTotalHarga.Text = "Total Harga";
+            this.lblTotalHarga.Text = "Total Harga     :";
             // 
             // lblTotalHargaIsi
             // 
             this.lblTotalHargaIsi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalHargaIsi.AutoSize = true;
             this.lblTotalHargaIsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalHargaIsi.Location = new System.Drawing.Point(871, 420);
+            this.lblTotalHargaIsi.Location = new System.Drawing.Point(827, 445);
             this.lblTotalHargaIsi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalHargaIsi.Name = "lblTotalHargaIsi";
             this.lblTotalHargaIsi.Size = new System.Drawing.Size(130, 25);
@@ -219,6 +219,8 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.dgvDataOrder);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmKeranjang";
             this.Text = "FrmKeranjang";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -15,6 +15,8 @@ namespace Simple_E_Commerce
     {
         List<Penjualan> listPenjualan = null;
         bool _result = false;
+        int tempJumlahBrg = 0;
+        decimal tempTotalHrg = 0;
 
         public FrmKeranjang()
         {
@@ -31,8 +33,6 @@ namespace Simple_E_Commerce
 
         private void FrmKeranjang_Load(object sender, EventArgs e)
         {
-            int tempJumlahBrg = 0;
-            decimal tempTotalHrg = 0;
 
             foreach (Penjualan jual in listPenjualan)
             {
@@ -46,15 +46,27 @@ namespace Simple_E_Commerce
             }
 
             this.lblTotalBarangIsi.Text = tempJumlahBrg.ToString("n0");
-            this.lblTotalHargaIsi.Text = tempTotalHrg.ToString("n0");
+            this.lblTotalHargaIsi.Text = $"Rp. {tempTotalHrg.ToString("n0")}";
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            DSPenjualan ds = new DSPenjualan();
+
             if (MessageBox.Show("Apakah anda yakin membeli barang ini ?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (Penjualan jual in listPenjualan)
                 {
+                    var row = ds.Penjualan.NewPenjualanRow();
+                    row.NoOrder = jual.NoOrder;
+                    row.NamaBarang = jual.DataBarang.Nama;
+                    row.NamaCustomer = jual.DataAkun.Nama;
+                    row.Quantity = jual.Quantity.ToString();
+                    row.Tanggal = jual.Tanggal.ToShortDateString();
+                    row.SubTotal = jual.Total.ToString("n0");
+                    row.Total = $"Rp. {tempTotalHrg.ToString("n0")}";
+                    ds.Penjualan.AddPenjualanRow(row);
+
                     _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
 
                     using (var dao = new BarangDAO(Setting.GetConnectionString()))
@@ -67,6 +79,11 @@ namespace Simple_E_Commerce
                         dao.UpdateTotal(jual.DataAkun, jual.Total);
                     }
                 }
+
+                FrmReceipt frmReceipt = new FrmReceipt(ds);
+               frmReceipt.ShowDialog();
+
+
                 MessageBox.Show("Order telah diproses.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

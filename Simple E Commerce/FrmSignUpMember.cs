@@ -36,11 +36,11 @@ namespace Simple_E_Commerce
             {
                 MessageBox.Show("Sorry, username tidak boleh kosong...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtNama.Focus();
-            }else if (!this.txtPassword.Text.Trim().Equals(this.txtPassword2.Text.Trim()))
+            }
+            else if (!this.txtPassword.Text.Trim().Equals(this.txtPassword2.Text.Trim()))
             {
                 MessageBox.Show("Sorry, Password anda tidak sama...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtPassword.Text = "";
-                this.txtPassword2.Text = "";
                 this.txtPassword.Focus();
             }
             else
@@ -52,7 +52,7 @@ namespace Simple_E_Commerce
                         Username = this.txtUserID.Text.Trim(),
                         Nama = this.txtNama.Text.Trim(),
                         Password = this.txtPassword.Text.Trim(),
-                        Pict = new ImageConverter().ConvertTo(pboxPict.Image, typeof(byte[])) as byte[]                  
+                        Pict = new ImageConverter().ConvertTo(pboxPict.Image, typeof(byte[])) as byte[]
                     };
                     _result = new AkunDAO(Setting.GetConnectionString()).AddAkun(akun) > 0;
                     MessageBox.Show("Akun telah berhasil terdaftar...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -95,6 +95,16 @@ namespace Simple_E_Commerce
             if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtUserID_Leave(object sender, EventArgs e)
+        {
+            if(new AkunDAO(Setting.GetConnectionString()).CheckAkunByUsername(this.txtUserID.Text.Trim()))
+            {
+                MessageBox.Show("Maaf, username tersebut telah terpakai. \n Silahkan input username lainnya.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.txtUserID.Text = "";
+                this.txtUserID.Focus();
             }
         }
     }

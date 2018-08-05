@@ -39,13 +39,13 @@
             this.lblNama = new System.Windows.Forms.Label();
             this.lblSignUp = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
-            this.pboxPict = new System.Windows.Forms.PictureBox();
             this.lblUpload = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPassword2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxPict)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pboxPict = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxPict)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -102,6 +102,7 @@
             this.txtUserID.Size = new System.Drawing.Size(265, 22);
             this.txtUserID.TabIndex = 13;
             this.txtUserID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
+            this.txtUserID.Leave += new System.EventHandler(this.txtUserID_Leave);
             // 
             // lblUsername
             // 
@@ -160,18 +161,6 @@
             this.btnUpload.UseVisualStyleBackColor = true;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
-            // pboxPict
-            // 
-            this.pboxPict.Image = global::Simple_E_Commerce.Properties.Resources.unknown;
-            this.pboxPict.InitialImage = null;
-            this.pboxPict.Location = new System.Drawing.Point(200, 79);
-            this.pboxPict.Margin = new System.Windows.Forms.Padding(2);
-            this.pboxPict.Name = "pboxPict";
-            this.pboxPict.Size = new System.Drawing.Size(125, 97);
-            this.pboxPict.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pboxPict.TabIndex = 22;
-            this.pboxPict.TabStop = false;
-            // 
             // lblUpload
             // 
             this.lblUpload.AutoSize = true;
@@ -182,16 +171,6 @@
             this.lblUpload.Size = new System.Drawing.Size(119, 20);
             this.lblUpload.TabIndex = 21;
             this.lblUpload.Text = "Upload Picture";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(53, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(205, 65);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 24;
-            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -212,6 +191,28 @@
             this.txtPassword2.Size = new System.Drawing.Size(265, 22);
             this.txtPassword2.TabIndex = 15;
             this.txtPassword2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(53, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(205, 65);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pboxPict
+            // 
+            this.pboxPict.Image = global::Simple_E_Commerce.Properties.Resources.unknown;
+            this.pboxPict.InitialImage = null;
+            this.pboxPict.Location = new System.Drawing.Point(200, 79);
+            this.pboxPict.Margin = new System.Windows.Forms.Padding(2);
+            this.pboxPict.Name = "pboxPict";
+            this.pboxPict.Size = new System.Drawing.Size(125, 97);
+            this.pboxPict.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboxPict.TabIndex = 22;
+            this.pboxPict.TabStop = false;
             // 
             // FrmSignUpMember
             // 
@@ -240,8 +241,8 @@
             this.Name = "FrmSignUpMember";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Sign Up Member";
-            ((System.ComponentModel.ISupportInitialize)(this.pboxPict)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxPict)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

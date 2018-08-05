@@ -75,7 +75,7 @@ namespace Simple_E_Commerce
                 {
                     Barang barang = new Barang
                     {
-                        Kode = this.txtKodeBarang.Text.Trim(),
+                        Kode = int.Parse(this.txtKodeBarang.Text).ToString("00000"),
                         Nama = this.txtNamaBarang.Text.Trim(),
                         Jumlah = int.Parse(txtJumlah.Text.Trim(), System.Globalization.NumberStyles.AllowThousands ),
                         Harga = Convert.ToDecimal(txtHarga.Text.Trim()),
@@ -134,5 +134,14 @@ namespace Simple_E_Commerce
             }
         }
 
+        private void txtKodeBarang_Leave(object sender, EventArgs e)
+        {
+            if(new BarangDAO(Setting.GetConnectionString()).CheckBarangByKode(this.txtKodeBarang.Text.Trim()))
+            {
+                MessageBox.Show("Maaf, kode barang tersebut telah ada. \n Silahkan input kode barang lainnya.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.txtKodeBarang.Text = "";
+                this.txtKodeBarang.Focus();
+            }
+        }
     }
 }

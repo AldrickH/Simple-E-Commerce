@@ -36,7 +36,7 @@ namespace Simple_E_Commerce
             if (brg != null && brg.Jumlah >= 0)
             {
                 this.lblNama.Text = brg.Nama;
-                this.lblHarga.Text = brg.Harga.ToString("n0");
+                this.lblHarga.Text = $"Rp. { brg.Harga.ToString("n0")}";
                 this.lblQty.Text = brg.Jumlah.ToString("n0");
                 this.pBox.Image = new ImageConverter().ConvertFrom(brg.Gambar) as Image;
             }

@@ -43,6 +43,7 @@
             this.btnBatal = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -85,12 +86,13 @@
             // 
             this.txtHarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHarga.Location = new System.Drawing.Point(213, 275);
+            this.txtHarga.Location = new System.Drawing.Point(248, 275);
             this.txtHarga.Margin = new System.Windows.Forms.Padding(2);
             this.txtHarga.MaxLength = 11;
             this.txtHarga.Name = "txtHarga";
-            this.txtHarga.Size = new System.Drawing.Size(333, 22);
+            this.txtHarga.Size = new System.Drawing.Size(298, 22);
             this.txtHarga.TabIndex = 29;
+            this.txtHarga.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtHarga.TextChanged += new System.EventHandler(this.txtHarga_TextChanged);
             this.txtHarga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             // 
@@ -113,6 +115,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNamaBarang.Location = new System.Drawing.Point(213, 210);
             this.txtNamaBarang.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNamaBarang.MaxLength = 50;
             this.txtNamaBarang.Name = "txtNamaBarang";
             this.txtNamaBarang.Size = new System.Drawing.Size(333, 22);
             this.txtNamaBarang.TabIndex = 27;
@@ -123,9 +126,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKodeBarang.Location = new System.Drawing.Point(213, 178);
             this.txtKodeBarang.Margin = new System.Windows.Forms.Padding(2);
+            this.txtKodeBarang.MaxLength = 10;
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(333, 22);
             this.txtKodeBarang.TabIndex = 26;
+            this.txtKodeBarang.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
             // 
             // lblHarga
             // 
@@ -200,11 +205,21 @@
             this.pictureBox2.TabIndex = 35;
             this.pictureBox2.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(213, 277);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 17);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Rp.";
+            // 
             // FrmTambahDataBarang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 401);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnBatal);
             this.Controls.Add(this.btnUpload);
@@ -250,5 +265,6 @@
         private System.Windows.Forms.Label lblKodeBarang;
         private System.Windows.Forms.Button btnBatal;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

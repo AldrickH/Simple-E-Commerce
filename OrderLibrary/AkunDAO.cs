@@ -121,6 +121,7 @@ namespace OrderLibrary
                 {
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@username", username);
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)

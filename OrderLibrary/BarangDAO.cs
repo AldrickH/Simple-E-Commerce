@@ -123,6 +123,35 @@ namespace OrderLibrary
             return result;
         }
 
+        public bool CheckBarangByKode(string kode)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(@"select * from barang where kode = @kode", _conn))
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@Kode", kode);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            if (reader.Read())
+                            {
+                                result = true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
         public int AddBarang(Barang barang)
         {
             int result = 0;
