@@ -219,8 +219,6 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.dgvDataOrder);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmKeranjang";
             this.Text = "FrmKeranjang";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

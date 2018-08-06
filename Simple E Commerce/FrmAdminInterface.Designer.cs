@@ -36,6 +36,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabData = new System.Windows.Forms.TabControl();
             this.tabDataBarang = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.lblPenghubung2 = new System.Windows.Forms.Label();
             this.btnTambah = new System.Windows.Forms.Button();
@@ -57,6 +61,7 @@
             this.clmHarga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblKodeBarang = new System.Windows.Forms.Label();
             this.tabDataMember = new System.Windows.Forms.TabPage();
+            this.btnFilterDataMember = new System.Windows.Forms.Button();
             this.txtNamaUser = new System.Windows.Forms.TextBox();
             this.lblNamaUser = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -78,10 +83,7 @@
             this.clmJumlahBrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnFilterDataOrder = new System.Windows.Forms.Button();
             this.gbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabData.SuspendLayout();
@@ -195,6 +197,42 @@
             this.tabDataBarang.Text = "Data Barang";
             this.tabDataBarang.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(229, 148);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 17);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Rp.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(392, 150);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 17);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Rp.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(392, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 17);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Rp.";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(230, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 17);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Rp.";
+            // 
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -238,8 +276,8 @@
             this.txtHargaMax.TabIndex = 6;
             this.txtHargaMax.Text = "0";
             this.txtHargaMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtHargaMax.Click += new System.EventHandler(this.txtJumlahHarga_Click);
-            this.txtHargaMax.TextChanged += new System.EventHandler(this.txtJumlahHarga_TextChanged);
+            this.txtHargaMax.Click += new System.EventHandler(this.txtHargaMax_Click);
+            this.txtHargaMax.TextChanged += new System.EventHandler(this.txtHargaMax_TextChanged);
             this.txtHargaMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             this.txtHargaMax.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
             // 
@@ -253,8 +291,8 @@
             this.txtHargaMin.TabIndex = 5;
             this.txtHargaMin.Text = "0";
             this.txtHargaMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtHargaMin.Click += new System.EventHandler(this.txtJumlahHarga_Click);
-            this.txtHargaMin.TextChanged += new System.EventHandler(this.txtJumlahHarga_TextChanged);
+            this.txtHargaMin.Click += new System.EventHandler(this.txtHargaMin_Click);
+            this.txtHargaMin.TextChanged += new System.EventHandler(this.txtHargaMin_TextChanged);
             this.txtHargaMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             this.txtHargaMin.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
             // 
@@ -278,8 +316,8 @@
             this.txtJumlahMax.TabIndex = 4;
             this.txtJumlahMax.Text = "0";
             this.txtJumlahMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtJumlahMax.Click += new System.EventHandler(this.txtJumlahHarga_Click);
-            this.txtJumlahMax.TextChanged += new System.EventHandler(this.txtJumlahHarga_TextChanged);
+            this.txtJumlahMax.Click += new System.EventHandler(this.txtJumlahMax_Click);
+            this.txtJumlahMax.TextChanged += new System.EventHandler(this.txtJumlahMax_TextChanged);
             this.txtJumlahMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             this.txtJumlahMax.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
             // 
@@ -293,8 +331,8 @@
             this.txtJumlahMin.TabIndex = 3;
             this.txtJumlahMin.Text = "0";
             this.txtJumlahMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtJumlahMin.Click += new System.EventHandler(this.txtJumlahHarga_Click);
-            this.txtJumlahMin.TextChanged += new System.EventHandler(this.txtJumlahHarga_TextChanged);
+            this.txtJumlahMin.Click += new System.EventHandler(this.txtJumlahMin_Click);
+            this.txtJumlahMin.TextChanged += new System.EventHandler(this.txtJumlahMin_TextChanged);
             this.txtJumlahMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             this.txtJumlahMin.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
             // 
@@ -328,7 +366,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKodeBarang.Location = new System.Drawing.Point(233, 26);
             this.txtKodeBarang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtKodeBarang.MaxLength = 4;
+            this.txtKodeBarang.MaxLength = 5;
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(296, 22);
             this.txtKodeBarang.TabIndex = 1;
@@ -424,6 +462,7 @@
             // 
             // tabDataMember
             // 
+            this.tabDataMember.Controls.Add(this.btnFilterDataMember);
             this.tabDataMember.Controls.Add(this.txtNamaUser);
             this.tabDataMember.Controls.Add(this.lblNamaUser);
             this.tabDataMember.Controls.Add(this.txtUsername);
@@ -437,6 +476,17 @@
             this.tabDataMember.TabIndex = 2;
             this.tabDataMember.Text = "Data Member";
             this.tabDataMember.UseVisualStyleBackColor = true;
+            // 
+            // btnFilterDataMember
+            // 
+            this.btnFilterDataMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFilterDataMember.Location = new System.Drawing.Point(636, 8);
+            this.btnFilterDataMember.Name = "btnFilterDataMember";
+            this.btnFilterDataMember.Size = new System.Drawing.Size(134, 42);
+            this.btnFilterDataMember.TabIndex = 8;
+            this.btnFilterDataMember.Text = "Filter";
+            this.btnFilterDataMember.UseVisualStyleBackColor = true;
+            this.btnFilterDataMember.Click += new System.EventHandler(this.btnFilterDataMember_Click);
             // 
             // txtNamaUser
             // 
@@ -524,6 +574,7 @@
             // 
             // tabDataOrder
             // 
+            this.tabDataOrder.Controls.Add(this.btnFilterDataOrder);
             this.tabDataOrder.Controls.Add(this.txtNoOrder);
             this.tabDataOrder.Controls.Add(this.lblNoOrder);
             this.tabDataOrder.Controls.Add(this.dgvDataOrder);
@@ -541,9 +592,11 @@
             this.txtNoOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNoOrder.Location = new System.Drawing.Point(167, 17);
+            this.txtNoOrder.MaxLength = 4;
             this.txtNoOrder.Name = "txtNoOrder";
             this.txtNoOrder.Size = new System.Drawing.Size(213, 22);
             this.txtNoOrder.TabIndex = 3;
+            this.txtNoOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             this.txtNoOrder.Leave += new System.EventHandler(this.txtDataOrder_Leave);
             // 
             // lblNoOrder
@@ -645,41 +698,16 @@
             this.pictureBox2.TabIndex = 22;
             this.pictureBox2.TabStop = false;
             // 
-            // label1
+            // btnFilterDataOrder
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(230, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 17);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Rp.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(392, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 17);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Rp.";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(392, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 17);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Rp.";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 148);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 17);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Rp.";
+            this.btnFilterDataOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFilterDataOrder.Location = new System.Drawing.Point(643, 7);
+            this.btnFilterDataOrder.Name = "btnFilterDataOrder";
+            this.btnFilterDataOrder.Size = new System.Drawing.Size(134, 42);
+            this.btnFilterDataOrder.TabIndex = 8;
+            this.btnFilterDataOrder.Text = "Filter";
+            this.btnFilterDataOrder.UseVisualStyleBackColor = true;
+            this.btnFilterDataOrder.Click += new System.EventHandler(this.btnFilterDataOrder_Click);
             // 
             // FrmAdminInterface
             // 
@@ -690,8 +718,6 @@
             this.Controls.Add(this.gbAdmin);
             this.Controls.Add(this.tabData);
             this.Margin = new System.Windows.Forms.Padding(1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmAdminInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAdminInterface";
@@ -770,5 +796,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnFilterDataMember;
+        private System.Windows.Forms.Button btnFilterDataOrder;
     }
 }

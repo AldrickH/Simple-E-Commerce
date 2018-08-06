@@ -28,7 +28,7 @@ namespace Simple_E_Commerce
 
                     if (temp.Password.Equals(txtPassword.Text))
                     {
-                        if (temp.Username.Equals("admin"))
+                        if (temp.Username.ToLower().Equals("admin"))
                         {
                             FrmAdminInterface frm = new FrmAdminInterface(temp);
                             this.Hide();

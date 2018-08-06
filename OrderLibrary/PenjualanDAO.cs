@@ -102,7 +102,7 @@ namespace OrderLibrary
                 {
                     cmd.Connection = _conn;
                     if (akun != null) sqlString += " where p.username = @username";
-                    if (noOrder != null) sqlString += " where p.noOrder = @noOrder";
+                    if (noOrder != null) sqlString += " where p.noOrder like @noOrder";
 
                     cmd.CommandText = sqlString;
                     cmd.Parameters.Clear();

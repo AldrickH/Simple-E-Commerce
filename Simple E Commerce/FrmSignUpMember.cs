@@ -41,6 +41,7 @@ namespace Simple_E_Commerce
             {
                 MessageBox.Show("Sorry, Password anda tidak sama...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.txtPassword.Text = "";
+                this.txtPassword2.Text = "";
                 this.txtPassword.Focus();
             }
             else

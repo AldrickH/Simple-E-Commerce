@@ -156,8 +156,6 @@
             this.Controls.Add(this.lblTotalPembelian);
             this.Controls.Add(this.dgvDataOrder);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmSejarahPembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Sejarah Pembelian";

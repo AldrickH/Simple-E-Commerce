@@ -126,10 +126,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKodeBarang.Location = new System.Drawing.Point(213, 178);
             this.txtKodeBarang.Margin = new System.Windows.Forms.Padding(2);
-            this.txtKodeBarang.MaxLength = 10;
+            this.txtKodeBarang.MaxLength = 5;
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(333, 22);
             this.txtKodeBarang.TabIndex = 26;
+            this.txtKodeBarang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngka_KeyPress);
             this.txtKodeBarang.Leave += new System.EventHandler(this.txtKodeBarang_Leave);
             // 
             // lblHarga
@@ -236,8 +237,6 @@
             this.Controls.Add(this.lblKodeBarang);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmTambahDataBarang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Tambah Data Barang";

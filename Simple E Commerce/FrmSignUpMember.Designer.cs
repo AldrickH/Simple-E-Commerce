@@ -44,6 +44,7 @@
             this.txtPassword2 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pboxPict = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxPict)).BeginInit();
             this.SuspendLayout();
@@ -76,8 +77,9 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(200, 284);
+            this.txtPassword.Location = new System.Drawing.Point(200, 286);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.MaxLength = 12;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(265, 22);
             this.txtPassword.TabIndex = 15;
@@ -87,7 +89,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(58, 284);
+            this.lblPassword.Location = new System.Drawing.Point(58, 286);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(83, 20);
@@ -187,6 +189,7 @@
             // 
             this.txtPassword2.Location = new System.Drawing.Point(200, 325);
             this.txtPassword2.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword2.MaxLength = 12;
             this.txtPassword2.Name = "txtPassword2";
             this.txtPassword2.Size = new System.Drawing.Size(265, 22);
             this.txtPassword2.TabIndex = 15;
@@ -214,11 +217,21 @@
             this.pboxPict.TabIndex = 22;
             this.pboxPict.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(197, 267);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(224, 17);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "* You can put up to 12 characters.";
+            // 
             // FrmSignUpMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 437);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.pboxPict);
@@ -265,5 +278,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPassword2;
+        private System.Windows.Forms.Label label2;
     }
 }

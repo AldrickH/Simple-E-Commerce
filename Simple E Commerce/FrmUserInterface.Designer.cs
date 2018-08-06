@@ -145,8 +145,6 @@
             this.Controls.Add(this.flowLayoutPnl);
             this.Controls.Add(this.btnCheckout);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmUserInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form User Interface";

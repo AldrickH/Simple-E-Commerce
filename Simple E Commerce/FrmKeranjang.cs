@@ -39,14 +39,14 @@ namespace Simple_E_Commerce
                 this.dgvDataOrder.Rows.Add(new string[]
                 {
                     jual.NoOrder.ToString(), jual.Tanggal.ToShortDateString(), jual.DataAkun.Nama, jual.DataBarang.Kode,
-                    jual.DataBarang.Nama, jual.DataBarang.Harga.ToString("n0"), jual.Quantity.ToString("n0"), jual.Total.ToString("n0")});
+                    jual.DataBarang.Nama, jual.DataBarang.Harga.ToString("c0"), jual.Quantity.ToString("n0"), jual.Total.ToString("c0")});
 
                 tempJumlahBrg += jual.Quantity;
                 tempTotalHrg += jual.Total;
             }
 
             this.lblTotalBarangIsi.Text = tempJumlahBrg.ToString("n0");
-            this.lblTotalHargaIsi.Text = $"Rp. {tempTotalHrg.ToString("n0")}";
+            this.lblTotalHargaIsi.Text = tempTotalHrg.ToString("c0");
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
@@ -63,8 +63,8 @@ namespace Simple_E_Commerce
                     row.NamaCustomer = jual.DataAkun.Nama;
                     row.Quantity = jual.Quantity.ToString();
                     row.Tanggal = jual.Tanggal.ToShortDateString();
-                    row.SubTotal = jual.Total.ToString("n0");
-                    row.Total = $"Rp. {tempTotalHrg.ToString("n0")}";
+                    row.SubTotal = jual.Total.ToString("c0");
+                    row.Total = this.tempTotalHrg.ToString("c0");
                     ds.Penjualan.AddPenjualanRow(row);
 
                     _result = new PenjualanDAO(Setting.GetConnectionString()).AddPenjualan(jual) > 0;
