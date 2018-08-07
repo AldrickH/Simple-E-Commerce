@@ -100,6 +100,7 @@
             // 
             this.txtUserID.Location = new System.Drawing.Point(200, 243);
             this.txtUserID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUserID.MaxLength = 20;
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(265, 22);
             this.txtUserID.TabIndex = 13;

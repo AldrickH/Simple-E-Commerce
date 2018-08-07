@@ -10,7 +10,7 @@ namespace Simple_E_Commerce
     {
         public static string GetConnectionString()
         {
-            return @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = SimpleECommerce; Integrated Security = True;";
+            return @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = DB_SimpleECommerce; Integrated Security = True;";
         }
     }
 }

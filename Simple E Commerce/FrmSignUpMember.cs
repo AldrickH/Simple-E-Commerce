@@ -64,10 +64,8 @@ namespace Simple_E_Commerce
                     MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            FrmLogInMember flm = new FrmLogInMember();
-            this.Hide();
-            flm.ShowDialog();
-            
+
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
